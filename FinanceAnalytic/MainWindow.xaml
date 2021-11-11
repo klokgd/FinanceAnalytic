@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Button x:Name="button_Plus" HorizontalAlignment="Left" Margin="439,122,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Plus_Click" Content="Плюс к экземпляру счета"/>
+        <!--<Frame x:Name="frame" Content="Frame" Navigated="frame_Navigated" Margin="439,122,195,232"/>-->
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" FontSize="24" Margin="174,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="114" Width="150" RenderTransformOrigin="-0.198,-0.306"/>
+        <Button x:Name="button_Minus" HorizontalAlignment="Left" Margin="439,262,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="325" Click="button_Minus_Click" Content="Минус от экземпляра счета"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" FontSize="24" Margin="100,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Height="50" TextChanged="textBox_TextChanged" />
+
+        <!--<Frame x:Name="frame_Copy" Content="Frame" Navigated="frame_Navigated" Margin="439,122,195,232"/>-->
 
     </Grid>
 </Window>
