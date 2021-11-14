@@ -1,0 +1,14 @@
+﻿<Window x:Class="FinanceAnalytic.Win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinanceAnalytic"
+        mc:Ignorable="d"
+        Title="Win" Height="450" Width="800">
+    <Grid>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="190,50,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="180"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="174,130,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="196"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="118,217,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="93" Width="235"/>
+    </Grid>
+</Window>
