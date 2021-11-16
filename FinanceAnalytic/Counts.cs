@@ -8,7 +8,6 @@ namespace FinanceAnalytic
     {
         double Sum { get; set; }
         string Name { get; set; }
-        int Type { get; set; }
         void TransferBetweenCounts();
         
 
