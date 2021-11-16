@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    interface Transactions
+    public interface Transactions
     {
         double Sum { get; }
         int Type { get; }

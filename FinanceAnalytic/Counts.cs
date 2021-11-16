@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    interface Counts //интерфейс для всех счетов
+    public interface Counts //интерфейс для всех счетов
     {
         double Sum { get; set; }
         string Name { get; set; }

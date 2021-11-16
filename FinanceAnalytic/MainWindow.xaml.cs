@@ -26,9 +26,15 @@ namespace FinanceAnalytic
         public MainWindow()
         {
             Expense startCount = new Expense(1200, 0, DateTime.Today);
-            PersonalCount goodTime = new PersonalCount(1200, "zhopa", 3, startCount);
-            Expense addToSum = new Expense(1200, 0, DateTime.Today);
+            PersonalCount goodTime = new PersonalCount(200, "zhopa", startCount);
+            Expense addToSum = new Expense(12, 0, DateTime.Today);
+            Expense addToSum1 = new Expense(30, 0, DateTime.Today);
+            Expense addToSum2 = new Expense(50, 1, DateTime.Today);
+            Expense addToSum3 = new Expense(409, 0, DateTime.Today);
             goodTime.AddTransaction(addToSum);
+            goodTime.AddTransaction(addToSum1);
+            goodTime.AddTransaction(addToSum2);
+            goodTime.AddTransaction(addToSum3);
 
             InitializeComponent();
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    class Expense : Transactions
+    public class Expense : Transactions
     {
         public Expense(double v1, int v2, DateTime today)
         {
