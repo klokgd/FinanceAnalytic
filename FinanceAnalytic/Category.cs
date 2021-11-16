@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    class Sum
+    public enum Category
     {
 
     }

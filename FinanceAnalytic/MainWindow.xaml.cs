@@ -20,24 +20,27 @@ namespace FinanceAnalytic
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-        Count count = new Count(120000, "Семейный");
-        
+
+        //Counts count = new Counts(120000, "Семейный");
+
         public MainWindow()
         {
-
+            Expense startCount = new Expense(1200, 0, DateTime.Today);
+            PersonalCount goodTime = new PersonalCount(1200, "zhopa", 3, startCount);
+            Expense addToSum = new Expense(1200, 0, DateTime.Today);
+            goodTime.AddTransaction(addToSum);
 
             InitializeComponent();
-            
-            textBlock.Text = Convert.ToString($"Сумма в буджете {count.Name} равна {count.Sum}");
+
+            //textBlock.Text = Convert.ToString($"Сумма в буджете {count.Name} равна {count.Sum}");
 
         }
 
         private void button_Plus_Click(object sender, RoutedEventArgs e)
         {
 
-            count.PlusToSum(Convert.ToDouble(textBox.Text));
-            textBlock.Text = Convert.ToString($"Сумма в буджете {count.Name} равна {count.Sum}");
+            //count.PlusToSum(Convert.ToDouble(textBox.Text));
+            //textBlock.Text = Convert.ToString($"Сумма в буджете {count.Name} равна {count.Sum}");
             //frame.Navigate(new Page1());
         }
 
@@ -50,9 +53,9 @@ namespace FinanceAnalytic
 
         private void button_Minus_Click(object sender, RoutedEventArgs e)
         {
-            count.MinusToSum(Convert.ToDouble(textBox.Text));
+            //count.MinusToSum(Convert.ToDouble(textBox.Text));
 
-            textBlock.Text = Convert.ToString($"Сумма в буджете {count.Name} равна {count.Sum}");
+            //textBlock.Text = Convert.ToString($"Сумма в буджете {count.Name} равна {count.Sum}");
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)

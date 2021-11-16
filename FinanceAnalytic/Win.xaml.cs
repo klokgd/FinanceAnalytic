@@ -17,16 +17,16 @@ namespace FinanceAnalytic
     /// </summary>
     public partial class Win : Window
     {
-        Count familyCount = new Count(120000, "Семейный");
-        Count myCount = new Count(400, "Под подушкой");
-        Count ipotekaCount = new Count(-4500000, "Кредит");
+        //Counts familyCount = new Counts(120000, "Семейный");
+        //Counts myCount = new Counts(400, "Под подушкой");
+        //Counts ipotekaCount = new Counts(-4500000, "Кредит");
         public Win()
         {
             InitializeComponent();
 
-            textBlock.Text = Convert.ToString($"Сумма в буджете {familyCount.Name} равна {familyCount.Sum}");
-            textBlock1.Text = Convert.ToString($"Сумма в буджете {myCount.Name} равна {myCount.Sum}");
-            textBlock2.Text = Convert.ToString($"Сумма в буджете {ipotekaCount.Name} равна {ipotekaCount.Sum}");
+            //textBlock.Text = Convert.ToString($"Сумма в буджете {familyCount.Name} равна {familyCount.Sum}");
+            //textBlock1.Text = Convert.ToString($"Сумма в буджете {myCount.Name} равна {myCount.Sum}");
+            //textBlock2.Text = Convert.ToString($"Сумма в буджете {ipotekaCount.Name} равна {ipotekaCount.Sum}");
         }
 
         private void buttonBIG_Click(object sender, RoutedEventArgs e)
