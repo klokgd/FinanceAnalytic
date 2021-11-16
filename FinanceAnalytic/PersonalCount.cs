@@ -11,7 +11,7 @@ namespace FinanceAnalytic
             Sum = v1;
             Name = v2;
             Type = v3;
-            Transaction = startCount;
+            Transaction = new List<Transactions>((IEnumerable<Transactions>)startCount);
         }
 
         public double Sum { get; set; }
