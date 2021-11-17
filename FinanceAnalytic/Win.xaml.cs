@@ -21,6 +21,9 @@ namespace FinanceAnalytic
         //Counts myCount = new Counts(400, "Под подушкой");
         //Counts ipotekaCount = new Counts(-4500000, "Кредит");
 
+        List<PersonalCount> allCounts = new List<PersonalCount>();
+
+
         public Win()
         {
             InitializeComponent();
@@ -46,14 +49,31 @@ namespace FinanceAnalytic
             }
         }
 
+        public void addListCount(PersonalCount count)
+        {
+            allCounts.Add(count);
+        }
+
+        public void DisplayCountsInTextBox()
+        {
+            int index = 0;
+            foreach (var item in allCounts)
+            {
+                index++;
+                textBlock2.Text += $" {index} Счёт: {item.Name} Денег: {item.Sum} \n";
+            }
+        }
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Expense startCount = new Expense(Convert.ToDouble(SumCount.Text), 0, DateTime.Today);
             PersonalCount goodTime = new PersonalCount(Convert.ToDouble(SumNewCount.Text), NameNewCount.Text, startCount);
-            textBlock2.Text = $"счет {NameNewCount.Text}, сумма {SumNewCount.Text}";
             double sum = Convert.ToDouble(SumCount.Text) + Convert.ToDouble(SumNewCount.Text);
+            addListCount(goodTime);
+            DisplayCountsInTextBox();
             SumCount.Text = $"{sum}";
         }
+
 
         private void NameNewCount_TextChanged(object sender, TextChangedEventArgs e)
         {

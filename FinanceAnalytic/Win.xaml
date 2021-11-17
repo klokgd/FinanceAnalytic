@@ -7,12 +7,14 @@
         mc:Ignorable="d"
         Title="Win" Height="450" Width="800">
     <Grid>
-        <TextBlock x:Name="NewCount" HorizontalAlignment="Left" Margin="595,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="85" Width="180"><Run Text="Добавление нового счета"/><Run Text=". Введите "/><Run Text=":"/><LineBreak/><Run Language="ru-ru" Text="Н"/><Run Text="Название счета"/><LineBreak/><Run Text="Исходную сумму"/></TextBlock>
-        <TextBlock x:Name="SumCount" HorizontalAlignment="Left" Margin="170,17,0,0" Text="100000" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="107"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="238,63,0,0" Text="111" TextWrapping="Wrap" VerticalAlignment="Top" Height="92" Width="235"/>
-        <TextBox x:Name="NameNewCount" HorizontalAlignment="Left" Margin="595,100,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="NameNewCount_TextChanged"/>
-        <TextBox x:Name="SumNewCount" HorizontalAlignment="Left" Margin="595,142,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="SumNewCount_TextChanged"/>
-        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Margin="595,178,0,0" VerticalAlignment="Top" Height="39" Width="120" Click="button_Click"/>
-        <TextBlock x:Name="SumCount_Text" HorizontalAlignment="Left" Margin="10,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="155"><Run Language="ru-ru" Text="Общая сумма накоплений:"/></TextBlock>
+        <TextBlock x:Name="NewCount" HorizontalAlignment="Left" Margin="532,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="228" Text="Добавить новый счёт" FontSize="20" FontWeight="Bold"/>
+        <TextBlock x:Name="SumCount" HorizontalAlignment="Left" Margin="312,21,0,0" Text="100000" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="107" FontSize="16"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="284" Width="235"/>
+        <TextBox x:Name="NameNewCount" HorizontalAlignment="Left" Margin="584,118,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="NameNewCount_TextChanged"/>
+        <TextBox x:Name="SumNewCount" HorizontalAlignment="Left" Margin="584,177,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="SumNewCount_TextChanged"/>
+        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Margin="584,219,0,0" VerticalAlignment="Top" Height="39" Width="120" Click="button_Click"/>
+        <TextBlock x:Name="SumCount_Text" HorizontalAlignment="Left" Margin="10,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="302" FontSize="20" FontWeight="Bold" Text="Все богатства в вашей казне:"/>
+        <TextBlock x:Name="NewCount_Copy" HorizontalAlignment="Left" Margin="584,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="38" Width="124"><Run Text="Сумма на счёте:"/></TextBlock>
+        <Label Content="Введите название:" HorizontalAlignment="Left" Margin="584,75,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
