@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="Win" Height="450" Width="800">
     <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="190,50,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="180"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="174,130,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="196"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="118,217,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="93" Width="235"/>
+        <TextBlock x:Name="NewCount" HorizontalAlignment="Left" Margin="595,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="85" Width="180"><Run Text="Добавление нового счета"/><Run Text=". Введите "/><Run Text=":"/><LineBreak/><Run Language="ru-ru" Text="Н"/><Run Text="Название счета"/><LineBreak/><Run Text="Исходную сумму"/></TextBlock>
+        <TextBlock x:Name="SumCount" HorizontalAlignment="Left" Margin="170,17,0,0" Text="100000" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="107"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="238,63,0,0" Text="111" TextWrapping="Wrap" VerticalAlignment="Top" Height="92" Width="235"/>
+        <TextBox x:Name="NameNewCount" HorizontalAlignment="Left" Margin="595,100,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="NameNewCount_TextChanged"/>
+        <TextBox x:Name="SumNewCount" HorizontalAlignment="Left" Margin="595,142,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="SumNewCount_TextChanged"/>
+        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Margin="595,178,0,0" VerticalAlignment="Top" Height="39" Width="120" Click="button_Click"/>
+        <TextBlock x:Name="SumCount_Text" HorizontalAlignment="Left" Margin="10,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="155"><Run Language="ru-ru" Text="Общая сумма накоплений:"/></TextBlock>
     </Grid>
 </Window>

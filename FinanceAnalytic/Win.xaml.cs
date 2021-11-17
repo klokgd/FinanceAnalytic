@@ -20,19 +20,44 @@ namespace FinanceAnalytic
         //Counts familyCount = new Counts(120000, "Семейный");
         //Counts myCount = new Counts(400, "Под подушкой");
         //Counts ipotekaCount = new Counts(-4500000, "Кредит");
+
         public Win()
         {
             InitializeComponent();
 
             //textBlock.Text = Convert.ToString($"Сумма в буджете {familyCount.Name} равна {familyCount.Sum}");
             //textBlock1.Text = Convert.ToString($"Сумма в буджете {myCount.Name} равна {myCount.Sum}");
-            //textBlock2.Text = Convert.ToString($"Сумма в буджете {ipotekaCount.Name} равна {ipotekaCount.Sum}");
+            SumCount.Text = Convert.ToString($"100000");
+            //textBlock.Text = Convert.ToString($"Сумма в буджете {familyCount.Name} равна {familyCount.Sum}");
         }
 
-        private void buttonBIG_Click(object sender, RoutedEventArgs e)
+        //private void buttonBIG_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainWindow taskWindow = new MainWindow();
+        //    taskWindow.Show();
+        //}
+
+        private void SumNewCount_TextChanged(object sender, TextChangedEventArgs e)
         {
-            MainWindow taskWindow = new MainWindow();
-            taskWindow.Show();
+            if (System.Text.RegularExpressions.Regex.IsMatch(SumNewCount.Text, "[^0-9,]"))
+            {
+                MessageBox.Show("Пожалуйста, вводите только числа");
+                SumNewCount.Text = SumNewCount.Text.Remove(SumNewCount.Text.Length - 1);
+            }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Expense startCount = new Expense(Convert.ToDouble(SumCount.Text), 0, DateTime.Today);
+            PersonalCount goodTime = new PersonalCount(Convert.ToDouble(SumNewCount.Text), NameNewCount.Text, startCount);
+            textBlock2.Text = $"счет {NameNewCount.Text}, сумма {SumNewCount.Text}";
+            double sum = Convert.ToDouble(SumCount.Text) + Convert.ToDouble(SumNewCount.Text);
+            SumCount.Text = $"{sum}";
+        }
+
+        private void NameNewCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SumNewCount.Text = SumNewCount.Text;
         }
     }
 }
