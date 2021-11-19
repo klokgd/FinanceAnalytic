@@ -12,15 +12,10 @@ using System.Windows.Shapes;
 
 namespace FinanceAnalytic
 {
-    /// <summary>
-    /// Interaction logic for Win.xaml
-    /// </summary>
+    
     public partial class Win : Window
     {
-        //Counts familyCount = new Counts(120000, "Семейный");
-        //Counts myCount = new Counts(400, "Под подушкой");
-        //Counts ipotekaCount = new Counts(-4500000, "Кредит");
-
+    
         List<PersonalCount> allCounts = new List<PersonalCount>();
 
 
@@ -28,11 +23,8 @@ namespace FinanceAnalytic
         {
             InitializeComponent();
 
-            //textBlock.Text = Convert.ToString($"Сумма в буджете {familyCount.Name} равна {familyCount.Sum}");
-            //textBlock1.Text = Convert.ToString($"Сумма в буджете {myCount.Name} равна {myCount.Sum}");
             SumCount.Text = Convert.ToString($"100000");
-            //textBlock.Text = Convert.ToString($"Сумма в буджете {familyCount.Name} равна {familyCount.Sum}");
-        }
+            }
 
         //private void buttonBIG_Click(object sender, RoutedEventArgs e)
         //{

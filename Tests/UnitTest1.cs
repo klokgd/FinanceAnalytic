@@ -23,7 +23,7 @@ namespace Tests
             PersonalCount personalCount = new PersonalCount(count, "zhopa", expense);
             for (int i = 0; i < length; i++)
             {
-                personalCount.AddTransaction(new Expense(transaction, 0, DateTime.Today));
+                personalCount.AddIncrease(new Expense(transaction, 0, DateTime.Today));
             }
             //assert
             Assert.AreEqual(personalCount.Sum, expected);
@@ -41,7 +41,7 @@ namespace Tests
             PersonalCount personalCount = new PersonalCount(count, "zhopa", expense);
             for (int i = 0; i < length; i++)
             {
-                personalCount.AddTransaction(new Expense(transaction, 0, DateTime.Today));
+                personalCount.AddIncrease(new Expense(transaction, 0, DateTime.Today));
             }
             
             //assert

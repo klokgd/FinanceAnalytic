@@ -4,11 +4,11 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    public interface Transactions
+    public interface ITransactions
     {
         double Sum { get; }
         //int Type { get; }
         DateTime Date { get; }
-        Category Category {get; set; }
+        string Category {get; set; }
     }
 }

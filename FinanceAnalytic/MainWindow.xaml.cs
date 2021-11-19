@@ -25,11 +25,8 @@ namespace FinanceAnalytic
 
         public MainWindow()
         {
-            //<TextBox x:Name="textBox" HorizontalAlignment="Left" FontSize="24" Margin="384,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" Height="32" TextChanged="textBox_TextChanged" />
-        //    <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" FontSize="24" Margin="519,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="104" Height="33" TextChanged="textBox_TextChanged" />
-        //<TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" FontSize="24" Margin="650,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="34" TextChanged="textBox_TextChanged" />
-
-            Expense startCount = new Expense(1200, Category.Food, DateTime.Today);
+            
+            Expense startCount = new Expense(1200, 0, DateTime.Today);
             PersonalCount goodTime = new PersonalCount(200, "zhopa", startCount);
             Expense addToSum = new Expense(12, Category.HCS, DateTime.Today);
             Expense addToSum1 = new Expense(30, Category.Food, DateTime.Today);
@@ -50,7 +47,6 @@ namespace FinanceAnalytic
             File.WriteAllText(_filePath, jsonToWrite);
             InitializeComponent();
 
-            //textBlock.Text = Convert.ToString($"Сумма в буджете {count.Name} равна {count.Sum}");
 
         }
 
