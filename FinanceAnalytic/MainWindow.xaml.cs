@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Text.Encodings.Web;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.Unicode;
 
 namespace FinanceAnalytic
 {
@@ -20,7 +20,7 @@ namespace FinanceAnalytic
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        public const string _filePath = "../Itog.json";
         //Counts count = new Counts(120000, "Семейный");
 
         public MainWindow()
@@ -29,17 +29,25 @@ namespace FinanceAnalytic
         //    <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" FontSize="24" Margin="519,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="104" Height="33" TextChanged="textBox_TextChanged" />
         //<TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" FontSize="24" Margin="650,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="34" TextChanged="textBox_TextChanged" />
 
-            Expense startCount = new Expense(1200, 0, DateTime.Today);
+            Expense startCount = new Expense(1200, Category.Food, DateTime.Today);
             PersonalCount goodTime = new PersonalCount(200, "zhopa", startCount);
-            Expense addToSum = new Expense(12, 0, DateTime.Today);
-            Expense addToSum1 = new Expense(30, 0, DateTime.Today);
-            Expense addToSum2 = new Expense(50, 1, DateTime.Today);
+            Expense addToSum = new Expense(12, Category.HCS, DateTime.Today);
+            Expense addToSum1 = new Expense(30, Category.Food, DateTime.Today);
+            Expense addToSum2 = new Expense(50, Category.Clothes, DateTime.Today);
             Expense addToSum3 = new Expense(409, 0, DateTime.Today);
             goodTime.AddTransaction(addToSum);
             goodTime.AddTransaction(addToSum1);
             goodTime.AddTransaction(addToSum2);
             goodTime.AddTransaction(addToSum3);
 
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                WriteIndented = true
+            };
+
+            string jsonToWrite = JsonSerializer.Serialize(goodTime, options);
+            File.WriteAllText(_filePath, jsonToWrite);
             InitializeComponent();
 
             //textBlock.Text = Convert.ToString($"Сумма в буджете {count.Name} равна {count.Sum}");
@@ -48,7 +56,8 @@ namespace FinanceAnalytic
 
         private void button_Plus_Click(object sender, RoutedEventArgs e)
         {
-
+            TabControl tabControl = new TabControl();
+            MessageBox.Show(tabControl.ToString());
             //count.PlusToSum(Convert.ToDouble(textBox.Text));
             //textBlock.Text = Convert.ToString($"Сумма в буджете {count.Name} равна {count.Sum}");
             //frame.Navigate(new Page1());
@@ -63,6 +72,11 @@ namespace FinanceAnalytic
 
         private void button_Minus_Click(object sender, RoutedEventArgs e)
         {
+            TabControl tabControl = new TabControl();
+            MessageBox.Show(tabControl.ToString());
+            //
+            //tabControl.SelectedIndex = 1;
+            //Main_tab.GetControl(1);
             //count.MinusToSum(Convert.ToDouble(textBox.Text));
 
             //textBlock.Text = Convert.ToString($"Сумма в буджете {count.Name} равна {count.Sum}");
@@ -84,8 +98,16 @@ namespace FinanceAnalytic
         {
             Win taskWindow = new Win();
             taskWindow.Show();
+            //TabControl tabControl = new TabControl();
+            //TabControl tabControl1 = new TabControl();
+            
             //taskWindow.ShowViewModel();
         }
 
+        //private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+            
+           
+        //}
     }
 }

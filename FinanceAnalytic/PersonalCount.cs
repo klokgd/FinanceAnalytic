@@ -31,7 +31,10 @@ namespace FinanceAnalytic
         {
             throw new NotImplementedException();
         }
+        public void SaveData()
+        {
 
+        }
 
     }
 }
