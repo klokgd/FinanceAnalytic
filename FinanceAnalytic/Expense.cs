@@ -6,17 +6,17 @@ namespace FinanceAnalytic
 {
     public class Expense : Transactions
     {
-        public Expense(double v1, int v2, DateTime today)
+        public Expense(double v1, Category category, DateTime today)
         {
             Sum = v1;
-            Type = v2;
+            Category = category;
             Date = today;
         }
 
         public double Sum { get; }
-        public int Type { get ; }
+        //public int Type { get ; }
         public DateTime Date { get ; }
       
-        //public Category Category { get ; set ; }
+        public Category Category { get ; set ; }
     }
 }

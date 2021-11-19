@@ -7,8 +7,8 @@ namespace FinanceAnalytic
     public interface Transactions
     {
         double Sum { get; }
-        int Type { get; }
+        //int Type { get; }
         DateTime Date { get; }
-        //Category Category {get; set; }
+        Category Category {get; set; }
     }
 }
