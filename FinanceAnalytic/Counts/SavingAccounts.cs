@@ -4,17 +4,17 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    class SavingAccounts : Counts
+    class SavingAccounts : ICounts
     {
         public double Sum { get ; set  ; }
         public string Name { get ; set ; }
-        public List<Transactions> Transaction { get; set; }
+        public List<ITransactions> Transaction { get; set; }
 
         public SavingAccounts(double v1, string v2, Expense startCount)
         {
             Sum = v1 + startCount.Sum;
             Name = v2;
-            Transaction = new List<Transactions>();
+            Transaction = new List<ITransactions>();
             Transaction.Add(startCount);
         }
 
@@ -61,6 +61,16 @@ namespace FinanceAnalytic
             //int t= DateTime.
             
             return sum;
+        }
+
+        public void TransferBetweenCounts(ITransactions transferTransaction, ICounts transactionRecepient, Category category)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddIncrease(ITransactions Increase, Category category)
+        {
+            throw new NotImplementedException();
         }
     }
 }
