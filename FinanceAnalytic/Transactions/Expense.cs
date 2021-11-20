@@ -6,16 +6,23 @@ namespace FinanceAnalytic
 {
     public class Expense : ITransactions
     {
-        public Expense(double sum, Category category, DateTime today)
+        public Expense(decimal sum, Category category, DateTime today)
         {
-            Sum = sum;
+            if (sum < 0)
+            {
+                throw new ArgumentException("Нельзя вводить отрицательные числа");
+            }
+            else
+            {
+                Sum = sum;
+            }
             Category = category.Name;
             Date = today;
         }
 
-        public double Sum { get; }
-        public DateTime Date { get ; }
-      
-        public string Category { get ; set ; }
+        public decimal Sum { get; }
+        public DateTime Date { get; }
+
+        public string Category { get; set; }
     }
 }
