@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    class Space
+    class WorkSpace
     {
         string Name { get; set;  }
     }
