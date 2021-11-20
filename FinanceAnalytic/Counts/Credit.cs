@@ -4,16 +4,13 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    class Credit : ICounts
+    class Credit
     {
         public double Sum { get; set; }
         public string Name { get; set; }
         public int Type { get; set; }
 
-        public void TransferBetweenCounts(ITransactions transferTransaction, ICounts transactionRecepient, Category category)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public void PayCredit()
         {
@@ -23,11 +20,6 @@ namespace FinanceAnalytic
         public void RecalculateCredit()
         {
 
-        }
-
-        public void AddIncrease(ITransactions Increase, Category category)
-        {
-            throw new NotImplementedException();
         }
     }
 }

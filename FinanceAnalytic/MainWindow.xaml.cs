@@ -26,25 +26,25 @@ namespace FinanceAnalytic
         public MainWindow()
         {
             
-            Expense startCount = new Expense(1200, 0, DateTime.Today);
-            PersonalCount goodTime = new PersonalCount(200, "zhopa", startCount);
-            Expense addToSum = new Expense(12, Category.HCS, DateTime.Today);
-            Expense addToSum1 = new Expense(30, Category.Food, DateTime.Today);
-            Expense addToSum2 = new Expense(50, Category.Clothes, DateTime.Today);
-            Expense addToSum3 = new Expense(409, 0, DateTime.Today);
-            goodTime.AddTransaction(addToSum);
-            goodTime.AddTransaction(addToSum1);
-            goodTime.AddTransaction(addToSum2);
-            goodTime.AddTransaction(addToSum3);
+            //Expense startCount = new Expense(1200, 0, DateTime.Today);
+            //PersonalAccount goodTime = new PersonalAccount(200, "zhopa", startCount);
+            //Expense addToSum = new Expense(12, Category.HCS, DateTime.Today);
+            //Expense addToSum1 = new Expense(30, Category.Food, DateTime.Today);
+            //Expense addToSum2 = new Expense(50, Category.Clothes, DateTime.Today);
+            //Expense addToSum3 = new Expense(409, 0, DateTime.Today);
+            //goodTime.AddTransaction(addToSum);
+            //goodTime.AddTransaction(addToSum1);
+            //goodTime.AddTransaction(addToSum2);
+            //goodTime.AddTransaction(addToSum3);
 
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-                WriteIndented = true
-            };
+            //JsonSerializerOptions options = new JsonSerializerOptions
+            //{
+            //    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+            //    WriteIndented = true
+            //};
 
-            string jsonToWrite = JsonSerializer.Serialize(goodTime, options);
-            File.WriteAllText(_filePath, jsonToWrite);
+            //string jsonToWrite = JsonSerializer.Serialize(goodTime, options);
+            //File.WriteAllText(_filePath, jsonToWrite);
             InitializeComponent();
 
 

@@ -16,7 +16,7 @@ namespace FinanceAnalytic
     public partial class Win : Window
     {
     
-        List<PersonalCount> allCounts = new List<PersonalCount>();
+        List<PersonalAccount> allCounts = new List<PersonalAccount>();
 
 
         public Win()
@@ -41,7 +41,7 @@ namespace FinanceAnalytic
             }
         }
 
-        public void addListCount(PersonalCount count)
+        public void addListCount(PersonalAccount count)
         {
             allCounts.Add(count);
         }
@@ -58,12 +58,12 @@ namespace FinanceAnalytic
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Expense startCount = new Expense(Convert.ToDouble(SumCount.Text), 0, DateTime.Today);
-            PersonalCount goodTime = new PersonalCount(Convert.ToDouble(SumNewCount.Text), NameNewCount.Text, startCount);
-            double sum = Convert.ToDouble(SumCount.Text) + Convert.ToDouble(SumNewCount.Text);
-            addListCount(goodTime);
-            DisplayCountsInTextBox();
-            SumCount.Text = $"{sum}";
+        //    Expense startCount = new Expense(Convert.ToDouble(SumCount.Text), 0, DateTime.Today);
+        //    PersonalAccount goodTime = new PersonalAccount(Convert.ToDouble(SumNewCount.Text), NameNewCount.Text, startCount);
+        //    double sum = Convert.ToDouble(SumCount.Text) + Convert.ToDouble(SumNewCount.Text);
+        //    addListCount(goodTime);
+        //    DisplayCountsInTextBox();
+        //    SumCount.Text = $"{sum}";
         }
 
 
