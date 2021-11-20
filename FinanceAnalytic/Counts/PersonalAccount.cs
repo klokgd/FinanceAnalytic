@@ -12,6 +12,7 @@ namespace FinanceAnalytic
             Sum = sum;
             Name = name;
             Transaction = new List<ITransactions>();
+            
         }
 
         public string Name { get; set; }
@@ -19,12 +20,12 @@ namespace FinanceAnalytic
         public decimal Sum { get; set; }
         public List<ITransactions> Transaction { get; set; }
        
-        public void AddIncrease(Increase increase, Category category)
+        public void AddIncrease(Increase increase)
         {
             Transaction.Add(increase);
             Sum += increase.Sum;
         }
-        public void AddExpense(Expense expense, Category category)
+        public void AddExpense(Expense expense)
         {
             Transaction.Add(expense);
             Sum -= expense.Sum;
@@ -36,6 +37,8 @@ namespace FinanceAnalytic
             Sum -= transferTransaction.Sum;
             transactionRecepient.AddIncrease(transferTransaction, category);
         }
+
+
 
         public void SaveData()
         {
