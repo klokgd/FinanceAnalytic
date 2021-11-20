@@ -12,7 +12,7 @@ namespace FinanceAnalytic
 
         void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient, Category category);
 
-        void AddIncrease(Increase increase, Category category);
+        void AddIncrease(Increase increase);
         void RenameAccount(string newName);
         
 

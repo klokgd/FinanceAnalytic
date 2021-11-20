@@ -9,11 +9,13 @@ namespace FinanceAnalytic
         public decimal Sum { get ; set  ; }
         public string Name { get ; set ; }
         public List<ITransactions> Transaction { get; set; }
+        public int ActualMonth { get; set; }
 
         public SavingAccount(decimal sum, string name)
         {
             Sum = sum;
             Name = name;
+            ActualMonth = DateTime.Now.Month;
             Transaction = new List<ITransactions>();
         }
 
@@ -23,11 +25,6 @@ namespace FinanceAnalytic
             Sum += increase.Sum;
         }
 
-        public void AddExpense(Expense expense, Category category)
-        {
-            Transaction.Add(expense);
-            Sum -= expense.Sum;
-        }
 
         public void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient, Category category)
         {
@@ -36,7 +33,24 @@ namespace FinanceAnalytic
             transactionRecepient.AddIncrease(transferTransaction, category);
         }
 
-  
+        public void CheckIfBeginningMonth()
+        {
+            if (ActualMonth != DateTime.Now.Month)
+            {
+                RecalculateDeposit();
+                ActualMonth = DateTime.Now.Month;
+            }
+
+
+
+        }
+
+        public void RecalculateDeposit()
+        {
+            Sum = Sum * Percent + Sum;
+        }
+
+
 
         public void RenameAccount(string newName)
         {

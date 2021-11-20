@@ -10,17 +10,17 @@ namespace FinanceAnalytic
         public decimal Percent { get; set; }
         public string Name { get; set; }
         public int Type { get; set; }
-        public DateTime CurrentDateTime { get; set; }
+        public int ActualMonth { get; set; }
         public List<ITransactions> Transaction { get; set; }
 
         
 
-        public DepositAccount(decimal sum, string name, decimal percent, DateTime currentDateTime)
+        public DepositAccount(decimal sum, string name, decimal percent)
         {
             Sum = sum;
             Name = name;
             Percent = percent / 100;
-            CurrentDateTime = currentDateTime;
+            ActualMonth = DateTime.Now.Month;
             Transaction = new List<ITransactions>();
         }
 
@@ -28,15 +28,13 @@ namespace FinanceAnalytic
         {
             Transaction.Add(transferTransaction);
             Sum -= transferTransaction.Sum;
-            transactionRecepient.AddIncrease(transferTransaction, category);
+
+            transactionRecepient.AddIncrease(transferTransaction);
         }
 
-        public void AddPercentForDeposit()
-        {
+        
 
-        }
-
-        public void AddIncrease(Increase increase, Category category)
+        public void AddIncrease(Increase increase)
         {
             Transaction.Add(increase);
             Sum += increase.Sum;
@@ -46,10 +44,10 @@ namespace FinanceAnalytic
 
         public void CheckIfBeginningMonth()
         {
-            if (CurrentDateTime.Month != DateTime.Now.Month)
+            if (ActualMonth != DateTime.Now.Month)
             {
                 RecalculateDeposit();
-                CurrentDateTime = DateTime.Now;
+                ActualMonth = DateTime.Now.Month;
             }
            
 
@@ -61,11 +59,7 @@ namespace FinanceAnalytic
             Sum = Sum * Percent + Sum;
         }
 
-        public decimal CalculateDepositThroughPeriod( decimal percent, int amountMonth)
-        {
-            int estimatedSum = 0;
-            return Sum;
-        }
+        
 
         public void RenameAccount(string newName)
         {
