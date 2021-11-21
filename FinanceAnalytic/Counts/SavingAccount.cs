@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    class SavingAccount : ICounts
+    public class SavingAccount : ICounts
     {
         public decimal Sum { get ; set  ; }
         public string Name { get ; set ; }
@@ -19,18 +19,18 @@ namespace FinanceAnalytic
             Transaction = new List<ITransactions>();
         }
 
-       public void AddIncrease(Increase increase, Category category)
+       public void AddIncrease(Increase increase)
         {
             Transaction.Add(increase);
             Sum += increase.Sum;
         }
 
 
-        public void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient, Category category)
+        public void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient)
         {
             Transaction.Add(transferTransaction);
             Sum -= transferTransaction.Sum;
-            transactionRecepient.AddIncrease(transferTransaction, category);
+            transactionRecepient.AddIncrease(transferTransaction);
         }
 
         public void CheckIfBeginningMonth()
@@ -47,7 +47,7 @@ namespace FinanceAnalytic
 
         public void RecalculateDeposit()
         {
-            Sum = Sum * Percent + Sum;
+            //Sum = Sum * Percent + Sum;
         }
 
 
