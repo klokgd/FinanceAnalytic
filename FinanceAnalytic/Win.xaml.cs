@@ -12,27 +12,19 @@ using System.Windows.Shapes;
 
 namespace FinanceAnalytic
 {
-    /// <summary>
-    /// Interaction logic for Win.xaml
-    /// </summary>
+    
     public partial class Win : Window
     {
-        //Counts familyCount = new Counts(120000, "Семейный");
-        //Counts myCount = new Counts(400, "Под подушкой");
-        //Counts ipotekaCount = new Counts(-4500000, "Кредит");
-
-        List<PersonalCount> allCounts = new List<PersonalCount>();
+    
+        List<PersonalAccount> allCounts = new List<PersonalAccount>();
 
 
         public Win()
         {
             InitializeComponent();
 
-            //textBlock.Text = Convert.ToString($"Сумма в буджете {familyCount.Name} равна {familyCount.Sum}");
-            //textBlock1.Text = Convert.ToString($"Сумма в буджете {myCount.Name} равна {myCount.Sum}");
             SumCount.Text = Convert.ToString($"100000");
-            //textBlock.Text = Convert.ToString($"Сумма в буджете {familyCount.Name} равна {familyCount.Sum}");
-        }
+            }
 
         //private void buttonBIG_Click(object sender, RoutedEventArgs e)
         //{
@@ -49,7 +41,7 @@ namespace FinanceAnalytic
             }
         }
 
-        public void addListCount(PersonalCount count)
+        public void addListCount(PersonalAccount count)
         {
             allCounts.Add(count);
         }
@@ -66,12 +58,12 @@ namespace FinanceAnalytic
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Expense startCount = new Expense(Convert.ToDouble(SumCount.Text), 0, DateTime.Today);
-            PersonalCount goodTime = new PersonalCount(Convert.ToDouble(SumNewCount.Text), NameNewCount.Text, startCount);
-            double sum = Convert.ToDouble(SumCount.Text) + Convert.ToDouble(SumNewCount.Text);
-            addListCount(goodTime);
-            DisplayCountsInTextBox();
-            SumCount.Text = $"{sum}";
+        //    Expense startCount = new Expense(Convert.ToDouble(SumCount.Text), 0, DateTime.Today);
+        //    PersonalAccount goodTime = new PersonalAccount(Convert.ToDouble(SumNewCount.Text), NameNewCount.Text, startCount);
+        //    double sum = Convert.ToDouble(SumCount.Text) + Convert.ToDouble(SumNewCount.Text);
+        //    addListCount(goodTime);
+        //    DisplayCountsInTextBox();
+        //    SumCount.Text = $"{sum}";
         }
 
 
