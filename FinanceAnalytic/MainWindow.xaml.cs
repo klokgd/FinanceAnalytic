@@ -20,12 +20,31 @@ namespace FinanceAnalytic
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public const string _filePath = "../Itog.json";
         //Counts count = new Counts(120000, "Семейный");
 
         public MainWindow()
         {
+           
+            //string textFromFile = File.ReadAllText(_filePath);
+            //WorkSpace main = JsonSerializer.Deserialize<WorkSpace>(textFromFile);
+            //WorkSpace work = new WorkSpace();
             
+            //work.AddUser("7777777", "cnnn");
+            //work.AddUser("98989", "nnnn");
+            //JsonSerializerOptions options = new JsonSerializerOptions
+            //{
+            //    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+            //    WriteIndented = true
+            //};
+            //string jsonToWrite = JsonSerializer.Serialize(work, options);
+            ////File.WriteAllText()
+            //File.AppendAllText(_filePath, jsonToWrite);
+            //work.AddUser(users);
+
+
+
             //Expense startCount = new Expense(1200, 0, DateTime.Today);
             //PersonalAccount goodTime = new PersonalAccount(200, "zhopa", startCount);
             //Expense addToSum = new Expense(12, Category.HCS, DateTime.Today);
@@ -43,11 +62,28 @@ namespace FinanceAnalytic
             //    WriteIndented = true
             //};
 
-            //string jsonToWrite = JsonSerializer.Serialize(goodTime, options);
+            //string jsonToWrite = JsonSerializer.Serialize(work, options);
+
             //File.WriteAllText(_filePath, jsonToWrite);
+            //string textFromFile = File.ReadAllText(_filePath);
+            //WorkSpace main = JsonSerializer.Deserialize<WorkSpace>(textFromFile);
+
             InitializeComponent();
 
 
+        }
+        public enum pages
+        {
+            login,
+            registration
+        }
+
+        public void OpenPage(pages page)
+        {
+            //if (page == pages.login)
+            //{
+            //    frame_Navigated(new login(this));
+            //}
         }
 
         private void button_Plus_Click(object sender, RoutedEventArgs e)
@@ -100,10 +136,10 @@ namespace FinanceAnalytic
             //taskWindow.ShowViewModel();
         }
 
-        //private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-            
-           
-        //}
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 pg = new Window1();
+            pg.Show();
+        }
     }
 }
