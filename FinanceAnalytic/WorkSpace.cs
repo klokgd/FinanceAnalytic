@@ -4,8 +4,8 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    public enum Category
+    class WorkSpace
     {
-
+        string Name { get; set;  }
     }
 }
