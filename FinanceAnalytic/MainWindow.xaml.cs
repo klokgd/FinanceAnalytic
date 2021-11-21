@@ -141,5 +141,11 @@ namespace FinanceAnalytic
             Window1 pg = new Window1();
             pg.Show();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var wd = new Windows.NewVisualForMainWindw();
+            wd.ShowDialog();
+        }
     }
 }

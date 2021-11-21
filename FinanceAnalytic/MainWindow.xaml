@@ -17,6 +17,6 @@
         <Button x:Name="button_Minus_Copy" HorizontalAlignment="Left" Margin="439,217,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Minus_Click" Content="Прибыль"/>
         <Button x:Name="button1" Content="Новый человек" HorizontalAlignment="Left" Margin="265,217,0,0" VerticalAlignment="Top" Height="40" Width="135" Click="button1_Click"/>
         <!--<Frame x:Name="frame_Copy" Content="Frame" Navigated="frame_Navigated" Margin="439,122,195,232"/>-->
-
+        <Button Height="50" Width="150" Margin="106,90,544,294" Click="Button_Click_1">Alla test</Button>
     </Grid>
 </Window>

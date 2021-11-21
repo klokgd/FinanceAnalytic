@@ -29,6 +29,11 @@ namespace FinanceAnalytic
 
         }
 
+        private void ButtonEnterToMainMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         //private void button_Click(object sender, RoutedEventArgs e)
         //{
         //    if (Name_login.Text != " " && Password_login.Text != " ")

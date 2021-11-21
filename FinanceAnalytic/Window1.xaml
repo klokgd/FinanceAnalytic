@@ -8,22 +8,27 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Window1"  Height="450" Width="800" >
     <Grid Background="#dedeec" >
-        <Border
-            MinWidth="400" Margin="5,350,5,0" Background="DarkBlue" VerticalAlignment="Top" Padding="40" CornerRadius="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Button x:Name="button1" Content="Добавить пользователя" HorizontalAlignment="Center" Margin="0,151,0,0" VerticalAlignment="Top" Height="56" Width="178" Click="button1_Click"/>
+        <TextBox x:Name="Name_login" HorizontalAlignment="Left" Margin="162,52,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Password_login" HorizontalAlignment="Left" Margin="162,109,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Border Grid.Row="1" Grid.ColumnSpan="2"
+            MinWidth="400" Margin="5,50,5,0" Background="DarkBlue" VerticalAlignment="Top" Padding="40" CornerRadius="20">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="Black" ShadowDepth="0"></DropShadowEffect>
             </Border.Effect>
-                <StackPanel>
-                <TextBlock Text="ggjgjfg" FontSize="30" FontWeight="Bold" Margin=" 0 0 0 20"/>
-                <Grid Margin="0 0 0 20">
-                    <Button HorizontalAlignment="Left" Content=" Регистрация" />
-                    <Button HorizontalAlignment="Right" Content="Вход" />
-                </Grid>
-            </StackPanel>
+            <DockPanel>
+                <Button HorizontalAlignment="Left" Content=" Регистрация" />
+                <Button HorizontalAlignment="Right" Content="Вход" Click="ButtonEnterToMainMenu_Click" />
+            </DockPanel>
         </Border>
-        <Button x:Name="button1" Content="Добавить пользователя" HorizontalAlignment="Left" Margin="193,201,0,0" VerticalAlignment="Top" Height="56" Width="178" Click="button1_Click"/>
-        <TextBox x:Name="Name_login" HorizontalAlignment="Left" Margin="193,112,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Password_login" HorizontalAlignment="Left" Margin="193,161,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
 
     </Grid>
