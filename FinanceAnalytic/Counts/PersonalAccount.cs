@@ -31,11 +31,11 @@ namespace FinanceAnalytic
             Sum -= expense.Sum;
         }
 
-        public void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient, Category category)
+        public void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient)
         {
             Transaction.Add(transferTransaction);
             Sum -= transferTransaction.Sum;
-            transactionRecepient.AddIncrease(transferTransaction, category);
+            transactionRecepient.AddIncrease(transferTransaction);
         }
 
 
