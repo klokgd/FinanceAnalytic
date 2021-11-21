@@ -10,7 +10,7 @@ namespace FinanceAnalytic
         string Name { get; set; }
         public List<ITransactions> Transaction { get; set; }
 
-        void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient);
+        void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient );
 
         void AddIncrease(Increase increase);
         void RenameAccount(string newName);
