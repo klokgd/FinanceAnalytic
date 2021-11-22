@@ -22,6 +22,8 @@ namespace FinanceAnalytic
     {
         
         public const string _filePath = "../Itog.json";
+
+        WorkSpace workSpace;
         //Counts count = new Counts(120000, "Семейный");
 
         public MainWindow()
@@ -140,6 +142,7 @@ namespace FinanceAnalytic
         {
             Window1 pg = new Window1();
             pg.Show();
+            this.Hide();
         }
     }
 }
