@@ -39,7 +39,7 @@ namespace FinanceAnalytic
             }
             else
             {
-                MessageBox.Show("Пользователя не существует, зарегистрируйтесь!");
+                MessageBox.Show("Данные неверны или пользователя не существует!");
             }
         }
     }
