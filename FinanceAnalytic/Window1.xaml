@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
     <Grid>
-        <Button x:Name="button1" Content="Добавить пользователя" HorizontalAlignment="Left" Margin="193,201,0,0" VerticalAlignment="Top" Height="56" Width="178" Click="button1_Click"/>
+        <Button x:Name="button1" Content="Регистрация" HorizontalAlignment="Left" Margin="193,201,0,0" VerticalAlignment="Top" Height="56" Width="178" Click="button1_Click"/>
+        <Button x:Name="button2" Content="Авторизация" HorizontalAlignment="Left" Margin="193,282,0,0" VerticalAlignment="Top" Height="56" Width="178" Click="button2_Click"/>
         <TextBox x:Name="Name_login" HorizontalAlignment="Left" Margin="193,112,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Password_login" HorizontalAlignment="Left" Margin="193,161,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
