@@ -21,17 +21,16 @@ namespace FinanceAnalytic
         public Window1()
         {
             InitializeComponent();
-            work = new WorkSpace();
         }
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            work.AddUser(Name_login.Text, Password_login.Text);
+            //work.Registration(Name_login.Text, Password_login.Text);
             MessageBox.Show("Пользователя добавлен");
         }
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            bool reg = work.Registration(Name_login.Text, Password_login.Text);
-            if (reg)
+            //bool reg = work.Login(Name_login.Text, Password_login.Text);
+            if (true)
             {
                 MainWindow wwww = new MainWindow();
                 wwww.Show();
