@@ -17,49 +17,30 @@ namespace FinanceAnalytic
     /// </summary>
     public partial class Window1 : Window
     {
+        WorkSpace work;
         public Window1()
         {
             InitializeComponent();
+            work = new WorkSpace();
         }
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            WorkSpace work = new WorkSpace();
             work.AddUser(Name_login.Text, Password_login.Text);
-            
-
+            MessageBox.Show("Пользователя добавлен");
         }
-
-        //private void button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (Name_login.Text != " " && Password_login.Text != " ")
-        //    {
-        //        string CommandText = "SELECT [Логин], [password],Rule FROM [User] WHERE Логин = '" + login.Text + "' AND password = " + password.Password;
-        //        SqlConnection connection = new SqlConnection(cns);
-        //        SqlCommand Command = new SqlCommand(CommandText);
-        //        Command.Connection = connection;
-        //        Command.Connection.Open();
-        //        //string rule = row_selected["Rule"].ToString();
-        //        if (Command.ExecuteScalar() == null)
-        //        {
-        //            login.Clear();
-        //            password.Clear();
-        //            MessageBox.Show("Логин или пароль неверен");
-        //        }
-        //        else
-        //        {
-        //            if (rule == "Заказчик")
-        //            {
-        //                окно_2 окно_2 = new окно_2();
-        //                окно_2.Show();
-        //            }
-        //            if (rule == "Менеджер")
-        //            {
-        //                Window1 w1 = new Window1();
-        //                w1.Show();
-        //            }
-        //            Close();
-        //        }
-        //    }
-        //}
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            bool reg = work.Registration(Name_login.Text, Password_login.Text);
+            if (reg)
+            {
+                MainWindow wwww = new MainWindow();
+                wwww.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Пользователя не существует, зарегистрируйтесь!");
+            }
+        }
     }
 }

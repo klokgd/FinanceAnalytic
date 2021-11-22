@@ -15,33 +15,28 @@ namespace FinanceAnalytic
         public string Name { get; set;  }
         public string Password { get; set; }
         
-        public List<IWorkSpace> User { get; set; }
-       
-        public WorkSpace()
-        {
-            
-            User = new List<IWorkSpace>();
-            
-
-
-
-
-        }
+        public List<IWorkSpace> User { get; set; } = new List<IWorkSpace>();
+        public WorkSpace() { }
         public WorkSpace(string name, string password)
         {
             Name = name;
             Password = password;
-            
-            
-            
-
         }
-
-        public void AddUser(string name, string password) 
+        public void SafeFile()
         {
-
+            string textFromFile = File.ReadAllText(_filePath);
+            string aaa = JsonSerializer.Serialize(textFromFile);
+            File.WriteAllText(_filePath, aaa);
             
-            
+        }
+        int counts = 0;
+        
+        public void AddUser(string name, string password)
+        {
+            if (counts==0)
+            {
+                SafeFile();
+            }
             string textFromFile = File.ReadAllText(_filePath);
             if (textFromFile.Contains(name))
             {
@@ -49,12 +44,10 @@ namespace FinanceAnalytic
             }
             else
             {
-                WorkSpace user = new WorkSpace(name,  password);
-                User.Add(user);
-                
-               
-            }
 
+                WorkSpace user = new WorkSpace(name, password);
+                User.Add(user);
+            }
             JsonSerializerOptions options = new JsonSerializerOptions
             {
                 Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
@@ -62,39 +55,24 @@ namespace FinanceAnalytic
             };
             string jsonToWrite = JsonSerializer.Serialize(User, options);
             File.AppendAllText(_filePath, jsonToWrite);
-            
-
+               
+            counts++;
         }
         
 
 
-        public void LogAuntification(string name, string password)
+        public bool Registration(string name, string password)
         {
-            //if (name != " " && password != " ")
-            //{
-            //    string textFromFile = File.ReadAllText(_filePath);
-                
-            //    if (Name == null)
-            //    {
-            //        login.Clear();
-            //        password.Clear();
-            //        MessageBox.Show("Логин или пароль неверен");
-            //    }
-            //    else
-            //    {
-            //        if (rule == "Заказчик")
-            //        {
-            //            окно_2 окно_2 = new окно_2();
-            //            окно_2.Show();
-            //        }
-            //        if (rule == "Менеджер")
-            //        {
-            //            Window1 w1 = new Window1();
-            //            w1.Show();
-            //        }
-            //        Close();
-            //    }
-            //}
+            string textFromFile = File.ReadAllText(_filePath);
+            if (textFromFile.Contains(name) && textFromFile.Contains(password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            //return false;
         }
     }
 }
