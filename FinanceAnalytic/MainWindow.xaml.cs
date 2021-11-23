@@ -26,11 +26,11 @@ namespace FinanceAnalytic
 
         public MainWindow()
         {
-           
+
             //string textFromFile = File.ReadAllText(_filePath);
             //WorkSpace main = JsonSerializer.Deserialize<WorkSpace>(textFromFile);
             //WorkSpace work = new WorkSpace();
-            
+
             //work.AddUser("7777777", "cnnn");
             //work.AddUser("98989", "nnnn");
             //JsonSerializerOptions options = new JsonSerializerOptions
@@ -45,12 +45,16 @@ namespace FinanceAnalytic
 
 
 
-            //Expense startCount = new Expense(1200, 0, DateTime.Today);
-            //PersonalAccount goodTime = new PersonalAccount(200, "zhopa", startCount);
-            //Expense addToSum = new Expense(12, Category.HCS, DateTime.Today);
-            //Expense addToSum1 = new Expense(30, Category.Food, DateTime.Today);
-            //Expense addToSum2 = new Expense(50, Category.Clothes, DateTime.Today);
-            //Expense addToSum3 = new Expense(409, 0, DateTime.Today);
+            Category fgf = new Category("hi!");
+            Expense startCount = new Expense(1200, fgf, DateTime.Today);
+            //PersonalAccount goodTime = new PersonalAccount(200, "zhopa");
+            Credit fff = new Credit(12000, "hjh", 12);
+            decimal f=            fff.CalculateMonthPersent(12);
+
+            Expense addToSum = new Expense(12, fgf, DateTime.Today);
+            Expense addToSum1 = new Expense(30, fgf, DateTime.Today);
+            Expense addToSum2 = new Expense(50, fgf, DateTime.Today);
+            Expense addToSum3 = new Expense(409, fgf, DateTime.Today);
             //goodTime.AddTransaction(addToSum);
             //goodTime.AddTransaction(addToSum1);
             //goodTime.AddTransaction(addToSum2);

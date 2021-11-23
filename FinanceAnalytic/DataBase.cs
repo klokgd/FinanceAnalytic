@@ -11,6 +11,6 @@ namespace FinanceAnalytic
         public List<Category> Categories = new List<Category>();
         public List<Credit> Credits = new List<Credit>();
         public List<SavingAccount> SavingAccounts = new List<SavingAccount>();
-
+        //TODO : реализовать как паттерн синглтон
     }
 }
