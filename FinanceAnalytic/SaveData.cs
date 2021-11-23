@@ -27,16 +27,14 @@ namespace FinanceAnalytic
             return _instance;
         }
         public string FilePath { get; }
-
         List<WorkSpace> workSpaces { get; set; }
-
 
         int counts = 0;
 
         public bool Registration(string name, string password)
         {
             string textFromFile = File.ReadAllText(FilePath);
-            
+
             if (!File.Exists(FilePath))
             {
                 File.Create(FilePath);
@@ -61,36 +59,25 @@ namespace FinanceAnalytic
                 counts++;
                 return true;
             }
-
-            
-
-            
         }
 
         public bool Login(string name, string password)
         {
             string[] textFromFile = File.ReadAllLines(FilePath);
-
-
-
             if (File.Exists(FilePath) != true)
             {
                 MessageBox.Show("В системе нет ни одного пользователя, сначала зарегистрируйтесь");
                 return false;
             }
-
             foreach (var item in textFromFile)
             {
-                if (item.Contains(name) && item.Contains(password))
+                if (item.Contains(name) && item.Contains(password) && name != "" && password != "" )
                 {
                     return true;
                 }
-
             }
             return false;
         }
-
-
     }
 }
 

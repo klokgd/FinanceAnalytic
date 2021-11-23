@@ -13,11 +13,11 @@ using System.Windows.Shapes;
 namespace FinanceAnalytic
 {
     /// <summary>
-    /// Interaction logic for AnaliticWindow.xaml
+    /// Interaction logic for AnaliseWindow.xaml
     /// </summary>
-    public partial class AnaliticWindow : Window
+    public partial class AnaliseWindow : Window
     {
-        public AnaliticWindow()
+        public AnaliseWindow()
         {
             InitializeComponent();
         }
