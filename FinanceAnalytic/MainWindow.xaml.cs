@@ -25,6 +25,7 @@ namespace FinanceAnalytic
 
         public MainWindow()
         {
+            //WorkSpace main = JsonSerializer.Deserialize<WorkSpace>(textFromFile);
 
             InitializeComponent();
             Storage storage = Storage.GetInstance();
