@@ -3,20 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:FinanceAnalytic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
-        <Button x:Name="button_Plus" HorizontalAlignment="Left" Margin="439,90,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Plus_Click" Content="Создать счет"/>
-        <!--<Frame x:Name="frame" Content="Frame" Navigated="frame_Navigated" Margin="439,122,195,232"/>-->
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" FontSize="24" Margin="42,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="255" Width="172" RenderTransformOrigin="-0.198,-0.306"/>
-        <Button x:Name="button_Minus" HorizontalAlignment="Left" Margin="439,340,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Minus_Click" Content="Траты"/>
-        <Button x:Name="button" Content="Все счета" HorizontalAlignment="Left" Margin="58,340,0,0" VerticalAlignment="Top" Height="57" Width="140" RenderTransformOrigin="0.5,0.5" Click="button_Click">
+        <Button x:Name="button_Login" HorizontalAlignment="Left" Margin="42,325,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Login_Click" Content="Вход"/>
+        <Button x:Name="button_Register" HorizontalAlignment="Left" Margin="482,325,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Register_Click" Content="Регистрация"/>
+        <TextBox x:Name="textBoxLogin" materialDesign:HintAssist.Hint="Имя пользователя" HorizontalAlignment="Center" Margin="0,145,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="317" TextChanged="TextBox_TextChanged_2"/>
+        <PasswordBox x:Name="textBoxPassword" materialDesign:HintAssist.Hint="Пароль" HorizontalAlignment="Center" Margin="0,192,0,0"  VerticalAlignment="Top" Width="317"/>
 
-        </Button>
-        <Button x:Name="button_Minus_Copy" HorizontalAlignment="Left" Margin="439,217,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Minus_Click" Content="Прибыль"/>
-        <Button x:Name="button1" Content="Новый человек" HorizontalAlignment="Left" Margin="265,217,0,0" VerticalAlignment="Top" Height="40" Width="135" Click="button1_Click"/>
-        <!--<Frame x:Name="frame_Copy" Content="Frame" Navigated="frame_Navigated" Margin="439,122,195,232"/>-->
-        <Button Height="50" Width="150" Margin="106,90,544,294" Click="Button_Click_1">Alla test</Button>
     </Grid>
 </Window>

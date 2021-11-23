@@ -10,22 +10,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace FinanceAnalytic.Windows
+namespace FinanceAnalytic
 {
     /// <summary>
-    /// Interaction logic for NewVisualForMainWindw.xaml
+    /// Interaction logic for AnaliticWindow.xaml
     /// </summary>
-    public partial class NewVisualForMainWindw : Window
+    public partial class AnaliticWindow : Window
     {
-        public NewVisualForMainWindw()
+        public AnaliticWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            LabelTest.Content = "Привет:)";
         }
     }
 }

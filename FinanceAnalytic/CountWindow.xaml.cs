@@ -1,72 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using System.Text;
 using System.Windows;
-using System.Text.Encodings.Web;
 using System.Windows.Controls;
-
-using System.Windows.Navigation;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Text.Unicode;
 
 namespace FinanceAnalytic
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CountWindow : Window
     {
-        
-        public const string _filePath = "../Itog.json";
-
-        SaveData saveData = new SaveData();
-        //Counts count = new Counts(120000, "Семейный");
-
-        public MainWindow()
+        //WorkSpace work;
+        public CountWindow()
         {
             InitializeComponent();
+            //work = new WorkSpace();
         }
-        private void button_Login_Click(object sender, RoutedEventArgs e)
+        private void ButtonEnterToCountMenu_Click(object sender, RoutedEventArgs e)
         {
-            bool log = saveData.Login(textBoxLogin.Text, textBoxPassword.Password);
-            if (log == true)
-            {
-                CountWindow window = new CountWindow();
-                window.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Неверное имя или пароль");
-            }
+            CountWindow window = new CountWindow();
+            window.Show();
+            this.Hide();
         }
-        private void button_Register_Click(object sender, RoutedEventArgs e)
+
+        private void ButtonEnterToOperationMenu_Click(object sender, RoutedEventArgs e)
         {
-            bool reg = saveData.Registration(textBoxLogin.Text, textBoxPassword.Password);
-            if (reg == true)
-            {
-                MessageBox.Show("Пользователь добавлен");
-            }
-            else
-            {
-                MessageBox.Show("Пользователь с таким именем уже существует");
-
-            }
+            Win window = new Win();
+            window.Show();
+            this.Hide();
         }
-        private void TextBox_TextChanged_2(object sender, RoutedEventArgs e)
+        private void ButtonEnterToAnalisMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            AnaliticWindow window = new AnaliticWindow();
+            window.Show();
+            this.Hide();
         }
-        //public enum pages
-        //{
-        //    login,
-        //    registration
-        //}
-
         //public void OpenPage(pages page)
         //{
         //    //if (page == pages.login)
