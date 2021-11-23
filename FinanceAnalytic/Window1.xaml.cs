@@ -17,17 +17,31 @@ namespace FinanceAnalytic
     /// </summary>
     public partial class Window1 : Window
     {
+        WorkSpace work;
         public Window1()
         {
             InitializeComponent();
         }
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            WorkSpace work = new WorkSpace();
-            work.AddUser(Name_login.Text, Password_login.Text);
-            
-
+            //work.Registration(Name_login.Text, Password_login.Text);
+            MessageBox.Show("Пользователя добавлен");
         }
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            //bool reg = work.Login(Name_login.Text, Password_login.Text);
+            if (true)
+            {
+                MainWindow wwww = new MainWindow();
+                wwww.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Данные неверны или пользователя не существует!");
+            }
+        }
+<<<<<<< HEAD
 
         private void ButtonEnterToMainMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -66,5 +80,7 @@ namespace FinanceAnalytic
         //        }
         //    }
         //}
+=======
+>>>>>>> master
     }
 }
