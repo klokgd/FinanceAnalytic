@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    class Credit
+    public class Credit
     {
         public double Sum { get; set; }
         public string Name { get; set; }
