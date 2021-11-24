@@ -21,36 +21,35 @@ namespace FinanceAnalytic
     public partial class MainWindow : Window
     {
 
-        public const string _filePath = "../Itog.json";
 
-        WorkSpace workSpace;
-        //Counts count = new Counts(120000, "Семейный");
 
         public MainWindow()
         {
 
             InitializeComponent();
-            
-        }
+            Storage storage = Storage.GetInstance();
 
-
-
-
-
-        private void frame_Navigated(object sender, NavigationEventArgs e)
-        {
+            foreach (var item in storage.workSpaces)
+            {
+                ListBoxListOfUsers.Items.Add(item.Name);
+            }
 
         }
+
+
+
+
+
 
         private void button_Login_Click(object sender, RoutedEventArgs e)
         {
 
-            string login = textBoxLogin.Text;
+            string login = ListBoxListOfUsers.SelectedItem.ToString();
             string password = textBoxPassword.Password;
 
-            SaveData saveData = SaveData.GetInstance();
+            Storage storage = Storage.GetInstance();
 
-            bool checkUser = saveData.Login(login, password);
+            bool checkUser = storage.Login(login, password);
 
             if (checkUser)
             {
@@ -67,24 +66,33 @@ namespace FinanceAnalytic
 
         private void button_Register_Click(object sender, RoutedEventArgs e)
         {
-            string login = textBoxLogin.Text;
-            string password = textBoxPassword.Password;
+            //    string login = textBoxLogin.Text;
+            //    string password = textBoxPassword.Password;
 
-            SaveData saveData = SaveData.GetInstance();
+            //    Storage storage = Storage.GetInstance();
 
-            saveData.Registration(login, password);
+            //    storage.Registration(login, password);
+
+
+            //    ListBoxListOfUsers.Items.Add(storage.workSpaces.Last.Value.Name);
+
+            Reg_Window reg_Window = new Reg_Window();
+
+
+
+
 
         }
-
-
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void ListBoxListOfUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Storage storage = Storage.GetInstance();
+
+            if (!File.Exists(storage.FilePath))
+            {
+
+            }
         }
 
-        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
-        {
 
-        }
     }
 }
