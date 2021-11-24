@@ -64,21 +64,11 @@ namespace FinanceAnalytic
 
         }
 
-        private void button_Register_Click(object sender, RoutedEventArgs e)
+        private void button_AddUser_Click(object sender, RoutedEventArgs e)
         {
-            //    string login = textBoxLogin.Text;
-            //    string password = textBoxPassword.Password;
-
-            //    Storage storage = Storage.GetInstance();
-
-            //    storage.Registration(login, password);
-
-
-            //    ListBoxListOfUsers.Items.Add(storage.workSpaces.Last.Value.Name);
-
             Reg_Window reg_Window = new Reg_Window();
-
-
+            reg_Window.Owner = this;
+            reg_Window.Show();
 
 
 

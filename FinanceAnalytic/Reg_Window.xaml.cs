@@ -21,5 +21,22 @@ namespace FinanceAnalytic
         {
             InitializeComponent();
         }
+
+        private void button_Register_Click(object sender, RoutedEventArgs e)
+        {
+
+            string login = TextBoxUsername.Text;
+            string password = PasswordBoxPass.Password;
+
+            Storage storage = Storage.GetInstance();
+
+            storage.Registration(login, password);
+
+            MainWindow mainWindow = Owner as MainWindow;
+
+            mainWindow.ListBoxListOfUsers.Items.Add(storage.workSpaces.Last.Value.Name);
+
+            Hide();
+        }
     }
 }
