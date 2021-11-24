@@ -15,9 +15,9 @@ namespace FinanceAnalytic
     /// <summary>
     /// Interaction logic for AnaliseWindow.xaml
     /// </summary>
-    public partial class AnaliseWindow : Window
+    public partial class AnalyseWindow : Window
     {
-        public AnaliseWindow()
+        public AnalyseWindow()
         {
             InitializeComponent();
         }

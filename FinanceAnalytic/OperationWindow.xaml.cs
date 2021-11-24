@@ -17,11 +17,14 @@ namespace FinanceAnalytic
     public partial class OperationWindow : Window
     {    
         List<ITransactions> allCounts = new List<ITransactions>();
-        string textFromFile = File.ReadAllText("../operation.json");
+        //string textFromFile = File.ReadAllText("../operation.json");
+        private WorkSpace _workSpace;
 
-        public OperationWindow()
+        public OperationWindow(WorkSpace authentication)
         {
             InitializeComponent();
+            _workSpace = authentication;
+
         }
         private void ButtonEnterToOperationMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -29,15 +32,15 @@ namespace FinanceAnalytic
             window.Show();
             
         }
-        private void ButtonEnterToAnalisMenu_Click(object sender, RoutedEventArgs e)
+        private void ButtonEnterToAnalyseMenu_Click(object sender, RoutedEventArgs e)
         {
-            AnaliseWindow window = new AnaliseWindow();
+            AnalyseWindow window = new AnalyseWindow();
             window.Show();
             this.Hide();
         }
         private void ButtonEnterToCountMenu_Click(object sender, RoutedEventArgs e)
         {
-            CountWindow window = new CountWindow();
+            CountWindow window = new CountWindow(_workSpace);
             window.Show();
             this.Hide();
         }

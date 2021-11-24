@@ -51,7 +51,7 @@
             <DockPanel>
                 <Button Content="Операции" Click="ButtonEnterToOperationMenu_Click" DockPanel.Dock="Left" Width="130" />
                 <Button Content="Счета" Click="ButtonEnterToCountMenu_Click" DockPanel.Dock="Right" Width="130" />
-                <Button Content="Анализ" Click="ButtonEnterToAnalisMenu_Click" DockPanel.Dock="Right" Width="100" />
+                <Button Content="Анализ" Click="ButtonEnterToAnalyseMenu_Click" DockPanel.Dock="Right" Width="100" />
             </DockPanel>
         </Border>
         <Border

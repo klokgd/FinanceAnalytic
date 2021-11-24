@@ -16,17 +16,17 @@ namespace FinanceAnalytic
     {
         private Storage()
         {
-            FilePath = "H:/settings.json";
+            FilePath = "../settings.json";
 
             if (File.Exists(FilePath))
             {
                 workSpaces = new LinkedList<WorkSpace>();
                 string json = File.ReadAllText(FilePath);
 
-                
+
                 workSpaces = JsonConvert.DeserializeObject<LinkedList<WorkSpace>>(json);
             }
-                   
+
             else
                 workSpaces = new LinkedList<WorkSpace>();
         }
@@ -57,7 +57,7 @@ namespace FinanceAnalytic
             }
 
             string textFromFile = File.ReadAllText(FilePath);
-            
+
             if (textFromFile.Contains(name))
             {
                 MessageBox.Show("Пользователь с таким именем уже зарегистрирован");
@@ -65,9 +65,9 @@ namespace FinanceAnalytic
             else
             {
                 WorkSpace user = new WorkSpace(name, password);
-                
+
                 workSpaces.AddLast(user);
-                
+
                 JsonSerializerOptions options = new JsonSerializerOptions
                 {
                     Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
@@ -105,6 +105,34 @@ namespace FinanceAnalytic
             return false;
         }
 
+        public void SaveToFile()
+        {
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                WriteIndented = true
+            };
 
+            string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(workSpaces, options);
+            File.WriteAllText(FilePath, jsonToWrite);
+        }
+
+        public WorkSpace GetWorkSpace(string findName)
+        {
+            var node = workSpaces.First;
+            WorkSpace necessaryUser = workSpaces.First.Value;
+
+            while (node != null)
+            {
+                if (node.Value.Name == findName)
+                {
+                    necessaryUser = node.Value;
+                }
+                node = node.Next;
+            }
+
+            return necessaryUser;
+
+        }
     }
 }

@@ -17,9 +17,12 @@ namespace FinanceAnalytic
     /// </summary>y
     public partial class CountWindow : Window
     {
-        public CountWindow()
+        private WorkSpace _workSpace;
+
+        public CountWindow(WorkSpace authentication)
         {
-            InitializeComponent();            
+            InitializeComponent();
+            _workSpace = authentication;
         }
         private void ButtonEnterToCountMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -29,13 +32,13 @@ namespace FinanceAnalytic
         }
         private void ButtonEnterToOperationMenu_Click(object sender, RoutedEventArgs e)
         {
-            OperationWindow window = new OperationWindow();
+            OperationWindow window = new OperationWindow(_workSpace);
             window.Show();
             this.Hide();
         }
         private void ButtonEnterToAnalisMenu_Click(object sender, RoutedEventArgs e)
         {
-            AnaliseWindow window = new AnaliseWindow();
+            AnalyseWindow window = new AnalyseWindow();
             window.Show();
             this.Hide();
         }

@@ -53,8 +53,9 @@ namespace FinanceAnalytic
 
             if (checkUser)
             {
-                MainWindow wwww = new MainWindow();
-                wwww.Show();
+                WorkSpace workSpace = storage.GetWorkSpace(login);
+                CountWindow countWindow = new CountWindow(workSpace);
+                countWindow.Show();
                 this.Hide();
             }
             else

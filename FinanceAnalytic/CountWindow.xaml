@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <TextBox x:Name="Name_login" HorizontalAlignment="Left" Margin="162,52,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Border Grid.Row="1" Grid.ColumnSpan="2"
-            MinWidth="400" Margin="5,50,5,0" Background="DarkBlue" VerticalAlignment="Top" Padding="40" CornerRadius="20">
+            MinWidth="400" Margin="4,130,6,0" Background="DarkBlue" VerticalAlignment="Top" Padding="40" CornerRadius="20">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="Black" ShadowDepth="0"></DropShadowEffect>
             </Border.Effect>
