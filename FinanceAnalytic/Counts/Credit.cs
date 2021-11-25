@@ -13,15 +13,15 @@ namespace FinanceAnalytic
         public decimal Persent { get; set; }
         public DateTime ActualData { get; set; }
 
-        public Credit(decimal sum, string name, int loanTerm, decimal persent)
+        public Credit(decimal sum, string name, int loanTerm, decimal persent, DateTime actualData)
         {
             Sum = sum;
             Name = name;
             LoanTerm = loanTerm;
             Persent = persent;
 
-            ActualMonth = DateTime.Now.Month;
-            ActualData = DateTime.Now;
+            
+            ActualData = actualData;
         }
 
         public List<ITransactions> Transaction { get; set; }

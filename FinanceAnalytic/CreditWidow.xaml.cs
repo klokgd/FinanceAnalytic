@@ -39,7 +39,7 @@ namespace FinanceAnalytic
 
         private void ButtonEnterToAddTransaction_Click(object sender, RoutedEventArgs e)
         {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32( textBoxTimeCredit.Text), Convert.ToDecimal( textBoxPersentCredit.Text));
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32( textBoxTimeCredit.Text), Convert.ToDecimal( textBoxPersentCredit.Text), DateTime.Now);
             textBlockSumOfMonth.Text = Convert.ToString(credit.CalculateMonthPersent());
         }
 
@@ -70,13 +70,13 @@ namespace FinanceAnalytic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text));
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), DateTime.Now);
             textBlockPay.Text = Convert.ToString(credit.CalculatiAlreadyPayMonthsOfLoan(DateTime.Now));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text));
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), DateTime.Now);
             textBlockMonthPayPay.Text = Convert.ToString(credit.PayMonthAnnuityLoan());
         }
     }
