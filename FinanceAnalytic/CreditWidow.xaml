@@ -1,0 +1,39 @@
+﻿<Window x:Class="FinanceAnalytic.CreditWidow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinanceAnalytic"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="CreditWidow" Height="450" Width="800">
+    <Grid>
+        <Border
+            MinWidth="400"  Background="DarkBlue" VerticalAlignment="Top" Padding="40" CornerRadius="20" Height="112" Margin="0,322,0,0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="Black" ShadowDepth="0"></DropShadowEffect>
+            </Border.Effect>
+            <DockPanel>
+                <Button Content="Операции" Click="ButtonEnterToOperationMenu_Click" DockPanel.Dock="Left" Width="130" />
+                <Button Content="Счета" Click="ButtonEnterToCountMenu_Click" DockPanel.Dock="Right" Width="130" />
+                <Button Content="Анализ" Click="ButtonEnterToAnalyseMenu_Click" DockPanel.Dock="Right" Width="100" />
+            </DockPanel>
+        </Border>
+        <TextBox x:Name="textBoxNameCredit" materialDesign:HintAssist.Hint="Введите название кредита..."  Margin="44,87,440,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_NameCredit" Height="25" />
+        <TextBox x:Name="textBoxSumCredit" materialDesign:HintAssist.Hint="Введите сумму..."  Margin="44,117,440,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_SumCredit" Height="25" />
+        <TextBox x:Name="textBoxTimeCredit" materialDesign:HintAssist.Hint="Введите срок кредита в месяцах..."  Margin="44,147,440,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TimeCredit" Height="25" />
+        <TextBox x:Name="textBoxPersentCredit" materialDesign:HintAssist.Hint="Введите годовую процентную ставку..."  Margin="44,177,440,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_PersentCredit" Height="25" />
+        <TextBlock HorizontalAlignment="Left" Margin="44,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="316"><Run Language="ru-ru" Text="Добавление нового кредита"/></TextBlock>
+        <Button Content="Добавить" Click="ButtonEnterToAddTransaction_Click" Margin="44,264,544,138" />
+        <TextBlock x:Name="textBlockIformation" HorizontalAlignment="Left" Margin="47,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="103"><Run Language="ru-ru" Text="месячный платеж"/></TextBlock>
+        <TextBlock x:Name="textBlockSumOfMonth" HorizontalAlignment="Left" Margin="258,0,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Center" Height="16" Width="90"/>
+        <Button Content="Добавить Денег в кредит" Click="ButtonEnterToAddTransaction_Click2" Margin="578,56,10,346" />
+        <TextBlock x:Name="textBlockPay" HorizontalAlignment="Left" Margin="651,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="86"><Run Language="ru-ru" Text="уже платим"/></TextBlock>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="551,114,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="месячный платеж" HorizontalAlignment="Left" Margin="44,227,0,0" VerticalAlignment="Top" Width="158" Click="Button_Click_1"/>
+        <TextBlock x:Name="textBlockMonthPayPay" HorizontalAlignment="Left" Margin="281,268,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="79"/>
+
+
+
+    </Grid>
+</Window>

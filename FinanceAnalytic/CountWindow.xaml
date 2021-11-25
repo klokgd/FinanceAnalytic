@@ -28,5 +28,6 @@
                 <Button Content="Анализ" Click="ButtonEnterToAnalisMenu_Click" DockPanel.Dock="Right" Width="100" />
             </DockPanel>
         </Border>
+        <Button Content="Кредиты" Grid.Column="1" HorizontalAlignment="Left" Margin="244,78,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="125" Click="Button_Click"/>
     </Grid>
 </Window>

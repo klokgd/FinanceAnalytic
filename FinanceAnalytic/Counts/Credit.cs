@@ -6,82 +6,105 @@ namespace FinanceAnalytic
 {
     public class Credit
     {
-        public double Sum { get; set; }
+         public decimal Sum { get; set; }
         public string Name { get; set; }
         public int LoanTerm { get; set; }
         public int ActualMonth { get; set; }
+        public decimal Persent { get; set; }
+        public DateTime ActualData { get; set; }
 
-        public Credit (double sum, string name, int loanTerm)
+        public Credit(decimal sum, string name, int loanTerm, decimal persent)
         {
             Sum = sum;
             Name = name;
             LoanTerm = loanTerm;
+            Persent = persent;
+
             ActualMonth = DateTime.Now.Month;
+            ActualData = DateTime.Now;
         }
 
         public List<ITransactions> Transaction { get; set; }
 
         //как указать с какого актива будет списан кредит
 
-       
-        int loanTerm = 0;//это переменная, которую введет пользователь -срок кредита в месяцах, надо метод написать
-        decimal sumnewcredit = 0; //переменная в которую попадет сумма нового кредита
-        decimal persent = 0; //переменная с выбранным годовым процентом, написать метод для ввода числа извне
-        //TODO ЗАПИСЬ ДАТ ВСЕХ ДОБАВЛЕНИЙ ДЕНЕГ
-        
-       
-       
-        
-        private decimal CalculateBalanceOfLoan(decimal sumnewcredit, List<ITransactions> Transaction)
+
+        //int loanTerm = 0;//это переменная, которую введет пользователь -срок кредита в месяцах
+        //decimal sumnewcredit = 0; //переменная в которую попадет сумма нового кредита
+        //decimal persent = 0; //переменная с выбранным годовым процентом, написать метод для ввода числа извне
+        //                     //TODO ЗАПИСЬ ДАТ ВСЕХ ДОБАВЛЕНИЙ ДЕНЕГ
+
+
+
+
+        public decimal CalculateBalanceOfLoan(decimal sum, List<ITransactions> Transaction)
         {
+            
             decimal sumTransactuon = 0;
             int i = 0;
-            
+
             foreach (var item in Transaction)
             {
-            sumTransactuon += Transaction[i].Sum;// надо проссумировать все поступления на счет кредита
+                sumTransactuon += Transaction[i].Sum;// надо проссумировать все поступления на счет кредита
                 i++;
             }
-            decimal remainingAmount = sumnewcredit- sumTransactuon; // остаток суммы кредита
-           
+            decimal remainingAmount = sum - sumTransactuon; // остаток суммы кредита
+
             return remainingAmount;
         }
 
-        public decimal CalculateMonthPersent(decimal persent) //расчет ежемесячной процентной ставки, в зависимости от выбранноых годовых %
+        public decimal CalculateMonthPersent() //расчет ежемесячной процентной ставки, в зависимости от выбранноых годовых %
         {
-            decimal persentMonth = persent/1200;
+            decimal persentMonth = Persent / 1200;
             return persentMonth;
 
         }
-        // нужен метод расчета сколько уже месяцев платим кредит
-
-        private int CalculateRemainingMonths(int month) //расчет сколько месяцев надо платить еще
+        //  метод расчета сколько уже месяцев платим кредит
+        public int CalculatiAlreadyPayMonthsOfLoan(DateTime ActualData)
         {
+            int alreadyPayMonths = 0;
+
+            DateTime d2 = DateTime.Now;
+
+
+            alreadyPayMonths = (ActualData.Year - d2.Year) * 12;
+            alreadyPayMonths = alreadyPayMonths + d2.Month;
+            alreadyPayMonths = alreadyPayMonths - ActualData.Month;
+
+            return alreadyPayMonths;
+        }
+        public int CalculateRemainingMonths() //расчет сколько месяцев надо платить еще
+        {
+            int alreadyPayMonths = CalculatiAlreadyPayMonthsOfLoan(DateTime.Now);
             int remainingMonths = 0;
-            if (month== loanTerm)
+            if (alreadyPayMonths == 0)
             {
-                remainingMonths = month;
+                remainingMonths = LoanTerm;
 
             }
             else
             {
-                remainingMonths = loanTerm - month;
+                remainingMonths = LoanTerm - alreadyPayMonths;
             }
 
             return remainingMonths;
         }
-        public decimal PayMonthAnnuityLoan(decimal remainingAmount, decimal persentMonth, int remainingMonths)
+        public decimal PayMonthAnnuityLoan( )
         {
+            Transaction = new List<ITransactions>();
+            decimal payOver = CalculateBalanceOfLoan(Sum, Transaction);
+            int rMonth = CalculateRemainingMonths();
+            decimal persentMonth = CalculateMonthPersent();
             decimal Annuitypay = 0; //размер ежемес платежа в аннуительном кредите
-            decimal val = Convert.ToDecimal(1 / Math.Pow((1 + (double)persentMonth), remainingMonths)); 
-            Annuitypay = remainingAmount * (persentMonth / (1-(1+ persentMonth))); 
+            decimal val = Convert.ToDecimal(1 / Math.Pow((1 + (double)persentMonth), rMonth));
+            Annuitypay = payOver * (persentMonth / (1 -  val));
 
             return Annuitypay;
         }
 
         private void endCredit(decimal sumnewcredit, decimal sumTransactuon)
         {
-           if  (sumnewcredit== sumTransactuon)
+            if (sumnewcredit == sumTransactuon)
             {
                 //поздравить с выплаченным кредитом и удалить запись о кредите
             }

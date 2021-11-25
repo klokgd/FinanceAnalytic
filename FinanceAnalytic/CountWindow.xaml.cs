@@ -42,5 +42,12 @@ namespace FinanceAnalytic
             window.Show();
             this.Hide();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CreditWidow credits = new CreditWidow();
+            credits.Show();
+            this.Hide();
+        }
     }
 }
