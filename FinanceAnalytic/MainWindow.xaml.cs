@@ -34,17 +34,12 @@ namespace FinanceAnalytic
             //WorkSpace main = JsonSerializer.Deserialize<WorkSpace>(textFromFile);
             //WorkSpace work = new WorkSpace();
 
-            //work.AddUser("7777777", "cnnn");
-            //work.AddUser("98989", "nnnn");
-            //JsonSerializerOptions options = new JsonSerializerOptions
-            //{
-            //    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-            //    WriteIndented = true
-            //};
-            //string jsonToWrite = JsonSerializer.Serialize(work, options);
-            ////File.WriteAllText()
-            //File.AppendAllText(_filePath, jsonToWrite);
-            //work.AddUser(users);
+            foreach (var item in storage.workSpaces)
+            {
+                ListBoxListOfUsers.Items.Add(item.Name);
+            }
+            
+                 
 
 
 

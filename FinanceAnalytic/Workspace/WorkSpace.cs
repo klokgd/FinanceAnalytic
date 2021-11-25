@@ -31,31 +31,14 @@ namespace FinanceAnalytic
         //public void Registration(string name, string password, SaveData saveData)
         //{
 
+        public List<ITransactions> Counts { get; set; }
 
-        //    string textFromFile = File.ReadAllText(saveData.FilePath);
+        public void AddCount(ITransactions counts) 
+        {
+            Counts = new List<ITransactions>();
+            Counts.Add(counts);
+        }
 
-
-        //    if (textFromFile.Contains(name))
-        //    {
-        //        throw new Exception("Name already exist");
-        //    }
-        //    else
-        //    {   
-        //        WorkSpace user = new WorkSpace(name, password);
-        //        User.Add(user); 
-        //    }
-
-        //    JsonSerializerOptions options = new JsonSerializerOptions
-        //    {
-        //        Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-        //        WriteIndented = true
-        //    };
-            
-        //    string jsonToWrite = JsonSerializer.Serialize(User[counts], options);
-        //    File.AppendAllText(saveData.FilePath, jsonToWrite);
-            
-        //    counts++;
-        //}
         
         //public bool Login(string name, string password, SaveData saveData)
         //{

@@ -8,5 +8,6 @@ namespace FinanceAnalytic
         //int Type { get; }
         DateTime Date { get; }
         string Category {get; set; }
+        string CountPerson { get; set; }
     }
 }
