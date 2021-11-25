@@ -33,6 +33,8 @@ namespace FinanceAnalytic
             {
                 ListBoxListOfUsers.Items.Add(item.Name);
             }
+            
+                 
 
         }
 

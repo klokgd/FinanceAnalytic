@@ -20,15 +20,15 @@ namespace FinanceAnalytic
 
             if (File.Exists(FilePath))
             {
-                workSpaces = new LinkedList<WorkSpace>();
+                workSpaces = new List<WorkSpace>();
                 string json = File.ReadAllText(FilePath);
 
 
-                workSpaces = JsonConvert.DeserializeObject<LinkedList<WorkSpace>>(json);
+                workSpaces = JsonConvert.DeserializeObject<List<WorkSpace>>(json);
             }
 
             else
-                workSpaces = new LinkedList<WorkSpace>();
+                workSpaces = new List<WorkSpace>();
         }
         private static Storage _instance;
 
@@ -42,7 +42,7 @@ namespace FinanceAnalytic
         }
         public string FilePath { get; }
 
-        public LinkedList<WorkSpace> workSpaces { get; set; }
+        public List<WorkSpace> workSpaces { get; set; }
 
 
         int counts = 0;
@@ -66,7 +66,7 @@ namespace FinanceAnalytic
             {
                 WorkSpace user = new WorkSpace(name, password);
 
-                workSpaces.AddLast(user);
+                workSpaces.Add(user);
 
                 JsonSerializerOptions options = new JsonSerializerOptions
                 {
@@ -119,17 +119,15 @@ namespace FinanceAnalytic
 
         public WorkSpace GetWorkSpace(string findName)
         {
-            var node = workSpaces.First;
-            WorkSpace necessaryUser = workSpaces.First.Value;
+            var node = workSpaces[0];
+            WorkSpace necessaryUser = workSpaces[0];
 
-            while (node != null)
-            {
-                if (node.Value.Name == findName)
+            if (workSpaces[0].Name == findName)
                 {
-                    necessaryUser = node.Value;
+                    necessaryUser = workSpaces[0];
                 }
-                node = node.Next;
-            }
+                //node = node.Next;
+            
 
             return necessaryUser;
 

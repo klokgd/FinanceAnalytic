@@ -24,7 +24,13 @@ namespace FinanceAnalytic
             Password = password;
         }
 
-        public LinkedList<ICounts> Counts { get; set; }
+        public List<ITransactions> Counts { get; set; }
+
+        public void AddCount(ITransactions counts) 
+        {
+            Counts = new List<ITransactions>();
+            Counts.Add(counts);
+        }
 
         
 
