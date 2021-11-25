@@ -121,7 +121,7 @@ namespace FinanceAnalytic
         {
             WorkSpace necessaryUser = workSpaces.Find(x => x.Name.Contains(findName));
            
-
+             
 
             return necessaryUser;
 
