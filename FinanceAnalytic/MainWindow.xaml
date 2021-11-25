@@ -6,15 +6,22 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:FinanceAnalytic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="203*"/>
+            <RowDefinition Height="214*"/>
+        </Grid.RowDefinitions>
         <!--<Frame x:Name="frame" Content="Frame" Navigated="frame_Navigated" Margin="439,122,195,232"/>-->
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" FontSize="24" Margin="42,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="255" Width="172" RenderTransformOrigin="-0.198,-0.306"/>
-        <Button x:Name="button_Login" HorizontalAlignment="Left" Margin="42,325,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Login_Click" Content="Вход"/>
-        <Button x:Name="button_Register" HorizontalAlignment="Left" Margin="482,325,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Register_Click" Content="Регистрация"/>
-        <TextBox x:Name="textBoxLogin" materialDesign:HintAssist.Hint="Имя пользователя" HorizontalAlignment="Center" Margin="0,145,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="317" TextChanged="TextBox_TextChanged_2"/>
-        <PasswordBox x:Name="textBoxPassword" materialDesign:HintAssist.Hint="Пароль" HorizontalAlignment="Center" Margin="0,192,0,0"  VerticalAlignment="Top" Width="317"/>
-        <!--<Frame x:Name="frame_Copy" Content="Frame" Navigated="frame_Navigated" Margin="439,122,195,232"/>-->
+        <Button x:Name="button_Login" HorizontalAlignment="Center" Margin="0,107,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Login_Click" Content="Вход" Grid.Row="2"/>
+        <Button x:Name="button_AddUser" HorizontalAlignment="Left" Margin="595,11,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="53" Width="154" Click="button_AddUser_Click" Content="Регистрация" Grid.Row="1"/>
+        <PasswordBox x:Name="textBoxPassword" materialDesign:HintAssist.Hint="Пароль" HorizontalAlignment="Center" Margin="0,53,0,0"  VerticalAlignment="Top" Width="180" Grid.Row="2"/>
+        <TextBlock x:Name="TextBoxListUser" HorizontalAlignment="Center" Margin="0,24,0,0" Text="Список пользователей" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="20" Grid.Row="1"/>
+        <ListBox x:Name="ListBoxListOfUsers"  Margin="283,68,283,196" Grid.RowSpan="2" Grid.Row="1" SelectionChanged="ListBoxListOfUsers_SelectionChanged"/>
+
+
+
 
     </Grid>
 </Window>

@@ -21,41 +21,43 @@ namespace FinanceAnalytic
     public partial class MainWindow : Window
     {
 
-        public const string _filePath = "../Itog.json";
 
-        WorkSpace workSpace;
-        //Counts count = new Counts(120000, "Семейный");
 
         public MainWindow()
         {
 
             InitializeComponent();
+            Storage storage = Storage.GetInstance();
+
+            foreach (var item in storage.workSpaces)
+            {
+                ListBoxListOfUsers.Items.Add(item.Name);
+            }
             
-        }
-
-
-
-
-
-        private void frame_Navigated(object sender, NavigationEventArgs e)
-        {
+                 
 
         }
+
+
+
+
+
 
         private void button_Login_Click(object sender, RoutedEventArgs e)
         {
 
-            string login = textBoxLogin.Text;
+            string login = ListBoxListOfUsers.SelectedItem.ToString();
             string password = textBoxPassword.Password;
 
-            SaveData saveData = SaveData.GetInstance();
+            Storage storage = Storage.GetInstance();
 
-            bool checkUser = saveData.Login(login, password);
+            bool checkUser = storage.Login(login, password);
 
             if (checkUser)
             {
-                MainWindow wwww = new MainWindow();
-                wwww.Show();
+                WorkSpace workSpace = storage.GetWorkSpace(login);
+                CountWindow countWindow = new CountWindow(workSpace);
+                countWindow.Show();
                 this.Hide();
             }
             else
@@ -65,26 +67,25 @@ namespace FinanceAnalytic
 
         }
 
-        private void button_Register_Click(object sender, RoutedEventArgs e)
+        private void button_AddUser_Click(object sender, RoutedEventArgs e)
         {
-            string login = textBoxLogin.Text;
-            string password = textBoxPassword.Password;
+            Reg_Window reg_Window = new Reg_Window();
+            reg_Window.Owner = this;
+            reg_Window.Show();
 
-            SaveData saveData = SaveData.GetInstance();
 
-            saveData.Registration(login, password);
 
+        }
+        private void ListBoxListOfUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Storage storage = Storage.GetInstance();
+
+            if (!File.Exists(storage.FilePath))
+            {
+
+            }
         }
 
 
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-        }
-
-        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }

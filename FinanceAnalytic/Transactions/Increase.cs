@@ -6,7 +6,7 @@ namespace FinanceAnalytic
 {
     public class Increase : ITransactions
     {
-        public Increase(decimal sum, Category category, DateTime today)
+        public Increase(decimal sum, Category category, DateTime today, string countPerson)
         {
             if (sum < 0)
             {
@@ -18,11 +18,14 @@ namespace FinanceAnalytic
             }
             Category = category.Name;
             Date = today;
+            CountPerson = countPerson;
+
         }
 
         public decimal Sum { get; }
         public DateTime Date { get; }
 
         public string Category { get; set; }
+        public string CountPerson { get; set; }
     }
 }
