@@ -119,15 +119,9 @@ namespace FinanceAnalytic
 
         public WorkSpace GetWorkSpace(string findName)
         {
-            var node = workSpaces[0];
-            WorkSpace necessaryUser = workSpaces[0];
-
-            if (workSpaces[0].Name == findName)
-                {
-                    necessaryUser = workSpaces[0];
-                }
-                //node = node.Next;
-            
+            WorkSpace necessaryUser = workSpaces.Find(x => x.Name.Contains(findName));
+           
+             
 
             return necessaryUser;
 

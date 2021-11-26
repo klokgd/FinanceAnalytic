@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Linq;
 
 namespace FinanceAnalytic
 {
@@ -34,7 +35,8 @@ namespace FinanceAnalytic
 
             MainWindow mainWindow = Owner as MainWindow;
 
-            mainWindow.ListBoxListOfUsers.Items.Add(storage.workSpaces);
+
+            mainWindow.ListBoxListOfUsers.Items.Add(storage.workSpaces.Last().Name);
 
             Hide();
         }
