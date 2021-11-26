@@ -60,22 +60,26 @@ namespace FinanceAnalytic
 
         }
         //  метод расчета сколько уже месяцев платим кредит
-        public int CalculatiAlreadyPayMonthsOfLoan(DateTime ActualData)
+        public int CalculatiAlreadyPayMonthsOfLoan()
         {
             int alreadyPayMonths = 0;
-
-            DateTime d2 = DateTime.Now;
-
-
-            alreadyPayMonths = (ActualData.Year - d2.Year) * 12;
+            if (DateTime.Now < ActualData)
+            {
+                return 0;
+            }
+            DateTime d2 = ActualData.Date;
+            alreadyPayMonths = (d2.Year - DateTime.Now.Year) * 12;
             alreadyPayMonths = alreadyPayMonths + d2.Month;
-            alreadyPayMonths = alreadyPayMonths - ActualData.Month;
-
+            alreadyPayMonths = alreadyPayMonths - DateTime.Now.Month;
+            if (alreadyPayMonths<0)
+            {
+                alreadyPayMonths = Math.Abs(alreadyPayMonths);
+            }
             return alreadyPayMonths;
         }
         public int CalculateRemainingMonths() //расчет сколько месяцев надо платить еще
         {
-            int alreadyPayMonths = CalculatiAlreadyPayMonthsOfLoan(DateTime.Now);
+            int alreadyPayMonths = CalculatiAlreadyPayMonthsOfLoan();
             int remainingMonths = 0;
             if (alreadyPayMonths == 0)
             {

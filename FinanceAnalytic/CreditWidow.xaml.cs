@@ -39,8 +39,8 @@ namespace FinanceAnalytic
 
         private void ButtonEnterToAddTransaction_Click(object sender, RoutedEventArgs e)
         {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32( textBoxTimeCredit.Text), Convert.ToDecimal( textBoxPersentCredit.Text), DateTime.Now);
-            textBlockSumOfMonth.Text = Convert.ToString(credit.CalculateMonthPersent());
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32( textBoxTimeCredit.Text), Convert.ToDecimal( textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
+            //textBlockSumOfMonth.Text = Convert.ToString(credit.CalculateMonthPersent());
         }
 
         private void ButtonEnterToAddTransaction_Click2(object sender, RoutedEventArgs e)
@@ -70,14 +70,32 @@ namespace FinanceAnalytic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), DateTime.Now);
-            textBlockPay.Text = Convert.ToString(credit.CalculatiAlreadyPayMonthsOfLoan(DateTime.Now));
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
+            textBlockPay.Text = Convert.ToString(credit.CalculatiAlreadyPayMonthsOfLoan());
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        
+        private void Button_Click_MounthPrice(object sender, RoutedEventArgs e)
         {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), DateTime.Now);
-            textBlockMonthPayPay.Text = Convert.ToString(credit.PayMonthAnnuityLoan());
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
+            textBlockSumOfMonth.Text = Convert.ToString(credit.PayMonthAnnuityLoan());
+        }
+
+        private void Button_Click_Percent(object sender, RoutedEventArgs e)
+        {
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
+            textBlockMonthPayPay.Text = Convert.ToString(credit.CalculateMonthPersent());
+            
+        }
+        private void OnMouseLeftButtonUp(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click22(object sender, RoutedEventArgs e)
+        {
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
+            textBlockPay_Copy.Text = Convert.ToString(credit.CalculateRemainingMonths());
         }
     }
 }

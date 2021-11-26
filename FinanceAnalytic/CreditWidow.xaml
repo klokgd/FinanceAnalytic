@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FinanceAnalytic"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="CreditWidow" Height="450" Width="800">
+        Title="CreditWidow" Height="500" Width="800">
     <Grid>
         <Border
             MinWidth="400"  Background="DarkBlue" VerticalAlignment="Top" Padding="40" CornerRadius="20" Height="112" Margin="0,322,0,0">
@@ -19,20 +19,28 @@
                 <Button Content="Анализ" Click="ButtonEnterToAnalyseMenu_Click" DockPanel.Dock="Right" Width="100" />
             </DockPanel>
         </Border>
-        <TextBox x:Name="textBoxNameCredit" materialDesign:HintAssist.Hint="Введите название кредита..."  Margin="44,87,440,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_NameCredit" Height="25" />
-        <TextBox x:Name="textBoxSumCredit" materialDesign:HintAssist.Hint="Введите сумму..."  Margin="44,117,440,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_SumCredit" Height="25" />
-        <TextBox x:Name="textBoxTimeCredit" materialDesign:HintAssist.Hint="Введите срок кредита в месяцах..."  Margin="44,147,440,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TimeCredit" Height="25" />
-        <TextBox x:Name="textBoxPersentCredit" materialDesign:HintAssist.Hint="Введите годовую процентную ставку..."  Margin="44,177,440,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_PersentCredit" Height="25" />
-        <TextBlock HorizontalAlignment="Left" Margin="44,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="316"><Run Language="ru-ru" Text="Добавление нового кредита"/></TextBlock>
-        <Button Content="Добавить" Click="ButtonEnterToAddTransaction_Click" Margin="44,264,544,138" />
-        <TextBlock x:Name="textBlockIformation" HorizontalAlignment="Left" Margin="47,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="103"><Run Language="ru-ru" Text="месячный платеж"/></TextBlock>
-        <TextBlock x:Name="textBlockSumOfMonth" HorizontalAlignment="Left" Margin="258,0,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Center" Height="16" Width="90"/>
+        <TextBox x:Name="textBoxNameCredit" materialDesign:HintAssist.Hint="Введите название кредита..."  Margin="21,37,526,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_NameCredit" Height="25" />
+        <TextBox x:Name="textBoxSumCredit" materialDesign:HintAssist.Hint="Введите сумму..."  Margin="21,67,526,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_SumCredit" Height="25" />
+        <TextBox x:Name="textBoxTimeCredit" materialDesign:HintAssist.Hint="Введите срок кредита в месяцах..."  Margin="21,97,526,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TimeCredit" Height="25" />
+        <TextBox x:Name="textBoxPersentCredit" materialDesign:HintAssist.Hint="Введите годовую процентную ставку..."  Margin="21,127,526,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_PersentCredit" Height="25" />
+        <TextBlock HorizontalAlignment="Left" Margin="21,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="316"><Run Language="ru-ru" Text="Добавление нового кредита"/></TextBlock>
+        <Button Content="Добавить кредит" Click="ButtonEnterToAddTransaction_Click" Margin="21,280,516,172" />
+        <TextBlock x:Name="textBlockSumOfMonth" HorizontalAlignment="Left" Margin="184,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="90"/>
         <Button Content="Добавить Денег в кредит" Click="ButtonEnterToAddTransaction_Click2" Margin="578,56,10,346" />
-        <TextBlock x:Name="textBlockPay" HorizontalAlignment="Left" Margin="651,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="86"><Run Language="ru-ru" Text="уже платим"/></TextBlock>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="551,114,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Button Content="месячный платеж" HorizontalAlignment="Left" Margin="44,227,0,0" VerticalAlignment="Top" Width="158" Click="Button_Click_1"/>
-        <TextBlock x:Name="textBlockMonthPayPay" HorizontalAlignment="Left" Margin="281,268,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="79"/>
-
+        <TextBlock x:Name="textBlockPay" HorizontalAlignment="Left" Margin="578,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="86"><Run Language="ru-ru" Text="уже платим"/></TextBlock>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="467,132,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Месячный платеж" HorizontalAlignment="Left" Margin="21,184,0,0" VerticalAlignment="Top" Width="158" Click="Button_Click_MounthPrice"/>
+        <TextBlock x:Name="textBlockMonthPayPay" HorizontalAlignment="Left" Margin="184,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="46" Width="90"/>
+        <Button Content="Месячная &#xD;&#xA;процентная ставка" HorizontalAlignment="Left" Margin="21,221,0,0" VerticalAlignment="Top" Width="158" Click="Button_Click_Percent" Height="54"/>
+        <DatePicker Name="creditDatePicker" materialDesign:HintAssist.Hint="Выберете дату начала кредита..." Focusable="False" Margin="21,152,526,0" VerticalAlignment="Top" Height="25">
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox" >
+                    <EventSetter Event="MouseLeftButtonUp" Handler="OnMouseLeftButtonUp"  />
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <TextBlock x:Name="textBlockPay_Copy" HorizontalAlignment="Left" Margin="578,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="117"><Run Language="ru-ru" Text="осталось платить месяцев"/></TextBlock>
+        <Button Content="Button22" HorizontalAlignment="Left" Margin="467,184,0,0" VerticalAlignment="Top" Click="Button_Click22"/>
 
 
     </Grid>
