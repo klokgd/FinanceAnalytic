@@ -17,9 +17,18 @@ namespace FinanceAnalytic
     /// </summary>
     public partial class CreditWidow : Window
     {
-        public CreditWidow()
+        private WorkSpace _workSpace;
+
+        public CreditWidow(WorkSpace _count)
         {
             InitializeComponent();
+            _workSpace = _count;
+        }
+
+        private void ButtonEnterToCountMenu_Click(object sender, RoutedEventArgs e)
+        {
+            CountWindow count = new CountWindow(_workSpace);
+            count.Show();
         }
 
         private void ButtonEnterToOperationMenu_Click(object sender, RoutedEventArgs e)
@@ -32,15 +41,16 @@ namespace FinanceAnalytic
 
         }
 
-        private void ButtonEnterToCountMenu_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void ButtonEnterToAddTransaction_Click(object sender, RoutedEventArgs e)
+        private void ButtonEnterToAddCredit_Click(object sender, RoutedEventArgs e)
         {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32( textBoxTimeCredit.Text), Convert.ToDecimal( textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
-            //textBlockSumOfMonth.Text = Convert.ToString(credit.CalculateMonthPersent());
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
+            //CountWindow count = new CountWindow(_workSpace);
+
+            CountWindow cr = Owner as CountWindow;
+            cr.listBoxCredit.Items.Add($"Сумма {textBoxSumCredit.Text}, Название {textBoxNameCredit.Text}, Проценты {textBoxPersentCredit.Text}, Мсяцев {textBoxTimeCredit.Text}");
+            //cr.listBoxCredit.Items.Add($"Сумма "); 
+
         }
 
         private void ButtonEnterToAddTransaction_Click2(object sender, RoutedEventArgs e)

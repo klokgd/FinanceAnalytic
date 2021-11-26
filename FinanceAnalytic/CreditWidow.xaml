@@ -24,7 +24,7 @@
         <TextBox x:Name="textBoxTimeCredit" materialDesign:HintAssist.Hint="Введите срок кредита в месяцах..."  Margin="21,97,526,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TimeCredit" Height="25" />
         <TextBox x:Name="textBoxPersentCredit" materialDesign:HintAssist.Hint="Введите годовую процентную ставку..."  Margin="21,127,526,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_PersentCredit" Height="25" />
         <TextBlock HorizontalAlignment="Left" Margin="21,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="316"><Run Language="ru-ru" Text="Добавление нового кредита"/></TextBlock>
-        <Button Content="Добавить кредит" Click="ButtonEnterToAddTransaction_Click" Margin="21,280,516,172" />
+        <Button Content="Добавить кредит" Click="ButtonEnterToAddCredit_Click" Margin="21,280,516,172" />
         <TextBlock x:Name="textBlockSumOfMonth" HorizontalAlignment="Left" Margin="184,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="90"/>
         <Button Content="Добавить Денег в кредит" Click="ButtonEnterToAddTransaction_Click2" Margin="578,56,10,346" />
         <TextBlock x:Name="textBlockPay" HorizontalAlignment="Left" Margin="578,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="86"><Run Language="ru-ru" Text="уже платим"/></TextBlock>

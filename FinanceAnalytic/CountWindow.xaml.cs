@@ -45,9 +45,25 @@ namespace FinanceAnalytic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CreditWidow credits = new CreditWidow();
+            CreditWidow credits = new CreditWidow(_workSpace);
             credits.Show();
             this.Hide();
         }
+        private void Button_ClickAddCredit(object sender, RoutedEventArgs e)
+        {
+            CreditWidow credits = new CreditWidow(_workSpace);
+            credits.Owner = this;
+            credits.Show();
+            //this.Hide();
+        }
+        private void Button_ClickAddDeposit(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void Button_ClickAddCount(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
     }
 }
