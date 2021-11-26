@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,6 +22,7 @@ namespace FinanceAnalytic
     public partial class CreditWidow : Window
     {
         private WorkSpace _workSpace;
+        public string FilePath { get; set; }
 
         public CreditWidow(WorkSpace _count)
         {
@@ -50,6 +55,13 @@ namespace FinanceAnalytic
             CountWindow cr = Owner as CountWindow;
             cr.listBoxCredit.Items.Add($"Сумма {textBoxSumCredit.Text}, Название {textBoxNameCredit.Text}, Проценты {textBoxPersentCredit.Text}, Мсяцев {textBoxTimeCredit.Text}");
             //cr.listBoxCredit.Items.Add($"Сумма "); 
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                WriteIndented = true
+            };
+
+            
 
         }
 

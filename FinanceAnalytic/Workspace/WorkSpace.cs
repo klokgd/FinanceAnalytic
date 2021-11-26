@@ -28,8 +28,16 @@ namespace FinanceAnalytic
 
         public void AddCount(ITransactions counts) 
         {
+            if (Counts==null)
+            {
             Counts = new List<ITransactions>();
             Counts.Add(counts);
+
+            }
+            else
+            {
+                Counts.Add(counts);
+            }
         }
 
         
@@ -37,4 +45,5 @@ namespace FinanceAnalytic
 
     }
 }
+
 
