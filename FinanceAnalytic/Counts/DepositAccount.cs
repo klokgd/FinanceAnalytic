@@ -4,9 +4,9 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    class DepositAccount : ICounts
+    class DepositAccount : IAccount
     {
-        public decimal Sum { get; set; }
+        public decimal Balance { get; set; }
         public decimal Percent { get; set; }
         public string Name { get; set; }
         public int Type { get; set; }
@@ -17,17 +17,17 @@ namespace FinanceAnalytic
 
         public DepositAccount(decimal sum, string name, decimal percent)
         {
-            Sum = sum;
+            Balance = sum;
             Name = name;
             Percent = percent / 100;
             ActualMonth = DateTime.Now.Month;
             Transaction = new List<ITransactions>();
         }
 
-        public void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient)
+        public void TransferBetweenCounts(Increase transferTransaction, IAccount transactionRecepient)
         {
             Transaction.Add(transferTransaction);
-            Sum -= transferTransaction.Sum;
+            Balance -= transferTransaction.Sum;
 
             transactionRecepient.AddIncrease(transferTransaction);
         }
@@ -37,8 +37,10 @@ namespace FinanceAnalytic
         public void AddIncrease(Increase increase)
         {
             Transaction.Add(increase);
-            Sum += increase.Sum;
+            Balance += increase.Sum;
         }
+        
+        
 
         
 
@@ -56,7 +58,7 @@ namespace FinanceAnalytic
 
         public void RecalculateDeposit()
         {
-            Sum = Sum * Percent + Sum;
+            Balance = Balance * Percent + Balance;
         }
 
         

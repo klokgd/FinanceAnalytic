@@ -21,10 +21,10 @@ namespace FinanceAnalytic
     /// </summary>
     public partial class CreditWidow : Window
     {
-        private WorkSpace _workSpace;
+        private User _workSpace;
         public string FilePath { get; set; }
 
-        public CreditWidow(WorkSpace _count)
+        public CreditWidow(User _count)
         {
             InitializeComponent();
             _workSpace = _count;

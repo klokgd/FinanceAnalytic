@@ -12,35 +12,43 @@ using System.Windows;
 
 namespace FinanceAnalytic
 {
-    public class WorkSpace : IWorkSpace
+    public class User
     {
 
         public string Name { get; set; }
         public string Password { get; set; }
 
-        public WorkSpace(string name, string password)
+        public User(string name, string password)
         {
             Name = name;
             Password = password;
+            Accounts = new List<ITransactions>();
         }
 
-        public List<ITransactions> Counts { get; set; }
+        public List<ITransactions> Accounts { get; set; }
 
         public void AddCount(ITransactions counts) 
         {
-            if (Counts==null)
+            if (Accounts==null)
             {
-            Counts = new List<ITransactions>();
-            Counts.Add(counts);
+            Accounts = new List<ITransactions>();
+            Accounts.Add(counts);
 
             }
             else
             {
-                Counts.Add(counts);
+                Accounts.Add(counts);
             }
         }
 
-        
+        public IAccount FindCount(string findCount)
+        {
+            IAccount necessaryCount = Accounts.Find(x => x.Name.Contains(findCount));
+            return necessaryCount;
+
+        }
+
+
 
 
     }

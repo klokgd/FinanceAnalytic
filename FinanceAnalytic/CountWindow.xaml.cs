@@ -17,9 +17,9 @@ namespace FinanceAnalytic
     /// </summary>y
     public partial class CountWindow : Window
     {
-        private WorkSpace _workSpace;
+        private User _workSpace;
 
-        public CountWindow(WorkSpace authentication)
+        public CountWindow(User authentication)
         {
             InitializeComponent();
             _workSpace = authentication;

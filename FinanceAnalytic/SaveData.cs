@@ -14,7 +14,7 @@ namespace FinanceAnalytic
         public SaveData()
         {
             FilePath = "../Itog.json";
-            workSpaces = new List<WorkSpace>();
+            workSpaces = new List<User>();
         }
         private static SaveData _instance;
 
@@ -27,7 +27,7 @@ namespace FinanceAnalytic
             return _instance;
         }
         public string FilePath { get; }
-        List<WorkSpace> workSpaces { get; set; }
+        List<User> workSpaces { get; set; }
 
         int counts = 0;
 
@@ -46,7 +46,7 @@ namespace FinanceAnalytic
             }
             else
             {
-                WorkSpace user = new WorkSpace(name, password);
+                User user = new User(name, password);
                 workSpaces.Add(user);
                 JsonSerializerOptions options = new JsonSerializerOptions
                 {

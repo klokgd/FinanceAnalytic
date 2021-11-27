@@ -5,11 +5,11 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    public class PersonalAccount : ICounts
+    public class PersonalAccount : IAccount
     {
         public PersonalAccount(decimal sum, string name)
         {
-            Sum = sum;
+            Balance = sum;
             Name = name;
             Transaction = new List<ITransactions>();
             
@@ -17,24 +17,24 @@ namespace FinanceAnalytic
 
         public string Name { get; set; }
         public int Type { get; set; }
-        public decimal Sum { get; set; }
+        public decimal Balance { get; set; }
         public List<ITransactions> Transaction { get; set; }
        
-        public void AddIncrease(Increase increase)
+        public void AddIncrease(ITransactions increase)
         {
             Transaction.Add(increase);
-            Sum += increase.Sum;
+            Balance += increase.Sum;
         }
-        public void AddExpense(Expense expense)
+        public void AddExpense(ITransactions expense)
         {
             Transaction.Add(expense);
-            Sum -= expense.Sum;
+            Balance -= expense.Sum;
         }
 
-        public void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient)
+        public void TransferBetweenCounts(Increase transferTransaction, IAccount transactionRecepient)
         {
             Transaction.Add(transferTransaction);
-            Sum -= transferTransaction.Sum;
+            Balance -= transferTransaction.Sum;
             transactionRecepient.AddIncrease(transferTransaction);
         }
 

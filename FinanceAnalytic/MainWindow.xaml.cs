@@ -58,7 +58,7 @@ namespace FinanceAnalytic
 
             if (checkUser)
             {
-                WorkSpace workSpace = storage.GetWorkSpace(login);
+                User workSpace = storage.GetWorkSpace(login);
                 CountWindow countWindow = new CountWindow(workSpace);
                 countWindow.Show();
                 this.Hide();
