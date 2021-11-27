@@ -36,7 +36,7 @@ namespace FinanceAnalytic
             MainWindow mainWindow = Owner as MainWindow;
 
 
-            mainWindow.ListBoxListOfUsers.Items.Add(storage.workSpaces.Last().Name);
+            mainWindow.ListBoxListOfUsers.Items.Add(storage.usersList.Last().Name);
 
             Hide();
         }

@@ -20,15 +20,15 @@ namespace FinanceAnalytic
 
             if (File.Exists(FilePath))
             {
-                workSpaces = new List<WorkSpace>();
+                usersList = new List<User>();
                 string json = File.ReadAllText(FilePath);
 
 
-                workSpaces = JsonConvert.DeserializeObject<List<WorkSpace>>(json);
+                usersList = JsonConvert.DeserializeObject<List<User>>(json);
             }
 
             else
-                workSpaces = new List<WorkSpace>();
+                usersList = new List<User>();
         }
         private static Storage _instance;
 
@@ -42,7 +42,7 @@ namespace FinanceAnalytic
         }
         public string FilePath { get; }
 
-        public List<WorkSpace> workSpaces { get; set; }
+        public List<User> usersList { get; set; }
 
 
         int counts = 0;
@@ -66,7 +66,7 @@ namespace FinanceAnalytic
             {
                 User user = new User(name, password);
 
-                workSpaces.Add(user);
+                usersList.Add(user);
 
                 JsonSerializerOptions options = new JsonSerializerOptions
                 {
@@ -74,7 +74,7 @@ namespace FinanceAnalytic
                     WriteIndented = true
                 };
 
-                string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(workSpaces, options);
+                string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
                 File.WriteAllText(FilePath, jsonToWrite);
 
                 counts++;
@@ -113,13 +113,13 @@ namespace FinanceAnalytic
                 WriteIndented = true
             };
 
-            string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(workSpaces, options);
+            string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
             File.WriteAllText(FilePath, jsonToWrite);
         }
 
         public User GetWorkSpace(string findName)
         {
-            WorkSpace necessaryUser = workSpaces.Find(x => x.Name.Contains(findName));
+            User necessaryUser = usersList.Find(x => x.Name.Contains(findName));
            
              
 

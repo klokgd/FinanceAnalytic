@@ -32,7 +32,7 @@ namespace FinanceAnalytic
             InitializeComponent();
             Storage storage = Storage.GetInstance();
 
-            foreach (var item in storage.workSpaces)
+            foreach (var item in storage.usersList)
             {
                 ListBoxListOfUsers.Items.Add(item.Name);
             }

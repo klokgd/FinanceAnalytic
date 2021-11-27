@@ -22,23 +22,16 @@ namespace FinanceAnalytic
         {
             Name = name;
             Password = password;
-            Accounts = new List<ITransactions>();
+            Accounts = new List<IAccount>();
         }
 
-        public List<ITransactions> Accounts { get; set; }
+        public List<IAccount> Accounts { get; set; }
 
-        public void AddCount(ITransactions counts) 
+        public void AddAccountToList(IAccount counts)
         {
-            if (Accounts==null)
-            {
-            Accounts = new List<ITransactions>();
+
             Accounts.Add(counts);
 
-            }
-            else
-            {
-                Accounts.Add(counts);
-            }
         }
 
         public IAccount FindCount(string findCount)
