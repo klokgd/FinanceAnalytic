@@ -20,15 +20,15 @@ namespace FinanceAnalytic
 
             if (File.Exists(FilePath))
             {
-                //workSpaces = new List<User>();
+                workSpaces = new List<WorkSpace>();
                 string json = File.ReadAllText(FilePath);
 
 
-                List<User> workSpaces = JsonConvert.DeserializeObject<List<User>>(json);
+                workSpaces = JsonConvert.DeserializeObject<List<WorkSpace>>(json);
             }
 
             else
-                workSpaces = new List<User>();
+                workSpaces = new List<WorkSpace>();
         }
         private static Storage _instance;
 
@@ -42,7 +42,7 @@ namespace FinanceAnalytic
         }
         public string FilePath { get; }
 
-        public List<User> workSpaces { get; set; }
+        public List<WorkSpace> workSpaces { get; set; }
 
 
         int counts = 0;
@@ -119,7 +119,7 @@ namespace FinanceAnalytic
 
         public User GetWorkSpace(string findName)
         {
-            User necessaryUser = workSpaces.Find(x => x.Name.Contains(findName));
+            WorkSpace necessaryUser = workSpaces.Find(x => x.Name.Contains(findName));
            
              
 

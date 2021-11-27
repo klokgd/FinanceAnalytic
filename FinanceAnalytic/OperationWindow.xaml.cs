@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -18,6 +19,7 @@ namespace FinanceAnalytic
 {
 
     public partial class OperationWindow : Window
+<<<<<<< HEAD
     {
         List<IAccount> allCounts { get; set; }
         List<ITransactions> allTransaction { get; set; }
@@ -27,6 +29,14 @@ namespace FinanceAnalytic
         public Category category { get; set; }
 
         private User _workSpace;
+=======
+    {    
+        List<ITransactions> allCounts { get; set; }
+        //public string FilePath { get; set; } = "";
+        public string FilePath { get; set; }
+                
+        private WorkSpace _workSpace;
+>>>>>>> master
 
         public OperationWindow(User authentication)
         {
@@ -50,6 +60,7 @@ namespace FinanceAnalytic
         private void ButtonEnterToAddTransaction_Click(object sender, RoutedEventArgs e)
         {
             FilePath = "../operation.json";
+<<<<<<< HEAD
             allTransaction = new List<ITransactions>(allTransaction);
             if (!File.Exists(FilePath))
             {
@@ -95,6 +106,66 @@ namespace FinanceAnalytic
                 listBox.Items.Add($"Сумма: -{expense.Sum},  Дата: {expense.Date.Year}-{expense.Date.Month}-{expense.Date.Day},  Категория: {expense.Category},  Cчет: {expense.CountPerson}");
             }
 
+=======
+            allCounts = new List<ITransactions>();
+            if (!File.Exists(FilePath))
+            {
+               File.Create(FilePath);
+            }
+            string readFromFile = File.ReadAllText(FilePath);
+            string filePathOfCount = "";
+
+            Category category = new Category(CategoryList.Text);
+            switch (CountList.Text)
+            {
+                case "Мой":
+                    filePathOfCount = "../my.json";
+                    break;
+                case "Кредит":
+                    filePathOfCount = "../Credit.json";
+                    break;
+                case "Семейный":
+                    filePathOfCount = "../Family.json";
+                    break;
+                case "Ипотека":
+                    filePathOfCount = "../Ipoteka.json";
+                    break;
+                case "Вклад":
+                    filePathOfCount = "../Wklad.json";
+                    break;
+                default:
+                    break;
+            }
+            if (IncreaseOrExpenseList.Text == "Доход")
+            {
+                Increase expense = new Increase(Convert.ToDecimal(textBoxSumTransaction.Text), category, (DateTime)datePicker.SelectedDate, CountList.Text);
+                allCounts.Add(expense);
+                listBox.Items.Add($"Сумма: {expense.Sum},  Дата: {expense.Date.Year}-{expense.Date.Month}-{expense.Date.Day},  Категория: {expense.Category},  Cчет: {expense.CountPerson}");
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                    WriteIndented = true
+                };
+
+                string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(allCounts, options);
+                File.AppendAllText(FilePath, jsonToWrite);
+                File.AppendAllText(filePathOfCount, jsonToWrite);
+
+                Storage storage = Storage.GetInstance();
+                
+                WorkSpace work = new WorkSpace("tt","tt");
+                work.AddCount(expense);
+                storage.workSpaces.Add(work);
+                storage.SaveToFile();
+            }
+            else
+            {
+                Expense expense = new Expense(Convert.ToDecimal(textBoxSumTransaction.Text), category, (DateTime)datePicker.SelectedDate, CountList.Text);
+                allCounts.Add(expense);
+                listBox.Items.Add($"Сумма: -{expense.Sum},  Дата: {expense.Date.Year}-{expense.Date.Month}-{expense.Date.Day},  Категория: {expense.Category},  Cчет: {expense.CountPerson}");
+            }
+
+>>>>>>> master
             IncreaseOrExpenseList.Text = "";
             textBoxSumTransaction.Text = "";
         }
@@ -144,8 +215,13 @@ namespace FinanceAnalytic
         {
 
         }
+<<<<<<< HEAD
 
 
+=======
+                  
+        
+>>>>>>> master
         private void OnMouseLeftButtonUp(object sender, RoutedEventArgs e)
         {
 
