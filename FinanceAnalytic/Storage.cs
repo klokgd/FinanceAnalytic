@@ -43,6 +43,7 @@ namespace FinanceAnalytic
         public string FilePath { get; }
 
         public List<User> usersList { get; set; }
+        public List<PersonalAccount> accountList { get; set; }
 
 
         int counts = 0;
@@ -125,6 +126,17 @@ namespace FinanceAnalytic
 
             return necessaryUser;
 
+        }
+
+        public void AddAccount(decimal sum, string name )
+        {
+            PersonalAccount newAcc = new PersonalAccount(sum, name);
+            if (accountList ==null)
+            {
+                accountList = new List<PersonalAccount>();
+            }
+            accountList.Add(newAcc);
+            //SaveToFile();
         }
     }
 }

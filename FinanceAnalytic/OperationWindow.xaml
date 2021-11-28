@@ -21,11 +21,7 @@
         </Grid.RowDefinitions>
         <TextBox x:Name="textBoxSumTransaction" materialDesign:HintAssist.Hint="Введите сумму..."  Margin="44,87,152,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_SumTransaction" Height="25"/>
         <ComboBox Name="CountList" materialDesign:HintAssist.Hint="Выберете счет..." Height="30" VerticalAlignment="Top" Margin="44,117,152,0">
-            <TextBlock>Мой</TextBlock>
-            <TextBlock>Семейный</TextBlock>
-            <TextBlock>Ипотека</TextBlock>
-            <TextBlock>Кредит</TextBlock>
-            <TextBlock>Вклад</TextBlock>
+            
         </ComboBox>
         <ComboBox x:Name="CategoryList" materialDesign:HintAssist.Hint="Выберете категорию..." Height="30" VerticalAlignment="Top" Margin="44,152,152,0" SelectionChanged="CategoryList_SelectionChanged">
             

@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 namespace FinanceAnalytic
 {
     public class PersonalAccount : IAccount
     {
+        public string FilePath { get; set; }
+        
         public PersonalAccount(decimal sum, string name)
         {
             Balance = sum;
@@ -14,12 +20,14 @@ namespace FinanceAnalytic
             Transaction = new List<ITransactions>();
             
         }
-
+        
         public string Name { get; set; }
         public int Type { get; set; }
         public decimal Balance { get; set; }
         public List<ITransactions> Transaction { get; set; }
-       
+        
+        
+
         public void AddIncrease(Increase increase)
         {
             Transaction.Add(increase);
@@ -36,13 +44,6 @@ namespace FinanceAnalytic
             Transaction.Add(transferTransaction);
             Balance -= transferTransaction.Sum;
             transactionRecepient.AddIncrease(transferTransaction);
-        }
-
-
-
-        public void SaveData()
-        {
-
         }
 
         public void RenameAccount(string newName)

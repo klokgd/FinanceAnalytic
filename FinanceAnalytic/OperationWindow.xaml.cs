@@ -22,49 +22,75 @@ namespace FinanceAnalytic
     {
         List<IAccount> allCounts { get; set; }
         List<ITransactions> allTransaction { get; set; }
-        //public string FilePath { get; set; } = "";
         public string FilePath { get; set; }
 
         public Category category { get; set; }
 
         private User _workSpace;
+        public Account acc;
 
 
         public OperationWindow(User authentication)
         {
             InitializeComponent();
             category = new Category();
+            acc = new Account();
             _workSpace = authentication;
-            //FilePath = "../operation.json";
-            //string[] readFromFile = File.ReadAllLines(FilePath);
-            //for (int i = 2; i < readFromFile.Length - 1; i += 7)
-            //{
-            //    string sum = readFromFile[i].Remove(0, 10);
-            //    string date = readFromFile[i + 1].Remove(0, 13);
-            //    string category = readFromFile[i + 2].Remove(0, 17);
-            //    string count = readFromFile[i + 3].Remove(0, 18);
-            //    date = date.Replace("T00:00:00\"", "");
-            //    category = category.Replace("\"", "");
-            //    count = count.Replace("\"", "");
-            //    listBox.Items.Add($"Сумма:{sum}  Дата: {date}  Категория: {category}  Счет: {count} ");
-            //}
-            
+                        
             for (int i = 1; i < 8; i++)
             {
                 CategoryList.Items.Add((Category)i);
                 
-            }
+            } 
+            //for (int i = 1; i < 5; i++)
+            //{
+            //    CountList.Items.Add((Account)i);
+                
+            //}
             
         }
         private void ButtonEnterToAddTransaction_Click(object sender, RoutedEventArgs e)
         {
-            FilePath = "../operation.json";
-            allTransaction = _workSpace.Transactions; // new List<ITransactions>();
+            FilePath = "../ooperation.json";
+            
+            IAccount account  = _workSpace.FindCount(CountList.Text);
+            if (account==null)
+            {
+                _workSpace.AddAccountToList(account);
+            }
+            allTransaction = account.Transaction;
+            if (allCounts ==null)
+            {
+                allCounts = new List<IAccount>();
+            }
             if (!File.Exists(FilePath))
             {
                File.Create(FilePath);
             }
-            string filePathOfCount = "";
+            AddTransaction();
+
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                WriteIndented = true
+            };
+
+            string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(allTransaction, options);
+            File.AppendAllText(FilePath, jsonToWrite);
+            
+            Storage storage = Storage.GetInstance();
+            
+            storage.SaveToFile();
+            
+            IncreaseOrExpenseList.Text = "";
+            textBoxSumTransaction.Text = "";
+        }
+        public void AddTransaction()
+        {
+            if (allTransaction == null)
+            {
+                allTransaction = new List<ITransactions>();
+            }
             if (IncreaseOrExpenseList.Text == "Доход")
             {
                 Increase expense = new Increase(Convert.ToDecimal(textBoxSumTransaction.Text), Convert.ToString(CategoryList.SelectedItem), (DateTime)datePicker.SelectedDate, CountList.Text);
@@ -77,22 +103,11 @@ namespace FinanceAnalytic
                 allTransaction.Add(expense);
                 listBox.Items.Add($"Сумма: -{expense.Sum},  Дата: {expense.Date.Year}-{expense.Date.Month}-{expense.Date.Day},  Категория: {expense.Category},  Cчет: {expense.CountPerson}");
             }
-
-            JsonSerializerOptions options = new JsonSerializerOptions
+            if (allTransaction == null)
             {
-                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-                WriteIndented = true
-            };
-
-            string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(allTransaction, options);
-            File.AppendAllText(FilePath, jsonToWrite);
-            File.AppendAllText(filePathOfCount, jsonToWrite);
-
-            Storage storage = Storage.GetInstance();
-            storage.SaveToFile();
-            
-            IncreaseOrExpenseList.Text = "";
-            textBoxSumTransaction.Text = "";
+                allTransaction = new List<ITransactions>();
+            }
+             
         }
         private void ButtonEnterToOperationMenu_Click(object sender, RoutedEventArgs e)
         {

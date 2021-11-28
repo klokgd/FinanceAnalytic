@@ -29,7 +29,7 @@
         </Border>
         <Button Content="Добавить кредит" HorizontalAlignment="Left" Margin="320,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddCredit" Grid.ColumnSpan="2"/>
         <Button Content="Добавить вклад" HorizontalAlignment="Left" Margin="200,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddDeposit" Grid.Column="1"/>
-        <Button Content="Добавить счет" HorizontalAlignment="Left" Margin="42,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddCredit"/>
+        <Button Content="Добавить счет" HorizontalAlignment="Left" Margin="42,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddCount"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="70,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="102"><Run Text="Все "/><Run Language="ru-ru" Text="счета"/></TextBlock>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="348,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="102" Grid.ColumnSpan="2"><Run Text="Все "/><Run Language="ru-ru" Text="кредиты"/></TextBlock>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="228,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="102" Grid.Column="1"><Run Text="Все "/><Run Language="ru-ru" Text="вклады"/></TextBlock>
