@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    public class Increase : ITransactions
+    public class Increase : ITransaction
     {
         public Increase(decimal sum, string category, DateTime today, string countPerson)
         {

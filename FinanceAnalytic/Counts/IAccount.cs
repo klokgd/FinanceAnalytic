@@ -8,11 +8,11 @@ namespace FinanceAnalytic
     {
         decimal Balance { get; set; }
         string Name { get; set; }
-        public List<ITransactions> Transaction { get; set; }
+        public List<ITransaction> Transaction { get; set; }
 
         void TransferBetweenCounts(Increase transferTransaction, IAccount transactionRecepient );
 
-        void AddIncrease(Increase increase);
+        void AddIncrease(ITransaction increase);
         //void AddExpense(Expense expense);
         void RenameAccount(string newName);
         

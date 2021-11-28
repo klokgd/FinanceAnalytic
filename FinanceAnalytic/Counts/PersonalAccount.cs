@@ -17,23 +17,21 @@ namespace FinanceAnalytic
         {
             Balance = sum;
             Name = name;
-            Transaction = new List<ITransactions>();
+            Transaction = new List<ITransaction>();
             
         }
         
         public string Name { get; set; }
         public int Type { get; set; }
         public decimal Balance { get; set; }
-        public List<ITransactions> Transaction { get; set; }
-        
-        
-
-        public void AddIncrease(Increase increase)
+        public List<ITransaction> Transaction { get; set; }
+       
+        public void AddIncrease(ITransaction increase)
         {
             Transaction.Add(increase);
             Balance += increase.Sum;
         }
-        public void AddExpense(ITransactions expense)
+        public void AddExpense(ITransaction expense)
         {
             Transaction.Add(expense);
             Balance -= expense.Sum;

@@ -8,7 +8,7 @@ namespace FinanceAnalytic
     {
         public decimal Balance { get ; set  ; }
         public string Name { get ; set ; }
-        public List<ITransactions> Transaction { get; set; }
+        public List<ITransaction> Transaction { get; set; }
         public int ActualMonth { get; set; }
 
         public SavingAccount(decimal sum, string name)
@@ -16,7 +16,7 @@ namespace FinanceAnalytic
             Balance = sum;
             Name = name;
             ActualMonth = DateTime.Now.Month;
-            Transaction = new List<ITransactions>();
+            Transaction = new List<ITransaction>();
         }
 
        public void AddIncrease(Increase increase)

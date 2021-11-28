@@ -24,7 +24,7 @@ namespace FinanceAnalytic
             ActualData = actualData;
         }
 
-        public List<ITransactions> Transaction { get; set; }
+        public List<ITransaction> Transaction { get; set; }
 
         //как указать с какого актива будет списан кредит
 
@@ -37,7 +37,7 @@ namespace FinanceAnalytic
 
 
 
-        public decimal CalculateBalanceOfLoan(decimal sum, List<ITransactions> Transaction)
+        public decimal CalculateBalanceOfLoan(decimal sum, List<ITransaction> Transaction)
         {
             
             decimal sumTransactuon = 0;
@@ -95,7 +95,7 @@ namespace FinanceAnalytic
         }
         public decimal PayMonthAnnuityLoan( )
         {
-            Transaction = new List<ITransactions>();
+            Transaction = new List<ITransaction>();
             decimal payOver = CalculateBalanceOfLoan(Sum, Transaction);
             int rMonth = CalculateRemainingMonths();
             decimal persentMonth = CalculateMonthPersent();

@@ -31,7 +31,7 @@
             <TextBlock><Run Text="Расход"/></TextBlock>
 
         </ComboBox>
-        <Button Content="Добавить" Click="ButtonEnterToAddTransaction_Click" Margin="44,45,338,44" Grid.Row="2" />
+        <Button Content="Добавить" Click="ButtonEnterToAddTransaction_Click" Margin="44,45,310,44" Grid.Row="2" />
         <DatePicker Name="datePicker" materialDesign:HintAssist.Hint="Выберете дату операции..." Focusable="False" Margin="44,188,152,0" VerticalAlignment="Top" Height="25" Grid.RowSpan="2">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox" >
@@ -57,9 +57,13 @@
             </Border.Effect>
             <TextBlock x:Name="SumAllCount" Text="Общий баланс счета" TextWrapping="Wrap" Foreground="White" Margin="0,-6,0,-20"/>
         </Border>
-        <ListBox Name="listBox" Margin="383,19,10,10" SelectionChanged="PrintText" SelectionMode="Single" Grid.ColumnSpan="2">
-            <ListBoxItem></ListBoxItem>
+        <ListBox Name="listBox" Margin="383,29,10,90" SelectionChanged="PrintText" SelectionMode="Single" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <ListBoxItem>
+                <TextBlock TextWrapping="Wrap" Text="Последние транзакции:" FontSize="16" FontWeight="Bold"/>
+            </ListBoxItem>
         </ListBox>
+        <Button x:Name="AddCategoryButton" Grid.Column="1" Content="Добавить категорию" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Click="AddCategoryButton_Click"/>
+        <TextBox x:Name="CategoryTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="0" Margin="0,90,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="170"/>
 
 
 

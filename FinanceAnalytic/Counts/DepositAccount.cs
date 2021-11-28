@@ -11,7 +11,7 @@ namespace FinanceAnalytic
         public string Name { get; set; }
         public int Type { get; set; }
         public int ActualMonth { get; set; }
-        public List<ITransactions> Transaction { get; set; }
+        public List<ITransaction> Transaction { get; set; }
 
         
 
@@ -21,7 +21,7 @@ namespace FinanceAnalytic
             Name = name;
             Percent = percent / 100;
             ActualMonth = DateTime.Now.Month;
-            Transaction = new List<ITransactions>();
+            Transaction = new List<ITransaction>();
         }
 
         public void TransferBetweenCounts(Increase transferTransaction, IAccount transactionRecepient)
@@ -29,12 +29,14 @@ namespace FinanceAnalytic
             Transaction.Add(transferTransaction);
             Balance -= transferTransaction.Sum;
 
+            //добавить даункаст
+
             transactionRecepient.AddIncrease(transferTransaction);
         }
 
         
 
-        public void AddIncrease(Increase increase)
+        public void AddIncrease(ITransaction increase)
         {
             Transaction.Add(increase);
             Balance += increase.Sum;

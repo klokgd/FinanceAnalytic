@@ -32,6 +32,8 @@ namespace FinanceAnalytic
 
         public OperationWindow(User authentication)
         {
+            
+            
             InitializeComponent();
             category = new Category();
             acc = new Account();
@@ -122,7 +124,7 @@ namespace FinanceAnalytic
         }
         private void ButtonEnterToCountMenu_Click(object sender, RoutedEventArgs e)
         {
-            CountWindow window = new CountWindow(_workSpace);
+            CountWindow window = new CountWindow(_user);
             window.Show();
             this.Hide();
         }
@@ -174,6 +176,11 @@ namespace FinanceAnalytic
         {
             
             
+        }
+
+        private void AddCategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
