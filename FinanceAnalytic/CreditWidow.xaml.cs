@@ -32,7 +32,7 @@ namespace FinanceAnalytic
 
         private void ButtonEnterToCountMenu_Click(object sender, RoutedEventArgs e)
         {
-            CountWindow count = new CountWindow(_workSpace);
+            AccountWindow count = new AccountWindow(_workSpace);
             count.Show();
         }
 
@@ -52,7 +52,7 @@ namespace FinanceAnalytic
             Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
             //CountWindow count = new CountWindow(_workSpace);
 
-            CountWindow cr = Owner as CountWindow;
+            AccountWindow cr = Owner as AccountWindow;
             cr.listBoxCredit.Items.Add($"Сумма {textBoxSumCredit.Text}, Название {textBoxNameCredit.Text}, Проценты {textBoxPersentCredit.Text}, Мсяцев {textBoxTimeCredit.Text}");
             //cr.listBoxCredit.Items.Add($"Сумма "); 
             JsonSerializerOptions options = new JsonSerializerOptions

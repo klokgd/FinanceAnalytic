@@ -20,97 +20,117 @@ namespace FinanceAnalytic
 
     public partial class OperationWindow : Window
     {
-        List<IAccount> allCounts { get; set; }
-        List<ITransactions> allTransaction { get; set; }
-        public string FilePath { get; set; }
-
-        public Category category { get; set; }
-
-        private User _workSpace;
-        public Account acc;
-
+        List<ITransaction> allTransaction { get; set; }
+        private User _user;
+       
 
         public OperationWindow(User authentication)
         {
-            
-            
+
+
             InitializeComponent();
-            category = new Category();
-            acc = new Account();
-            _workSpace = authentication;
-                        
-            for (int i = 1; i < 8; i++)
+            _user = authentication;
+
+            if (_user.Categories.Count > 0)
             {
-                CategoryList.Items.Add((Category)i);
-                
-            } 
-            //for (int i = 1; i < 5; i++)
-            //{
-            //    CountList.Items.Add((Account)i);
-                
-            //}
-            
+                foreach (var item in _user.Categories)
+                {
+                    CategoryList.Items.Add(item.Name);
+                }
+
+            }
+
+            foreach (var item in _user.Accounts)
+            {
+                CountList.Items.Add(item.Name);
+            }
+
+
         }
         private void ButtonEnterToAddTransaction_Click(object sender, RoutedEventArgs e)
         {
-            FilePath = "../ooperation.json";
-            
-            IAccount account  = _workSpace.FindCount(CountList.Text);
-            if (account==null)
-            {
-                _workSpace.AddAccountToList(account);
-            }
-            allTransaction = account.Transaction;
-            if (allCounts ==null)
-            {
-                allCounts = new List<IAccount>();
-            }
-            if (!File.Exists(FilePath))
-            {
-               File.Create(FilePath);
-            }
-            AddTransaction();
 
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-                WriteIndented = true
-            };
+            IAccount account = _user.FindAccount(CountList.Text);
 
-            string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(allTransaction, options);
-            File.AppendAllText(FilePath, jsonToWrite);
-            
+            if (account == null)
+            {
+                MessageBox.Show("Сначала создайте счёт!");
+            }
+            AddTransaction(account);
+
+         
             Storage storage = Storage.GetInstance();
-            
+
             storage.SaveToFile();
-            
+
             IncreaseOrExpenseList.Text = "";
             textBoxSumTransaction.Text = "";
         }
-        public void AddTransaction()
+        public void AddTransaction(IAccount account)
         {
-            if (allTransaction == null)
+
+            if (account is PersonalAccount)
             {
-                allTransaction = new List<ITransactions>();
-            }
-            if (IncreaseOrExpenseList.Text == "Доход")
+                PersonalAccount personalAccount = (PersonalAccount)account;
+                if (IncreaseOrExpenseList.Text == "Доход")
+                {
+                    SendIncrease(personalAccount);
+                }
+                else
+                {
+                    SendExpense(personalAccount);
+                }
+
+            } else if (account is DepositAccount)
             {
-                Increase expense = new Increase(Convert.ToDecimal(textBoxSumTransaction.Text), Convert.ToString(CategoryList.SelectedItem), (DateTime)datePicker.SelectedDate, CountList.Text);
-                allTransaction.Add(expense);
-                listBox.Items.Add($"Сумма: {expense.Sum},  Дата: {expense.Date.Year}-{expense.Date.Month}-{expense.Date.Day},  Категория: {expense.Category},  Cчет: {expense.CountPerson}");
-            }
-            else
+                DepositAccount depositAccount = (DepositAccount)account;
+
+                if (IncreaseOrExpenseList.Text == "Доход")
+                {
+                    SendIncrease(depositAccount);
+                }
+                else
+                {
+                    MessageBox.Show("В \"Депозит\" нельзя записывать расходы!");
+                }
+            } else if (account is SavingAccount)
             {
-                Expense expense = new Expense(Convert.ToDecimal(textBoxSumTransaction.Text), Convert.ToString(CategoryList.SelectedItem), (DateTime)datePicker.SelectedDate, CountList.Text);
-                allTransaction.Add(expense);
-                listBox.Items.Add($"Сумма: -{expense.Sum},  Дата: {expense.Date.Year}-{expense.Date.Month}-{expense.Date.Day},  Категория: {expense.Category},  Cчет: {expense.CountPerson}");
+                SavingAccount savingAccount = (SavingAccount)account;
+                if (IncreaseOrExpenseList.Text == "Доход")
+                {
+                    SendIncrease(savingAccount);
+                }
+                else
+                {
+                    SendExpense(savingAccount);
+                }
             }
-            if (allTransaction == null)
-            {
-                allTransaction = new List<ITransactions>();
-            }
-             
+
         }
+
+        public void SendIncrease(IAccount account)
+        {
+            Increase increase = new Increase(Convert.ToDecimal(textBoxSumTransaction.Text), Convert.ToString(CategoryList.SelectedItem), (DateTime)datePicker.SelectedDate, CountList.Text);
+            account.AddIncrease(increase);
+            listBox.Items.Add($"Сумма: {increase.Sum},  Дата: {increase.Date.Year}-{increase.Date.Month}-{increase.Date.Day},  Категория: {increase.Category},  Cчет: {increase.CountPerson}");
+        }
+
+        public void SendExpense(PersonalAccount account)
+        {
+            Expense expense = new Expense(Convert.ToDecimal(textBoxSumTransaction.Text), Convert.ToString(CategoryList.SelectedItem), (DateTime)datePicker.SelectedDate, CountList.Text);
+            account.AddExpense(expense);
+            listBox.Items.Add($"Сумма: -{expense.Sum},  Дата: {expense.Date.Year}-{expense.Date.Month}-{expense.Date.Day},  Категория: {expense.Category},  Cчет: {expense.CountPerson}");
+
+        }
+        public void SendExpense(SavingAccount account)
+        {
+            Expense expense = new Expense(Convert.ToDecimal(textBoxSumTransaction.Text), Convert.ToString(CategoryList.SelectedItem), (DateTime)datePicker.SelectedDate, CountList.Text);
+            account.AddExpense(expense);
+            listBox.Items.Add($"Сумма: -{expense.Sum},  Дата: {expense.Date.Year}-{expense.Date.Month}-{expense.Date.Day},  Категория: {expense.Category},  Cчет: {expense.CountPerson}");
+
+        }
+
+
         private void ButtonEnterToOperationMenu_Click(object sender, RoutedEventArgs e)
         {
             OperationWindow window = this;
@@ -124,61 +144,48 @@ namespace FinanceAnalytic
         }
         private void ButtonEnterToCountMenu_Click(object sender, RoutedEventArgs e)
         {
-            CountWindow window = new CountWindow(_user);
+            AccountWindow window = new AccountWindow(_user);
             window.Show();
             this.Hide();
         }
-        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
-        {
 
-        }
-        private void TextBox_SumTransaction(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        private void TextBox_IncreaseTransaction(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        private void TextBox_CountTransaction(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        private void TextBox_CategoryTransaction(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        private void TextBox_DateTransaction(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        void PrintText(object sender, SelectionChangedEventArgs args)
-        {
-
-        }
-        private void OnMouseLeftButtonUp(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void IncreaseOrExpenseList_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
             datePicker.IsDropDownOpen = true;
         }
-        private void datePicker_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
 
-        }
-        private void CategoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-            
-        }
 
         private void AddCategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            Category category = new Category(CategoryNameTextBox.Text);
+
+
+
+            _user.AddCategoryToList(category);
+            CategoryList.Items.Add(category.Name);
+
+            Storage storage = Storage.GetInstance();
+            storage.SaveToFile();
+
+
+        }
+
+        private void TextBox_SumTransaction(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void CategoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void IncreaseOrExpenseList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void PrintText(object sender, SelectionChangedEventArgs e)
         {
 
         }

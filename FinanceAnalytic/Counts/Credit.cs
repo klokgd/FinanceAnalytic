@@ -6,7 +6,7 @@ namespace FinanceAnalytic
 {
     public class Credit
     {
-         public decimal Sum { get; set; }
+         public decimal Balance { get; set; }
         public string Name { get; set; }
         public int LoanTerm { get; set; }
         public int ActualMonth { get; set; }
@@ -15,7 +15,7 @@ namespace FinanceAnalytic
 
         public Credit(decimal sum, string name, int loanTerm, decimal persent, DateTime actualData)
         {
-            Sum = sum;
+            Balance = sum;
             Name = name;
             LoanTerm = loanTerm;
             Persent = persent;
@@ -96,7 +96,7 @@ namespace FinanceAnalytic
         public decimal PayMonthAnnuityLoan( )
         {
             Transaction = new List<ITransaction>();
-            decimal payOver = CalculateBalanceOfLoan(Sum, Transaction);
+            decimal payOver = CalculateBalanceOfLoan(Balance, Transaction);
             int rMonth = CalculateRemainingMonths();
             decimal persentMonth = CalculateMonthPersent();
             decimal Annuitypay = 0; //размер ежемес платежа в аннуительном кредите

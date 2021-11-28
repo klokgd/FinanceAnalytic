@@ -21,10 +21,10 @@
         </Grid.RowDefinitions>
         <TextBox x:Name="textBoxSumTransaction" materialDesign:HintAssist.Hint="Введите сумму..."  Margin="44,87,152,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_SumTransaction" Height="25"/>
         <ComboBox Name="CountList" materialDesign:HintAssist.Hint="Выберете счет..." Height="30" VerticalAlignment="Top" Margin="44,117,152,0">
-            
+
         </ComboBox>
         <ComboBox x:Name="CategoryList" materialDesign:HintAssist.Hint="Выберете категорию..." Height="30" VerticalAlignment="Top" Margin="44,152,152,0" SelectionChanged="CategoryList_SelectionChanged">
-            
+
         </ComboBox>
         <ComboBox x:Name="IncreaseOrExpenseList" materialDesign:HintAssist.Hint="Выберете доход или расход..." Height="30" VerticalAlignment="Center" Margin="44,0,152,0" SelectionChanged="IncreaseOrExpenseList_SelectionChanged" Grid.Row="1">
             <TextBlock><Run Text="Доход"/></TextBlock>
@@ -35,7 +35,7 @@
         <DatePicker Name="datePicker" materialDesign:HintAssist.Hint="Выберете дату операции..." Focusable="False" Margin="44,188,152,0" VerticalAlignment="Top" Height="25" Grid.RowSpan="2">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox" >
-                    <EventSetter Event="MouseLeftButtonUp" Handler="OnMouseLeftButtonUp"  />
+                    <!--<EventSetter Event="MouseLeftButtonUp" Handler="OnMouseLeftButtonUp"  />-->
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
@@ -62,8 +62,9 @@
                 <TextBlock TextWrapping="Wrap" Text="Последние транзакции:" FontSize="16" FontWeight="Bold"/>
             </ListBoxItem>
         </ListBox>
-        <Button x:Name="AddCategoryButton" Grid.Column="1" Content="Добавить категорию" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Click="AddCategoryButton_Click"/>
+        <Button x:Name="AddCategoryButton" Grid.Column="1" Content="Добавить категорию" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" Click="AddCategoryButton_Click" Margin="0,40,0,0"/>
         <TextBox x:Name="CategoryTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="0" Margin="0,90,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="170"/>
+        <TextBox x:Name="CategoryNameTextBox" materialDesign:HintAssist.Hint="Введите имя новой категории"  Grid.Column="1" HorizontalAlignment="Center" Margin="0,79,0,0" Grid.RowSpan="2" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="37"/>
 
 
 

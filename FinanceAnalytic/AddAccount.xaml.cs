@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,26 +18,25 @@ namespace FinanceAnalytic
     /// </summary>
     public partial class AddAccount : Window
     {
-        private User _workSpace;
-        public AddAccount()
+        private User _user;
+        public AddAccount(User authentication)
         {
             InitializeComponent();
+            _user = authentication;
         }
         private void button_AddAccount_Click(object sender, RoutedEventArgs e)
         {
 
             string name = TextBoxAccounName.Text;
             decimal balance = Convert.ToDecimal( TextBoxSumAccount.Text);
-            //PersonalAccount ps = new PersonalAccount(balance, name);
+            PersonalAccount personalAccount = new PersonalAccount(balance, name);
             Storage storage = Storage.GetInstance();
-            
-            storage.AddAccount(balance,name);
-            CountWindow countWindow = Owner as CountWindow;
-
-            countWindow.listBoxCount.Items.Add(storage.accountList);
-            //mainWindow.ListBoxListOfUsers.Items.Add(storage.usersList.Last().Name);
-            OperationWindow count = new OperationWindow(_workSpace);
+            _user.AddAccountToList(personalAccount);
+            AccountWindow countWindow = Owner as AccountWindow;
+            countWindow.listBoxAccount.Items.Add(_user.Accounts.Last().Name);
+            OperationWindow count = new OperationWindow(_user);
             count.CountList.Items.Add(name);
+            storage.SaveToFile();
             Hide();
         }
     }

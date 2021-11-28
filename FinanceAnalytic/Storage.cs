@@ -16,15 +16,21 @@ namespace FinanceAnalytic
     {
         private Storage()
         {
-            FilePath = "../settings.json";
+            FilePath = "h:/settings.json";
 
             if (File.Exists(FilePath))
             {
                 usersList = new List<User>();
-                string json = File.ReadAllText(FilePath);
+                string FilePath2 = "h:/settings2.json";
+
+                string json = File.ReadAllText(FilePath2);
 
 
-                usersList = JsonConvert.DeserializeObject<List<User>>(json);
+                usersList = JsonConvert.DeserializeObject<List<User>>(json, new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto,
+                    NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+                });
             }
 
             else
@@ -43,12 +49,11 @@ namespace FinanceAnalytic
         public string FilePath { get; }
 
         public List<User> usersList { get; set; }
-        public List<PersonalAccount> accountList { get; set; }
+        //public List<PersonalAccount> accountList { get; set; }
 
 
-        int counts = 0;
 
-        public void Registration(string name, string password)
+        public void RegisterUser(string name, string password)
         {
 
             if (!File.Exists(FilePath))
@@ -72,13 +77,24 @@ namespace FinanceAnalytic
                 JsonSerializerOptions options = new JsonSerializerOptions
                 {
                     Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-                    WriteIndented = true
+                    WriteIndented = true,
+
                 };
 
                 string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
+
+                string jsonTypeNameAll = JsonConvert.SerializeObject(usersList, Formatting.Indented, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                });
+
                 File.WriteAllText(FilePath, jsonToWrite);
 
-                counts++;
+                string FilePath2 = "h:/settings2.json";
+
+
+                File.WriteAllText(FilePath2, jsonTypeNameAll);
+
             }
 
         }
@@ -116,6 +132,19 @@ namespace FinanceAnalytic
 
             string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
             File.WriteAllText(FilePath, jsonToWrite);
+
+            
+
+            string jsonTypeNameAll = JsonConvert.SerializeObject(usersList, Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            });
+
+            string FilePath2 = "h:/settings2.json";
+
+
+            File.WriteAllText(FilePath2, jsonTypeNameAll);
+
         }
 
         public User GetWorkSpace(string findName)
@@ -128,15 +157,15 @@ namespace FinanceAnalytic
 
         }
 
-        public void AddAccount(decimal sum, string name )
-        {
-            PersonalAccount newAcc = new PersonalAccount(sum, name);
-            if (accountList ==null)
-            {
-                accountList = new List<PersonalAccount>();
-            }
-            accountList.Add(newAcc);
-            //SaveToFile();
-        }
+        //public void AddAccount(decimal sum, string name )
+        //{
+        //    PersonalAccount newAcc = new PersonalAccount(sum, name);
+        //    if (accountList ==null)
+        //    {
+        //        accountList = new List<PersonalAccount>();
+        //    }
+        //    accountList.Add(newAcc);
+        //    //SaveToFile();
+        //}
     }
 }

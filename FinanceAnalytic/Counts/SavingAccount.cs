@@ -19,10 +19,15 @@ namespace FinanceAnalytic
             Transaction = new List<ITransaction>();
         }
 
-       public void AddIncrease(Increase increase)
+       public void AddIncrease(ITransaction increase)
         {
             Transaction.Add(increase);
             Balance += increase.Sum;
+        }
+        public void AddExpense(ITransaction increase)
+        {
+            Transaction.Add(increase);
+            Balance -= increase.Sum;
         }
 
 

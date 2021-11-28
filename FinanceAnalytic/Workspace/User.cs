@@ -23,10 +23,15 @@ namespace FinanceAnalytic
             Name = name;
             Password = password;
             Accounts = new List<IAccount>();
+            Credits = new List<Credit>();
+            Categories = new List<Category>();
         }
 
         public List<IAccount> Accounts { get; set; }
+        public List<Credit> Credits { get; set; }
                
+        public List<Category> Categories { get; set; } 
+
         public void AddAccountToList(IAccount counts)
         {
 
@@ -34,7 +39,13 @@ namespace FinanceAnalytic
 
         }
 
-        public IAccount FindCount(string findCount)
+        public void AddCategoryToList(Category category)
+        {
+            Categories.Add(category);
+        }
+
+
+        public IAccount FindAccount(string findCount)
         {
             IAccount necessaryCount = Accounts.Find(x => x.Name.Contains(findCount));
             

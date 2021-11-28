@@ -31,7 +31,7 @@ namespace FinanceAnalytic
 
             Storage storage = Storage.GetInstance();
 
-            storage.Registration(login, password);
+            storage.RegisterUser(login, password);
 
             MainWindow mainWindow = Owner as MainWindow;
 

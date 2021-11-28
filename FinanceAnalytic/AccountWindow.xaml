@@ -1,4 +1,4 @@
-<Window x:Class="FinanceAnalytic.CountWindow"
+<Window x:Class="FinanceAnalytic.AccountWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -29,14 +29,12 @@
         </Border>
         <Button Content="Добавить кредит" HorizontalAlignment="Left" Margin="320,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddCredit" Grid.ColumnSpan="2"/>
         <Button Content="Добавить вклад" HorizontalAlignment="Left" Margin="200,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddDeposit" Grid.Column="1"/>
-        <Button Content="Добавить счет" HorizontalAlignment="Left" Margin="42,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddCount"/>
+        <Button x:Name="AddAccountButton" Content="Добавить счет" HorizontalAlignment="Left" Margin="42,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddCount"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="70,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="102"><Run Text="Все "/><Run Language="ru-ru" Text="счета"/></TextBlock>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="348,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="102" Grid.ColumnSpan="2"><Run Text="Все "/><Run Language="ru-ru" Text="кредиты"/></TextBlock>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="228,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="102" Grid.Column="1"><Run Text="Все "/><Run Language="ru-ru" Text="вклады"/></TextBlock>
-        <ListBox x:Name="listBoxCount" Margin="10,36,142,206" Grid.RowSpan="2"/>
-        <ListBox Name="listBoxCredit" Margin="270,51,272,206"  SelectionMode="Single" Grid.ColumnSpan="2" Grid.RowSpan="2" >
-            <ListBoxItem>gnfgfn</ListBoxItem>
-        </ListBox>
-        <ListBox x:Name="listBoxDeposite" Margin="142,36,10,206" Grid.RowSpan="2"  Grid.Column="1"/>
+        <ListBox x:Name="listBoxAccount" Margin="10,36,142,206" Grid.RowSpan="2" SelectionChanged="listBoxAccount_SelectionChanged"/>
+        <ListBox Name="listBoxCredit" Margin="270,36,272,206"  SelectionMode="Single" Grid.ColumnSpan="2" Grid.RowSpan="2" SelectionChanged="listBoxCredit_SelectionChanged" />
+        <ListBox x:Name="listBoxDeposite" Margin="142,36,10,206" Grid.RowSpan="2"  Grid.Column="1" SelectionChanged="listBoxDeposite_SelectionChanged"/>
     </Grid>
 </Window>
