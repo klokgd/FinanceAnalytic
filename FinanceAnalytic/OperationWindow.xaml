@@ -28,11 +28,7 @@
             <TextBlock>Вклад</TextBlock>
         </ComboBox>
         <ComboBox x:Name="CategoryList" materialDesign:HintAssist.Hint="Выберете категорию..." Height="30" VerticalAlignment="Top" Margin="44,152,152,0" SelectionChanged="CategoryList_SelectionChanged">
-            <TextBlock><Run Text="Жкх"/></TextBlock>
-            <TextBlock><Run Text="Еда"/></TextBlock>
-            <TextBlock><Run Text="Транспорт"/></TextBlock>
-            <TextBlock><Run Text="Животные"/></TextBlock>
-            <TextBlock><Run Text="Все для дома"/></TextBlock>
+            
         </ComboBox>
         <ComboBox x:Name="IncreaseOrExpenseList" materialDesign:HintAssist.Hint="Выберете доход или расход..." Height="30" VerticalAlignment="Center" Margin="44,0,152,0" SelectionChanged="IncreaseOrExpenseList_SelectionChanged" Grid.Row="1">
             <TextBlock><Run Text="Доход"/></TextBlock>

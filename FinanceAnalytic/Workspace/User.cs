@@ -14,7 +14,6 @@ namespace FinanceAnalytic
 {
     public class User
     {
-
         public string Name { get; set; }
         public string Password { get; set; }
 
@@ -26,6 +25,8 @@ namespace FinanceAnalytic
         }
 
         public List<IAccount> Accounts { get; set; }
+
+        public List<ITransactions> Transactions { get; set; }
 
         public void AddAccountToList(IAccount counts)
         {
@@ -40,10 +41,6 @@ namespace FinanceAnalytic
             return necessaryCount;
 
         }
-
-
-
-
     }
 }
 

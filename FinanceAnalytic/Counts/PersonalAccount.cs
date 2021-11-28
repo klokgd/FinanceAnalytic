@@ -20,7 +20,7 @@ namespace FinanceAnalytic
         public decimal Balance { get; set; }
         public List<ITransactions> Transaction { get; set; }
        
-        public void AddIncrease(ITransactions increase)
+        public void AddIncrease(Increase increase)
         {
             Transaction.Add(increase);
             Balance += increase.Sum;

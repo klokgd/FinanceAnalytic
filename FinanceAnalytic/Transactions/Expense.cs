@@ -6,7 +6,7 @@ namespace FinanceAnalytic
 {
     public class Expense : ITransactions
     {
-        public Expense(decimal sum, Category category, DateTime today, string countPerson)
+        public Expense(decimal sum, string category, DateTime today, string countPerson)
         {
             if (sum < 0)
             {
@@ -16,7 +16,7 @@ namespace FinanceAnalytic
             {
                 Sum = sum;
             }
-            Category = category.Name;
+            Category = category;
             Date = today;
         }
 
