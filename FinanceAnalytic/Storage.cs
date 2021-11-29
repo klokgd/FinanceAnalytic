@@ -63,22 +63,13 @@ namespace FinanceAnalytic
                 User user = new User(name, password);
                 usersList.Add(user);
 
-                //JsonSerializerOptions options = new JsonSerializerOptions
-                //{
-                //    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-                //    WriteIndented = true,
-
-                //};
-
-                //string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
 
                 string jsonTypeNameAll = JsonConvert.SerializeObject(usersList, Formatting.Indented, new JsonSerializerSettings
                 {
                     TypeNameHandling = TypeNameHandling.All
                 });
 
-                ////File.WriteAllText(FilePath, jsonToWrite);
-                //string FilePath2 = "./settings2.json";
+            
                 File.WriteAllText(FilePath, jsonTypeNameAll);
             }
         }
@@ -105,16 +96,6 @@ namespace FinanceAnalytic
 
         public void SaveToFile()
         {
-            //JsonSerializerOptions options = new JsonSerializerOptions
-            //{
-            //    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-            //    WriteIndented = true
-            //};
-
-            //string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
-            //File.WriteAllText(FilePath, jsonToWrite);
-            //string FilePath2 = "./settings2.json";
-
             string jsonTypeNameAll = JsonConvert.SerializeObject(usersList, Formatting.Indented, new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.All
