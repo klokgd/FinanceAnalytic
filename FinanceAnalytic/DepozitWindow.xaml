@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FinanceAnalytic"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="DepozitWidow" Height="500" Width="482">
+        Title="Окно вкладов" Height="500" Width="482">
     <Grid>
         <Button Content="Добавить вклад" Click="ButtonEnterToAddDeposit_Click" Margin="115,287,140,0" VerticalAlignment="Top" Height="32"/>
         <TextBox x:Name="textBoxNameDeposit" materialDesign:HintAssist.Hint="Введите назначение вклада..."  Margin="72,43,72,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"  Height="26" />
@@ -19,7 +19,7 @@
                 <Style TargetType="DatePickerTextBox" ></Style>
             </DatePicker.Resources>
         </DatePicker>
-        <TextBlock x:Name="textBlockItogSum" HorizontalAlignment="Left" Margin="329,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="117"><Run Language="ru-ru" Text="Сумма"/></TextBlock>
+        <TextBlock x:Name="textBlockItogSum" HorizontalAlignment="Left" Margin="150,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="116"><Run Language="ru-ru" Text="Сумма"/></TextBlock>
         <Button Content="В конце срока на счету будет" HorizontalAlignment="Left" Margin="48,199,0,0" VerticalAlignment="Top" Click="SumInEndTime" Width="320"/>
         <Border
             MinWidth="400"  Background="DarkBlue" VerticalAlignment="Top" Padding="40" CornerRadius="20" Height="112" Margin="0,350,0,0">

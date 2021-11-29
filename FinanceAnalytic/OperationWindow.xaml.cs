@@ -24,6 +24,7 @@ namespace FinanceAnalytic
                 }
             }
 
+
             foreach (var item in _user.Accounts)
             {
                 CountList.Items.Add(item.Name);
@@ -135,6 +136,7 @@ namespace FinanceAnalytic
 
             Storage storage = Storage.GetInstance();
             storage.SaveToFile();
+            MessageBox.Show("Категория добавлена!");
         }
 
         private void ButtonEnterToOperationMenu_Click(object sender, RoutedEventArgs e)

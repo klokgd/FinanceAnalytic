@@ -17,8 +17,7 @@ namespace FinanceAnalytic
             if (File.Exists(FilePath))
             {
                 usersList = new List<User>();
-                string FilePath2 = "./settings2.json";
-                string json = File.ReadAllText(FilePath2);
+                string json = File.ReadAllText(FilePath);
 
                 usersList = JsonConvert.DeserializeObject<List<User>>(json, new JsonSerializerSettings
                 {
@@ -64,22 +63,23 @@ namespace FinanceAnalytic
                 User user = new User(name, password);
                 usersList.Add(user);
 
-                JsonSerializerOptions options = new JsonSerializerOptions
-                {
-                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-                    WriteIndented = true,
+                //JsonSerializerOptions options = new JsonSerializerOptions
+                //{
+                //    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                //    WriteIndented = true,
 
-                };
+                //};
 
-                string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
+                //string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
+
                 string jsonTypeNameAll = JsonConvert.SerializeObject(usersList, Formatting.Indented, new JsonSerializerSettings
                 {
                     TypeNameHandling = TypeNameHandling.All
                 });
 
-                File.WriteAllText(FilePath, jsonToWrite);
-                string FilePath2 = "./settings2.json";
-                File.WriteAllText(FilePath2, jsonTypeNameAll);
+                ////File.WriteAllText(FilePath, jsonToWrite);
+                //string FilePath2 = "./settings2.json";
+                File.WriteAllText(FilePath, jsonTypeNameAll);
             }
         }
 
@@ -105,22 +105,22 @@ namespace FinanceAnalytic
 
         public void SaveToFile()
         {
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-                WriteIndented = true
-            };
+            //JsonSerializerOptions options = new JsonSerializerOptions
+            //{
+            //    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+            //    WriteIndented = true
+            //};
 
-            string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
-            File.WriteAllText(FilePath, jsonToWrite);
+            //string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
+            //File.WriteAllText(FilePath, jsonToWrite);
+            //string FilePath2 = "./settings2.json";
 
             string jsonTypeNameAll = JsonConvert.SerializeObject(usersList, Formatting.Indented, new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.All
             });
 
-            string FilePath2 = "./settings2.json";
-            File.WriteAllText(FilePath2, jsonTypeNameAll);
+            File.WriteAllText(FilePath, jsonTypeNameAll);
         }
 
         public User GetWorkSpace(string findName)

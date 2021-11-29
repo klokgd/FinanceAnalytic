@@ -51,7 +51,7 @@ namespace FinanceAnalytic
             Hide();
         }
 
-        private void SumInTheEndTime(object sender, RoutedEventArgs e)
+        private void SumInEndTime(object sender, RoutedEventArgs e)
         {
             double sum = GetIncomeFromDeposit(
                 Convert.ToDouble(textBoxSumDeposit.Text),
@@ -59,8 +59,8 @@ namespace FinanceAnalytic
                 Convert.ToInt32(textBoxPercentDeposit.Text)
             );
             textBlockItogSum.Text = String.Format("{0:f2}", sum);
-
         }
+
         public double GetIncomeFromDeposit(double sum, int mounth, int persent) 
         {
             double incomeFromDeposit = sum + (sum * persent *mounth*30/(365*100));
@@ -87,9 +87,6 @@ namespace FinanceAnalytic
             count.Show();
         }
 
-        private void SumInEndTime(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     }
 }

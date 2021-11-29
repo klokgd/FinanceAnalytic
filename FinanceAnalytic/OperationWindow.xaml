@@ -7,7 +7,7 @@
         
         xmlns:local="clr-namespace:FinanceAnalytic"
         mc:Ignorable="d"
-        Title="OperationWindow" Height="550" Width="800">
+        Title="OperationWindow" Height="550" Width="850">
     <Grid Margin="0,0,0,0">
         <TextBox x:Name="textBoxSumTransaction" materialDesign:HintAssist.Hint="Введите сумму..."  Margin="44,104,517,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
         <ComboBox Name="CountList" materialDesign:HintAssist.Hint="Выберете счет..." Height="30" VerticalAlignment="Top" Margin="44,169,517,0"/>
@@ -40,14 +40,14 @@
             </Border.Effect>
             <TextBlock x:Name="SumAllCount" TextWrapping="Wrap" Foreground="White" Margin="0,-6,63,-10"><Run Text="Общий баланс "/><Run Text="текущего "/><Run Text="счета:"/></TextBlock>
         </Border>
-        <ListBox Name="listBox" Margin="383,29,10,260" SelectionMode="Single" Grid.RowSpan="2">
+        <ListBox Name="listBox" Margin="383,29,10,226" SelectionMode="Single">
             <ListBoxItem>
                 <TextBlock TextWrapping="Wrap" Text="Последние транзакции:" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"/>
             </ListBoxItem>
         </ListBox>
-        <Button x:Name="AddCategoryButton" Content="Добавить категорию" HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddCategoryButton_Click" Margin="586,366,0,0"/>
+        <Button x:Name="AddCategoryButton" Content="Добавить категорию" HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddCategoryButton_Click" Margin="654,371,0,0"/>
         <TextBox x:Name="CategoryTextBox" HorizontalAlignment="Center" Height="0" Margin="0,2,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="170" Grid.Row="1"/>
-        <TextBox x:Name="CategoryNameTextBox" materialDesign:HintAssist.Hint="Введите имя новой категории" HorizontalAlignment="Left" Margin="586,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="37"/>
+        <TextBox x:Name="CategoryNameTextBox" materialDesign:HintAssist.Hint="Введите имя новой категории" HorizontalAlignment="Left" Margin="654,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="37"/>
         <TextBox x:Name="textBoxSumAccount" HorizontalAlignment="Left" Margin="252,41,0,0" Foreground="White" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

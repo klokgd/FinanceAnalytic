@@ -29,10 +29,11 @@ namespace FinanceAnalytic
             string name = TextBoxAccounName.Text;
             decimal balance = Convert.ToDecimal( TextBoxSumAccount.Text);
             PersonalAccount personalAccount = new PersonalAccount(balance, name);
+
             Storage storage = Storage.GetInstance();
             _user.AddAccountToList(personalAccount);
             AccountWindow countWindow = Owner as AccountWindow;
-            countWindow.listBoxAccount.Items.Add(_user.Accounts.Last().Name);
+            countWindow.listBoxAccount.Items.Add($"Название: {_user.Accounts.Last().Name}\nСумма: {balance}");
             OperationWindow count = new OperationWindow(_user);
             count.CountList.Items.Add(name);
             storage.SaveToFile();

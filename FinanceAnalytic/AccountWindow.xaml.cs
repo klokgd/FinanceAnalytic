@@ -20,10 +20,12 @@ namespace FinanceAnalytic
             {
                 listBoxAccount.Items.Add($"Название: {item.Name}\nСумма: {item.Balance}");
             }
+
             foreach (Credit item in _user.Credits)
             {
                 listBoxCredit.Items.Add($"Название: {item.Name}\nСумма: {item.Balance}");
             }
+
             foreach (Credit item in _user.Deposit)
             {
                 listBoxDeposite.Items.Add($"Название: {item.Name}\nСумма: {item.Balance}");
