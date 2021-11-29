@@ -4,9 +4,9 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    public class Increase : ITransactions
+    public class Increase : ITransaction
     {
-        public Increase(decimal sum, Category category, DateTime today, string countPerson)
+        public Increase(decimal sum, string category, DateTime today, string countPerson)
         {
             if (sum < 0)
             {
@@ -16,7 +16,7 @@ namespace FinanceAnalytic
             {
                 Sum = sum;
             }
-            Category = category.Name;
+            Category = category;
             Date = today;
             CountPerson = countPerson;
 

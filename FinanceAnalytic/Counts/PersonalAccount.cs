@@ -1,48 +1,47 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 namespace FinanceAnalytic
 {
-    public class PersonalAccount : ICounts
+    public class PersonalAccount : IAccount
     {
+        public string FilePath { get; set; }
+        
         public PersonalAccount(decimal sum, string name)
         {
-            Sum = sum;
+            Balance = sum;
             Name = name;
-            Transaction = new List<ITransactions>();
+            Transaction = new List<ITransaction>();
             
         }
-
+        
         public string Name { get; set; }
         public int Type { get; set; }
-        public decimal Sum { get; set; }
-        public List<ITransactions> Transaction { get; set; }
+        public decimal Balance { get; set; }
+        public List<ITransaction> Transaction { get; set; }
        
-        public void AddIncrease(Increase increase)
+        public void AddIncrease(ITransaction increase)
         {
             Transaction.Add(increase);
-            Sum += increase.Sum;
+            Balance += increase.Sum;
         }
-        public void AddExpense(Expense expense)
+        public void AddExpense(ITransaction expense)
         {
             Transaction.Add(expense);
-            Sum -= expense.Sum;
+            Balance -= expense.Sum;
         }
 
-        public void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient)
+        public void TransferBetweenCounts(Increase transferTransaction, IAccount transactionRecepient)
         {
             Transaction.Add(transferTransaction);
-            Sum -= transferTransaction.Sum;
+            Balance -= transferTransaction.Sum;
             transactionRecepient.AddIncrease(transferTransaction);
-        }
-
-
-
-        public void SaveData()
-        {
-
         }
 
         public void RenameAccount(string newName)

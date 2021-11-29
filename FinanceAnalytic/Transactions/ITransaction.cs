@@ -2,7 +2,7 @@
 
 namespace FinanceAnalytic
 {
-    public interface ITransactions
+    public interface ITransaction
     {
         decimal Sum { get; }
         //int Type { get; }

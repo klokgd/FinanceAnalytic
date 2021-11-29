@@ -1,0 +1,41 @@
+<Window x:Class="FinanceAnalytic.AccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinanceAnalytic"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Все счета,вклады,кредиты"  Height="500" Width="800" >
+    <Grid Background="#dedeec" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="1" Grid.ColumnSpan="2"
+            MinWidth="400" Margin="5,141,5,0" Background="DarkBlue" VerticalAlignment="Top" Padding="20" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="Black" ShadowDepth="0"></DropShadowEffect>
+            </Border.Effect>
+            <DockPanel>
+                <Button Content="Операции" Click="ButtonEnterToOperationMenu_Click" DockPanel.Dock="Left" Width="130" VerticalAlignment="Top" />
+                <Button Content="Счета" Click="ButtonEnterToCountMenu_Click" DockPanel.Dock="Right" Width="130" VerticalAlignment="Top"/>
+                <Button Content="Анализ" Click="ButtonEnterToAnalisMenu_Click" DockPanel.Dock="Right" Width="100" VerticalAlignment="Top"/>
+            </DockPanel>
+        </Border>
+        <Button Content="Добавить кредит" HorizontalAlignment="Left" Margin="320,81,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddCredit" Grid.ColumnSpan="2" />
+        <Button Content="Добавить вклад" HorizontalAlignment="Left" Margin="200,81,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddDeposit" Grid.Column="1"/>
+        <Button x:Name="AddAccountButton" Content="Добавить счет" HorizontalAlignment="Left" Margin="42,81,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="158" Click="Button_ClickAddCount"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="70,29,0,0" TextWrapping="Wrap" FontSize =" 16" FontWeight="Bold"  VerticalAlignment="Top" Height="30" Width="102"><Run Text="Все "/><Run Language="ru-ru" Text="счета"/></TextBlock>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="349,29,0,0" TextWrapping="Wrap" FontSize =" 16" FontWeight="Bold" VerticalAlignment="Top" Height="30" Width="102" Grid.ColumnSpan="2"><Run Text="Все "/><Run Language="ru-ru" Text="кредиты"/></TextBlock>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="228,29,0,0" TextWrapping="Wrap"  FontSize =" 16" FontWeight="Bold" VerticalAlignment="Top" Height="30" Width="102" Grid.Column="1"><Run Text="Все "/><Run Language="ru-ru" Text="вклады"/></TextBlock>
+        <ListBox x:Name="listBoxAccount" Margin="10,59,142,183" Grid.RowSpan="2" />
+        <ListBox Name="listBoxCredit" Margin="271,59,271,183"  SelectionMode="Single" Grid.ColumnSpan="2" Grid.RowSpan="2"  />
+        <ListBox x:Name="listBoxDeposite" Margin="142,59,10,183" Grid.RowSpan="2"  Grid.Column="1" />
+        <Button x:Name="button" Content="сменить пользователя" HorizontalAlignment="Left" Margin="151,2,0,0" VerticalAlignment="Top" Height="23" Width="256" FontSize="12" Click="button_Click" Grid.Column="1" />
+    </Grid>
+</Window>

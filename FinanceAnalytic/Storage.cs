@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Numerics;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using System.Text.Unicode;
 using System.Windows;
@@ -16,19 +12,23 @@ namespace FinanceAnalytic
     {
         private Storage()
         {
-            FilePath = "../settings.json";
+            FilePath = "./settings.json";
 
             if (File.Exists(FilePath))
             {
-                workSpaces = new List<WorkSpace>();
-                string json = File.ReadAllText(FilePath);
+                usersList = new List<User>();
+                string FilePath2 = "./settings2.json";
+                string json = File.ReadAllText(FilePath2);
 
-
-                workSpaces = JsonConvert.DeserializeObject<List<WorkSpace>>(json);
+                usersList = JsonConvert.DeserializeObject<List<User>>(json, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Auto,
+                    NullValueHandling = NullValueHandling.Ignore,
+                });
             }
 
             else
-                workSpaces = new List<WorkSpace>();
+                usersList = new List<User>();
         }
         private static Storage _instance;
 
@@ -42,12 +42,9 @@ namespace FinanceAnalytic
         }
         public string FilePath { get; }
 
-        public List<WorkSpace> workSpaces { get; set; }
+        public List<User> usersList { get; set; }
 
-
-        int counts = 0;
-
-        public void Registration(string name, string password)
+        public void RegisterUser(string name, string password)
         {
 
             if (!File.Exists(FilePath))
@@ -64,29 +61,31 @@ namespace FinanceAnalytic
             }
             else
             {
-                WorkSpace user = new WorkSpace(name, password);
-
-                workSpaces.Add(user);
+                User user = new User(name, password);
+                usersList.Add(user);
 
                 JsonSerializerOptions options = new JsonSerializerOptions
                 {
                     Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-                    WriteIndented = true
+                    WriteIndented = true,
+
                 };
 
-                string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(workSpaces, options);
+                string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
+                string jsonTypeNameAll = JsonConvert.SerializeObject(usersList, Formatting.Indented, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                });
+
                 File.WriteAllText(FilePath, jsonToWrite);
-
-                counts++;
+                string FilePath2 = "./settings2.json";
+                File.WriteAllText(FilePath2, jsonTypeNameAll);
             }
-
         }
 
         public bool Login(string name, string password)
         {
             string[] textFromFile = File.ReadAllLines(FilePath);
-
-
 
             if (File.Exists(FilePath) != true)
             {
@@ -100,7 +99,6 @@ namespace FinanceAnalytic
                 {
                     return true;
                 }
-
             }
             return false;
         }
@@ -113,18 +111,22 @@ namespace FinanceAnalytic
                 WriteIndented = true
             };
 
-            string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(workSpaces, options);
+            string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
             File.WriteAllText(FilePath, jsonToWrite);
+
+            string jsonTypeNameAll = JsonConvert.SerializeObject(usersList, Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            });
+
+            string FilePath2 = "./settings2.json";
+            File.WriteAllText(FilePath2, jsonTypeNameAll);
         }
 
-        public WorkSpace GetWorkSpace(string findName)
+        public User GetWorkSpace(string findName)
         {
-            WorkSpace necessaryUser = workSpaces.Find(x => x.Name.Contains(findName));
-           
-             
-
+            User necessaryUser = usersList.Find(x => x.Name.Contains(findName));
             return necessaryUser;
-
         }
     }
 }

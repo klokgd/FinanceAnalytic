@@ -23,7 +23,7 @@ namespace Tests
                 personalCount.AddIncrease(new Increase(1000, family, DateTime.Today));
             }
             //assert
-            Assert.AreEqual(personalCount.Sum, expected);
+            Assert.AreEqual(personalCount.Balance, expected);
         }
 
         //[TestCase (1200, 14, 2000, 6, 7)]

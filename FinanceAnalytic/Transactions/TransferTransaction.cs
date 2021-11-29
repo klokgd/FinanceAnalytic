@@ -4,12 +4,12 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    class TransferTransaction : ITransactions
+    class TransferTransaction : ITransaction
     {
-        public TransferTransaction(decimal sum, Category category, DateTime today, string countPerson)
+        public TransferTransaction(decimal sum, string category, DateTime today, string countPerson)
         {
             Sum = sum;
-            Category = category.Name;
+            Category = category;
             Date = today;
             CountPerson = countPerson;
         }

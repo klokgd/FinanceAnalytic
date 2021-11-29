@@ -4,9 +4,9 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    public class Expense : ITransactions
+    public class Expense : ITransaction
     {
-        public Expense(decimal sum, Category category, DateTime today, string countPerson)
+        public Expense(decimal sum, string category, DateTime today, string countPerson)
         {
             if (sum < 0)
             {
@@ -16,13 +16,12 @@ namespace FinanceAnalytic
             {
                 Sum = sum;
             }
-            Category = category.Name;
+            Category = category;
             Date = today;
         }
 
         public decimal Sum { get; }
         public DateTime Date { get; }
-
         public string Category { get; set; }
         public string CountPerson { get; set; }
     }

@@ -4,44 +4,38 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    class DepositAccount : ICounts
+    class DepositAccount : IAccount
     {
-        public decimal Sum { get; set; }
+        public decimal Balance { get; set; }
         public decimal Percent { get; set; }
         public string Name { get; set; }
-        public int Type { get; set; }
         public int ActualMonth { get; set; }
-        public List<ITransactions> Transaction { get; set; }
+        public List<ITransaction> Transaction { get; set; }
 
         
 
         public DepositAccount(decimal sum, string name, decimal percent)
         {
-            Sum = sum;
+            Balance = sum;
             Name = name;
             Percent = percent / 100;
             ActualMonth = DateTime.Now.Month;
-            Transaction = new List<ITransactions>();
+            Transaction = new List<ITransaction>();
         }
 
-        public void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient)
+        public void TransferBetweenCounts(Increase transferTransaction, IAccount transactionRecepient)
         {
             Transaction.Add(transferTransaction);
-            Sum -= transferTransaction.Sum;
+            Balance -= transferTransaction.Sum;
 
             transactionRecepient.AddIncrease(transferTransaction);
-        }
+        }        
 
-        
-
-        public void AddIncrease(Increase increase)
+        public void AddIncrease(ITransaction increase)
         {
             Transaction.Add(increase);
-            Sum += increase.Sum;
+            Balance += increase.Sum;
         }
-
-        
-
         public void CheckIfBeginningMonth()
         {
             if (ActualMonth != DateTime.Now.Month)
@@ -49,14 +43,11 @@ namespace FinanceAnalytic
                 RecalculateDeposit();
                 ActualMonth = DateTime.Now.Month;
             }
-           
-
-
         }
 
         public void RecalculateDeposit()
         {
-            Sum = Sum * Percent + Sum;
+            Balance = Balance * Percent + Balance;
         }
 
         

@@ -7,65 +7,47 @@
         
         xmlns:local="clr-namespace:FinanceAnalytic"
         mc:Ignorable="d"
-        Title="OperationWindow" Height="600" Width="800">
-    <Grid Margin="0,0,0,38">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="194*"/>
-            <RowDefinition Height="91*"/>
-            <RowDefinition Height="121*"/>
-            <RowDefinition Height="141*"/>
-        </Grid.RowDefinitions>
-        <TextBox x:Name="textBoxSumTransaction" materialDesign:HintAssist.Hint="Введите сумму..."  Margin="44,87,440,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_SumTransaction" Height="25"/>
-        <ComboBox Name="CountList" materialDesign:HintAssist.Hint="Выберете счет..." Height="30" VerticalAlignment="Top" Margin="44,117,440,0">
-            <TextBlock>Мой</TextBlock>
-            <TextBlock>Семейный</TextBlock>
-            <TextBlock>Ипотека</TextBlock>
-            <TextBlock>Кредит</TextBlock>
-            <TextBlock>Вклад</TextBlock>
-        </ComboBox>
-        <ComboBox x:Name="CategoryList" materialDesign:HintAssist.Hint="Выберете категорию..." Height="30" VerticalAlignment="Top" Margin="44,152,440,0" SelectionChanged="CategoryList_SelectionChanged">
-            <TextBlock><Run Text="Жкх"/></TextBlock>
-            <TextBlock><Run Text="Еда"/></TextBlock>
-            <TextBlock><Run Text="Транспорт"/></TextBlock>
-            <TextBlock><Run Text="Животные"/></TextBlock>
-            <TextBlock><Run Text="Все для дома"/></TextBlock>
-        </ComboBox>
-        <ComboBox x:Name="IncreaseOrExpenseList" materialDesign:HintAssist.Hint="Выберете доход или расход..." Height="30" VerticalAlignment="Center" Margin="44,0,440,0" SelectionChanged="IncreaseOrExpenseList_SelectionChanged" Grid.Row="1">
+        Title="OperationWindow" Height="550" Width="800">
+    <Grid Margin="0,0,0,0">
+        <TextBox x:Name="textBoxSumTransaction" materialDesign:HintAssist.Hint="Введите сумму..."  Margin="44,104,517,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+        <ComboBox Name="CountList" materialDesign:HintAssist.Hint="Выберете счет..." Height="30" VerticalAlignment="Top" Margin="44,169,517,0"/>
+        <ComboBox x:Name="CategoryList" materialDesign:HintAssist.Hint="Выберете категорию..." Height="30" VerticalAlignment="Top" Margin="44,134,517,0"/>
+        <ComboBox x:Name="IncreaseOrExpenseList" materialDesign:HintAssist.Hint="Выберете доход или расход..." Height="30" VerticalAlignment="Top" Margin="44,234,517,0">
             <TextBlock><Run Text="Доход"/></TextBlock>
             <TextBlock><Run Text="Расход"/></TextBlock>
-
         </ComboBox>
-        <Button Content="Добавить" Click="ButtonEnterToAddTransaction_Click" Margin="44,45,626,44" Grid.Row="2" />
-        <DatePicker Name="datePicker" materialDesign:HintAssist.Hint="Выберете дату операции..." Focusable="False" Margin="44,188,440,0" VerticalAlignment="Top" Height="25" Grid.RowSpan="2">
+        <Button Content="Добавить" Click="ButtonEnterToAddTransaction_Click" Margin="31,292,467,0" VerticalAlignment="Top" />
+        <DatePicker Name="datePicker" materialDesign:HintAssist.Hint="Выберете дату операции..." Focusable="False" Margin="44,204,517,0" VerticalAlignment="Top" Height="25">
             <DatePicker.Resources>
-                <Style TargetType="DatePickerTextBox" >
-                    <EventSetter Event="MouseLeftButtonUp" Handler="OnMouseLeftButtonUp"  />
-                </Style>
+                <Style TargetType="DatePickerTextBox" ></Style>
             </DatePicker.Resources>
         </DatePicker>
         <Border
-            MinWidth="400"  Background="DarkBlue" VerticalAlignment="Top" Padding="40" CornerRadius="20" Grid.Row="3" Height="112" Margin="0,50,0,0">
+            MinWidth="400"  Background="DarkBlue" VerticalAlignment="Top" Padding="20" CornerRadius="20" Height="81" Margin="0,432,0,0">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="Black" ShadowDepth="0"></DropShadowEffect>
             </Border.Effect>
             <DockPanel>
-                <Button Content="Операции" Click="ButtonEnterToOperationMenu_Click" DockPanel.Dock="Left" Width="130" />
-                <Button Content="Счета" Click="ButtonEnterToCountMenu_Click" DockPanel.Dock="Right" Width="130" />
-                <Button Content="Анализ" Click="ButtonEnterToAnalyseMenu_Click" DockPanel.Dock="Right" Width="100" />
+                <Button Content="Операции" Click="ButtonEnterToOperationMenu_Click" DockPanel.Dock="Left" Width="130" VerticalAlignment="Top" />
+                <Button Content="Счета" Click="ButtonEnterToCountMenu_Click" DockPanel.Dock="Right" Width="130" VerticalAlignment="Top"/>
+                <Button Content="Анализ" Click="ButtonEnterToAnalyseMenu_Click" DockPanel.Dock="Right" Width="100" VerticalAlignment="Top"/>
             </DockPanel>
         </Border>
         <Border
-            MinWidth="200" Margin="44,14,440,0" Background="DarkBlue" VerticalAlignment="Top" Padding="20" CornerRadius="5" Height="43">
+            MinWidth="200" Margin="44,29,480,0" Background="DarkBlue" VerticalAlignment="Top" Padding="20" CornerRadius="5" Height="43">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="Black" ShadowDepth="0"/>
             </Border.Effect>
-            <TextBlock x:Name="SumAllCount" Text="Общий баланс счета" TextWrapping="Wrap" Foreground="White" Margin="0,-6,0,-20"/>
+            <TextBlock x:Name="SumAllCount" TextWrapping="Wrap" Foreground="White" Margin="0,-6,63,-10"><Run Text="Общий баланс "/><Run Text="текущего "/><Run Text="счета:"/></TextBlock>
         </Border>
-        <ListBox Name="listBox" Margin="383,19,10,10" SelectionChanged="PrintText" SelectionMode="Single">
-            <ListBoxItem></ListBoxItem>
+        <ListBox Name="listBox" Margin="383,29,10,260" SelectionMode="Single" Grid.RowSpan="2">
+            <ListBoxItem>
+                <TextBlock TextWrapping="Wrap" Text="Последние транзакции:" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"/>
+            </ListBoxItem>
         </ListBox>
-
-
-
+        <Button x:Name="AddCategoryButton" Content="Добавить категорию" HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddCategoryButton_Click" Margin="586,366,0,0"/>
+        <TextBox x:Name="CategoryTextBox" HorizontalAlignment="Center" Height="0" Margin="0,2,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="170" Grid.Row="1"/>
+        <TextBox x:Name="CategoryNameTextBox" materialDesign:HintAssist.Hint="Введите имя новой категории" HorizontalAlignment="Left" Margin="586,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="37"/>
+        <TextBox x:Name="textBoxSumAccount" HorizontalAlignment="Left" Margin="252,41,0,0" Foreground="White" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

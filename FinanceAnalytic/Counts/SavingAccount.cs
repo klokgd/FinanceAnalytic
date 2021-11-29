@@ -4,32 +4,37 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    public class SavingAccount : ICounts
+    public class SavingAccount : IAccount
     {
-        public decimal Sum { get ; set  ; }
+        public decimal Balance { get ; set  ; }
         public string Name { get ; set ; }
-        public List<ITransactions> Transaction { get; set; }
+        public List<ITransaction> Transaction { get; set; }
         public int ActualMonth { get; set; }
 
         public SavingAccount(decimal sum, string name)
         {
-            Sum = sum;
+            Balance = sum;
             Name = name;
             ActualMonth = DateTime.Now.Month;
-            Transaction = new List<ITransactions>();
+            Transaction = new List<ITransaction>();
         }
 
-       public void AddIncrease(Increase increase)
+       public void AddIncrease(ITransaction increase)
         {
             Transaction.Add(increase);
-            Sum += increase.Sum;
+            Balance += increase.Sum;
+        }
+        public void AddExpense(ITransaction increase)
+        {
+            Transaction.Add(increase);
+            Balance -= increase.Sum;
         }
 
 
-        public void TransferBetweenCounts(Increase transferTransaction, ICounts transactionRecepient)
+        public void TransferBetweenCounts(Increase transferTransaction, IAccount transactionRecepient)
         {
             Transaction.Add(transferTransaction);
-            Sum -= transferTransaction.Sum;
+            Balance -= transferTransaction.Sum;
             transactionRecepient.AddIncrease(transferTransaction);
         }
 
