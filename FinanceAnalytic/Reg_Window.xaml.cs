@@ -30,12 +30,9 @@ namespace FinanceAnalytic
             string password = PasswordBoxPass.Password;
 
             Storage storage = Storage.GetInstance();
-
             storage.RegisterUser(login, password);
 
             MainWindow mainWindow = Owner as MainWindow;
-
-
             mainWindow.ListBoxListOfUsers.Items.Add(storage.usersList.Last().Name);
 
             Hide();

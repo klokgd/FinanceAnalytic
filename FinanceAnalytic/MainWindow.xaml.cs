@@ -40,7 +40,6 @@ namespace FinanceAnalytic
             {
                 MessageBox.Show("Данные неверны или пользователя не существует!");
             }
-
         }
 
         private void button_AddUser_Click(object sender, RoutedEventArgs e)
@@ -48,15 +47,6 @@ namespace FinanceAnalytic
             Reg_Window reg_Window = new Reg_Window();
             reg_Window.Owner = this;
             reg_Window.Show();
-        }
-        private void ListBoxListOfUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Storage storage = Storage.GetInstance();
-
-            if (!File.Exists(storage.FilePath))
-            {
-
-            }
         }
     }
 }

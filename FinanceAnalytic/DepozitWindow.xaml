@@ -1,0 +1,36 @@
+﻿<Window x:Class="FinanceAnalytic.DepozitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinanceAnalytic"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="DepozitWidow" Height="500" Width="482">
+    <Grid>
+        <Button Content="Добавить вклад" Click="ButtonEnterToAddDeposit_Click" Margin="115,287,140,0" VerticalAlignment="Top" Height="32"/>
+        <TextBox x:Name="textBoxNameDeposit" materialDesign:HintAssist.Hint="Введите назначение вклада..."  Margin="72,43,72,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"  Height="26" />
+        <TextBox x:Name="textBoxSumDeposit" materialDesign:HintAssist.Hint="Введите начальную сумму..."  Margin="72,67,72,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"  Height="25" />
+        <TextBox x:Name="textBoxTimeDeposit" materialDesign:HintAssist.Hint="Введите срок в месяцах..."  Margin="72,97,72,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" />
+        <TextBox x:Name="textBoxPercentDeposit" materialDesign:HintAssist.Hint="Введите годовую процентную ставку..."  Margin="72,127,72,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"  Height="25" />
+        <TextBlock HorizontalAlignment="Left" Margin="115,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267" Height="24" Text="Добавление нового вклада" FontWeight="Bold"></TextBlock>
+        <DatePicker Name="DepozitDatePicker" materialDesign:HintAssist.Hint="Выберете дату открытия вклада..." Focusable="False" Margin="72,152,72,0" VerticalAlignment="Top" Height="25">
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox" ></Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <TextBlock x:Name="textBlockItogSum" HorizontalAlignment="Left" Margin="329,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="117"><Run Language="ru-ru" Text="Сумма"/></TextBlock>
+        <Button Content="В конце срока на счету будет" HorizontalAlignment="Left" Margin="48,199,0,0" VerticalAlignment="Top" Click="SumInEndTime" Width="320"/>
+        <Border
+            MinWidth="400"  Background="DarkBlue" VerticalAlignment="Top" Padding="40" CornerRadius="20" Height="112" Margin="0,350,0,0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="Black" ShadowDepth="0"></DropShadowEffect>
+            </Border.Effect>
+            <DockPanel>
+                <Button Content="Операции" Click="ButtonEnterToOperationMenu_Click" DockPanel.Dock="Left" Width="130" />
+                <Button Content="Счета" Click="ButtonEnterToCountMenu_Click" DockPanel.Dock="Right" Width="130" />
+                <Button Content="Анализ" Click="ButtonEnterToAnalyseMenu_Click" DockPanel.Dock="Right" Width="100"  />
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

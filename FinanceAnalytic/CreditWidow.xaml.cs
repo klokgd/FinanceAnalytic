@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Text.Unicode;
+using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace FinanceAnalytic
 {
@@ -21,103 +10,75 @@ namespace FinanceAnalytic
     /// </summary>
     public partial class CreditWidow : Window
     {
-        private User _workSpace;
+        private User _user;
         public string FilePath { get; set; }
 
         public CreditWidow(User _count)
         {
             InitializeComponent();
-            _workSpace = _count;
+            _user = _count;
         }
 
-        private void ButtonEnterToCountMenu_Click(object sender, RoutedEventArgs e)
+        private void ButtonEnterToAddCredit_Click(object sender, RoutedEventArgs e)
         {
-            AccountWindow count = new AccountWindow(_workSpace);
-            count.Show();
+            string name = textBoxNameCredit.Text;
+            decimal balance = Convert.ToDecimal(textBoxSumCredit.Text);
+            int loanTerm = Convert.ToInt32(textBoxTimeCredit.Text);
+            decimal percent = Convert.ToDecimal(textBoxPercentCredit.Text);
+            DateTime date = creditDatePicker.SelectedDate.Value;
+            Credit newCredit = new Credit(balance, name, loanTerm, percent, date);
+            Storage storage = Storage.GetInstance();
+            _user.Credits.Add(newCredit);// AddAccountToList((IAccount)newCredit);
+            AccountWindow countWindow = Owner as AccountWindow;
+            countWindow.listBoxCredit.Items.Add(_user.Credits.Last().Name +" "+ _user.Credits.Last().Balance);
+            OperationWindow count = new OperationWindow(_user);
+            count.CountList.Items.Add(name);
+            storage.SaveToFile();
+            Hide();
         }
 
-        private void ButtonEnterToOperationMenu_Click(object sender, RoutedEventArgs e)
+        private void Button_ClickAlreadyPay(object sender, RoutedEventArgs e)
         {
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToInt32(textBoxPercentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
+            TextAlreadyPay.Text = Convert.ToString(credit.CalculatiAlreadyPayMonthsOfLoan());
+        }
+                
+        private void Button_Click_MounthPricePredict(object sender, RoutedEventArgs e)
+        {
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPercentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
+            textBlockSumOfMonth.Text = String.Format("{0:f2}", credit.PayMonthAnnuityLoan());
+        }
 
+        private void Button_Click_PercentPredict(object sender, RoutedEventArgs e)
+        {
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPercentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
+            textBlockMonthPayPay.Text = String.Format("{0:f2}", credit.CalculateMonthPersent());
+            
+        }
+        private void Button_MounthElse(object sender, RoutedEventArgs e)
+        {
+            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPercentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
+            textBlockMounthElse.Text = Convert.ToString(credit.CalculateRemainingMonths());
         }
 
         private void ButtonEnterToAnalyseMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            AnalyseWindow window = new AnalyseWindow();
+            window.Show();
+            this.Hide();
         }
 
-
-        private void ButtonEnterToAddCredit_Click(object sender, RoutedEventArgs e)
+        private void ButtonEnterToOperationMenu_Click(object sender, RoutedEventArgs e)
         {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
-            //CountWindow count = new CountWindow(_workSpace);
-
-            AccountWindow cr = Owner as AccountWindow;
-            cr.listBoxCredit.Items.Add($"Сумма {textBoxSumCredit.Text}, Название {textBoxNameCredit.Text}, Проценты {textBoxPersentCredit.Text}, Мсяцев {textBoxTimeCredit.Text}");
-            //cr.listBoxCredit.Items.Add($"Сумма "); 
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-                WriteIndented = true
-            };
-
+            OperationWindow window = new OperationWindow(_user);
+            window.Show();
+            this.Hide();
+        }
+        private void ButtonEnterToCountMenu_Click(object sender, RoutedEventArgs e)
+        {
+            AccountWindow count = new AccountWindow(_user);
+            count.Show();
             
-
-        }
-
-        private void ButtonEnterToAddTransaction_Click2(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_PersentCredit(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TimeCredit(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_SumCredit(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_NameCredit(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
-            textBlockPay.Text = Convert.ToString(credit.CalculatiAlreadyPayMonthsOfLoan());
-        }
-
-        
-        private void Button_Click_MounthPrice(object sender, RoutedEventArgs e)
-        {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
-            textBlockSumOfMonth.Text = Convert.ToString(credit.PayMonthAnnuityLoan());
-        }
-
-        private void Button_Click_Percent(object sender, RoutedEventArgs e)
-        {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
-            textBlockMonthPayPay.Text = Convert.ToString(credit.CalculateMonthPersent());
-            
-        }
-        private void OnMouseLeftButtonUp(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click22(object sender, RoutedEventArgs e)
-        {
-            Credit credit = new Credit(Convert.ToDecimal(textBoxSumCredit.Text), textBoxNameCredit.Text, Convert.ToInt32(textBoxTimeCredit.Text), Convert.ToDecimal(textBoxPersentCredit.Text), (DateTime)creditDatePicker.SelectedDate);
-            textBlockPay_Copy.Text = Convert.ToString(credit.CalculateRemainingMonths());
         }
     }
 }

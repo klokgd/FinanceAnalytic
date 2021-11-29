@@ -11,19 +11,4 @@ namespace FinanceAnalytic
 
         public string Name { get; set; }
     }
-    //public class Category
-    //{
-    //    //Food = 1,
-    //    //Transport,
-    //    //Clothes,
-    //    //Entertainment,
-    //    //Housing,
-    //    //Health,
-    //    //HCS,
-    //    //Translation
-
-
-
-    //}
-
 }

@@ -11,6 +11,5 @@
         <TextBox x:Name="TextBoxAccounName" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Название счета" Margin="0,129,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
         <TextBox x:Name="TextBoxSumAccount" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Начальная сумма" Margin="0,192,0,0" VerticalAlignment="Top" Width="266"/>
         <Button x:Name="button_AddAccount" Content="Добавить счет" HorizontalAlignment="Center" Margin="0,342,0,0" VerticalAlignment="Top" Click="button_AddAccount_Click"/>
-
     </Grid>
 </Window>

@@ -26,7 +26,6 @@ namespace FinanceAnalytic
         }
         private void button_AddAccount_Click(object sender, RoutedEventArgs e)
         {
-
             string name = TextBoxAccounName.Text;
             decimal balance = Convert.ToDecimal( TextBoxSumAccount.Text);
             PersonalAccount personalAccount = new PersonalAccount(balance, name);

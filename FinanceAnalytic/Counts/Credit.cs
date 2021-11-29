@@ -4,9 +4,9 @@ using System.Text;
 
 namespace FinanceAnalytic
 {
-    public class Credit
+    public class Credit : IAccount
     {
-         public decimal Balance { get; set; }
+        public decimal Balance { get; set; }
         public string Name { get; set; }
         public int LoanTerm { get; set; }
         public int ActualMonth { get; set; }
@@ -19,27 +19,17 @@ namespace FinanceAnalytic
             Name = name;
             LoanTerm = loanTerm;
             Persent = persent;
+            Transaction = new List<ITransaction>();
 
-            
             ActualData = actualData;
         }
 
         public List<ITransaction> Transaction { get; set; }
 
-        //как указать с какого актива будет списан кредит
-
-
-        //int loanTerm = 0;//это переменная, которую введет пользователь -срок кредита в месяцах
-        //decimal sumnewcredit = 0; //переменная в которую попадет сумма нового кредита
-        //decimal persent = 0; //переменная с выбранным годовым процентом, написать метод для ввода числа извне
-        //                     //TODO ЗАПИСЬ ДАТ ВСЕХ ДОБАВЛЕНИЙ ДЕНЕГ
-
-
-
 
         public decimal CalculateBalanceOfLoan(decimal sum, List<ITransaction> Transaction)
         {
-            
+
             decimal sumTransactuon = 0;
             int i = 0;
 
@@ -71,7 +61,7 @@ namespace FinanceAnalytic
             alreadyPayMonths = (d2.Year - DateTime.Now.Year) * 12;
             alreadyPayMonths = alreadyPayMonths + d2.Month;
             alreadyPayMonths = alreadyPayMonths - DateTime.Now.Month;
-            if (alreadyPayMonths<0)
+            if (alreadyPayMonths < 0)
             {
                 alreadyPayMonths = Math.Abs(alreadyPayMonths);
             }
@@ -93,7 +83,7 @@ namespace FinanceAnalytic
 
             return remainingMonths;
         }
-        public decimal PayMonthAnnuityLoan( )
+        public decimal PayMonthAnnuityLoan()
         {
             Transaction = new List<ITransaction>();
             decimal payOver = CalculateBalanceOfLoan(Balance, Transaction);
@@ -101,18 +91,33 @@ namespace FinanceAnalytic
             decimal persentMonth = CalculateMonthPersent();
             decimal Annuitypay = 0; //размер ежемес платежа в аннуительном кредите
             decimal val = Convert.ToDecimal(1 / Math.Pow((1 + (double)persentMonth), rMonth));
-            Annuitypay = payOver * (persentMonth / (1 -  val));
+            Annuitypay = payOver * (persentMonth / (1 - val));
 
             return Annuitypay;
         }
 
-        private void endCredit(decimal sumnewcredit, decimal sumTransactuon)
+
+        public void AddExpense(ITransaction expense)
         {
-            if (sumnewcredit == sumTransactuon)
-            {
-                //поздравить с выплаченным кредитом и удалить запись о кредите
-            }
+            Transaction.Add(expense);
+            Balance -= expense.Sum;
         }
-            
+        public void AddIncrease(ITransaction increase)
+        {
+            Transaction.Add(increase);
+            Balance += increase.Sum;
+        }
+
+        public void TransferBetweenCounts(Increase transferTransaction, IAccount transactionRecepient)
+        {
+            Transaction.Add(transferTransaction);
+            Balance -= transferTransaction.Sum;
+            transactionRecepient.AddIncrease(transferTransaction);
+        }
+
+        public void RenameAccount(string newName)
+        {
+            Name = newName;
+        }
     }
 }

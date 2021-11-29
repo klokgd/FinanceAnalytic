@@ -12,6 +12,5 @@
         <TextBox x:Name="TextBoxUsername" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Имя пользователя" Margin="0,129,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
         <PasswordBox x:Name="PasswordBoxPass" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Пароль" Margin="0,192,0,0" VerticalAlignment="Top" Width="266"/>
         <Button x:Name="button_Register" Content="Регистрация" HorizontalAlignment="Center" Margin="0,342,0,0" VerticalAlignment="Top" Click="button_Register_Click"/>
-
     </Grid>
 </Window>

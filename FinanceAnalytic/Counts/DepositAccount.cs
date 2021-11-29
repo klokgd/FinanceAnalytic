@@ -9,7 +9,6 @@ namespace FinanceAnalytic
         public decimal Balance { get; set; }
         public decimal Percent { get; set; }
         public string Name { get; set; }
-        public int Type { get; set; }
         public int ActualMonth { get; set; }
         public List<ITransaction> Transaction { get; set; }
 
@@ -29,24 +28,14 @@ namespace FinanceAnalytic
             Transaction.Add(transferTransaction);
             Balance -= transferTransaction.Sum;
 
-            //добавить даункаст
-
             transactionRecepient.AddIncrease(transferTransaction);
-        }
-
-        
+        }        
 
         public void AddIncrease(ITransaction increase)
         {
             Transaction.Add(increase);
             Balance += increase.Sum;
         }
-        
-        
-        
-
-        
-
         public void CheckIfBeginningMonth()
         {
             if (ActualMonth != DateTime.Now.Month)
@@ -54,9 +43,6 @@ namespace FinanceAnalytic
                 RecalculateDeposit();
                 ActualMonth = DateTime.Now.Month;
             }
-           
-
-
         }
 
         public void RecalculateDeposit()

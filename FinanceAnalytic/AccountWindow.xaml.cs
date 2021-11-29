@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Linq;
+﻿using System.Windows;
+
 
 
 namespace FinanceAnalytic
@@ -26,8 +16,6 @@ namespace FinanceAnalytic
             InitializeComponent();
             _user = authentication;
 
-
-
             foreach (PersonalAccount item in _user.Accounts)
             {
                 listBoxAccount.Items.Add($"Название: {item.Name}\nСумма: {item.Balance}");
@@ -36,7 +24,7 @@ namespace FinanceAnalytic
             {
                 listBoxCredit.Items.Add($"Название: {item.Name}\nСумма: {item.Balance}");
             }
-            foreach (DepositAccount item in _user.Accounts)
+            foreach (Credit item in _user.Deposit)
             {
                 listBoxDeposite.Items.Add($"Название: {item.Name}\nСумма: {item.Balance}");
             }
@@ -46,7 +34,6 @@ namespace FinanceAnalytic
         {
             AccountWindow window = this;
             window.Show();
-
         }
         private void ButtonEnterToOperationMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -60,8 +47,6 @@ namespace FinanceAnalytic
             window.Show();
             this.Hide();
         }
-
-
         private void Button_ClickAddCredit(object sender, RoutedEventArgs e)
         {
             CreditWidow credits = new CreditWidow(_user);
@@ -71,31 +56,23 @@ namespace FinanceAnalytic
         }
         private void Button_ClickAddDeposit(object sender, RoutedEventArgs e)
         {
-
+            DepozitWindow depozit = new DepozitWindow(_user);
+            depozit.Owner = this;
+            depozit.Show();
         }
         private void Button_ClickAddCount(object sender, RoutedEventArgs e)
         {
             AddAccount credits = new AddAccount(_user);
             credits.Owner = this;
             credits.Show();
-
-
         }
 
-        private void listBoxAccount_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-
-
-        }
-
-        private void listBoxCredit_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void listBoxDeposite_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            MainWindow main = new MainWindow();
+            main.Owner = this;
+            main.Show();
+            this.Hide();
         }
     }
 }

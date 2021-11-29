@@ -6,22 +6,17 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:FinanceAnalytic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="Добро пожаловать!" Height="500" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="17*"/>
             <RowDefinition Height="203*"/>
             <RowDefinition Height="214*"/>
         </Grid.RowDefinitions>
-        <!--<Frame x:Name="frame" Content="Frame" Navigated="frame_Navigated" Margin="439,122,195,232"/>-->
         <Button x:Name="button_Login" HorizontalAlignment="Center" Margin="0,107,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="80" Width="282" Click="button_Login_Click" Content="Вход" Grid.Row="2"/>
         <Button x:Name="button_AddUser" HorizontalAlignment="Left" Margin="595,11,0,0" FontSize="20" VerticalAlignment="Top" RenderTransformOrigin="-5.745,-6.101" Height="53" Width="154" Click="button_AddUser_Click" Content="Регистрация" Grid.Row="1"/>
         <PasswordBox x:Name="textBoxPassword" materialDesign:HintAssist.Hint="Пароль" HorizontalAlignment="Center" Margin="0,53,0,0"  VerticalAlignment="Top" Width="180" Grid.Row="2"/>
         <TextBlock x:Name="TextBoxListUser" HorizontalAlignment="Center" Margin="0,24,0,0" Text="Список пользователей" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="20" Grid.Row="1"/>
-        <ListBox x:Name="ListBoxListOfUsers"  Margin="283,68,283,196" Grid.RowSpan="2" Grid.Row="1" SelectionChanged="ListBoxListOfUsers_SelectionChanged"/>
-
-
-
-
+        <ListBox x:Name="ListBoxListOfUsers"  Margin="283,68,283,196" Grid.RowSpan="2" Grid.Row="1" />
     </Grid>
 </Window>

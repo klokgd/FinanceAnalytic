@@ -22,7 +22,6 @@ namespace FinanceAnalytic
 
         public decimal Sum { get; }
         public DateTime Date { get; }
-
         public string Category { get; set; }
         public string CountPerson { get; set; }
     }

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Numerics;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using System.Text.Unicode;
 using System.Windows;
@@ -16,20 +12,18 @@ namespace FinanceAnalytic
     {
         private Storage()
         {
-            FilePath = "h:/settings.json";
+            FilePath = "./settings.json";
 
             if (File.Exists(FilePath))
             {
                 usersList = new List<User>();
-                string FilePath2 = "h:/settings2.json";
-
+                string FilePath2 = "./settings2.json";
                 string json = File.ReadAllText(FilePath2);
 
-
-                usersList = JsonConvert.DeserializeObject<List<User>>(json, new Newtonsoft.Json.JsonSerializerSettings
+                usersList = JsonConvert.DeserializeObject<List<User>>(json, new JsonSerializerSettings
                 {
-                    TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto,
-                    NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+                    TypeNameHandling = TypeNameHandling.Auto,
+                    NullValueHandling = NullValueHandling.Ignore,
                 });
             }
 
@@ -49,9 +43,6 @@ namespace FinanceAnalytic
         public string FilePath { get; }
 
         public List<User> usersList { get; set; }
-        //public List<PersonalAccount> accountList { get; set; }
-
-
 
         public void RegisterUser(string name, string password)
         {
@@ -71,7 +62,6 @@ namespace FinanceAnalytic
             else
             {
                 User user = new User(name, password);
-
                 usersList.Add(user);
 
                 JsonSerializerOptions options = new JsonSerializerOptions
@@ -82,28 +72,20 @@ namespace FinanceAnalytic
                 };
 
                 string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
-
                 string jsonTypeNameAll = JsonConvert.SerializeObject(usersList, Formatting.Indented, new JsonSerializerSettings
                 {
                     TypeNameHandling = TypeNameHandling.All
                 });
 
                 File.WriteAllText(FilePath, jsonToWrite);
-
-                string FilePath2 = "h:/settings2.json";
-
-
+                string FilePath2 = "./settings2.json";
                 File.WriteAllText(FilePath2, jsonTypeNameAll);
-
             }
-
         }
 
         public bool Login(string name, string password)
         {
             string[] textFromFile = File.ReadAllLines(FilePath);
-
-
 
             if (File.Exists(FilePath) != true)
             {
@@ -117,7 +99,6 @@ namespace FinanceAnalytic
                 {
                     return true;
                 }
-
             }
             return false;
         }
@@ -133,39 +114,19 @@ namespace FinanceAnalytic
             string jsonToWrite = System.Text.Json.JsonSerializer.Serialize(usersList, options);
             File.WriteAllText(FilePath, jsonToWrite);
 
-            
-
             string jsonTypeNameAll = JsonConvert.SerializeObject(usersList, Formatting.Indented, new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.All
             });
 
-            string FilePath2 = "h:/settings2.json";
-
-
+            string FilePath2 = "./settings2.json";
             File.WriteAllText(FilePath2, jsonTypeNameAll);
-
         }
 
         public User GetWorkSpace(string findName)
         {
             User necessaryUser = usersList.Find(x => x.Name.Contains(findName));
-           
-             
-
             return necessaryUser;
-
         }
-
-        //public void AddAccount(decimal sum, string name )
-        //{
-        //    PersonalAccount newAcc = new PersonalAccount(sum, name);
-        //    if (accountList ==null)
-        //    {
-        //        accountList = new List<PersonalAccount>();
-        //    }
-        //    accountList.Add(newAcc);
-        //    //SaveToFile();
-        //}
     }
 }
